@@ -1,0 +1,7 @@
+allure-result
+vmWeb
+__pycache__
+*-container.json
+*-result.json
+*allure-result
+junitxml_report.xml
