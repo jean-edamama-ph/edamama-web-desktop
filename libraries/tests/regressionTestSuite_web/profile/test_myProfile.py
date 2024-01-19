@@ -101,7 +101,7 @@ def test_ACQ_AUTO_874_User_should_be_able_to_add_edit_delete_address(page):
     uMyProfile.com.deleteAddress(page, strFullName1)
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO874.dictData)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO874.dictData)
 
     uCommon.log(0, 'Step 3 - Click the kebab menu of an existing address and click Edit button.')
     strFullName2 = f'{dRegMyProfile.AUTO874.dictData["strFirstName"]} {dRegMyProfile.AUTO874.dictData["strLastName"]}'
@@ -118,7 +118,7 @@ def test_ACQ_AUTO_874_User_should_be_able_to_add_edit_delete_address(page):
     uMyProfile.com.deleteAddress(page, strFullName1)
 
 
-""" Author: abernal_20231001 Execution Time: 1m 25s """
+""" Author: abernal_20231001 Execution Time: 2m 21s """
 @pytest.mark.acquiTestSuite()
 @pytest.mark.regressionTestSuite()
 @allure.step('To verify that the user can select a new default address.')
@@ -140,17 +140,18 @@ def test_ACQ_AUTO_877_User_should_be_able_to_change_default_address(page):
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO877.firstData)
     uMyProfile.na.tickSetAsDefault(page)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO877.firstData)
 
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO877.secondData)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO877.secondData)
 
     uCommon.log(0, 'Step 3 - Click the kebab menu of an existing address and click Edit button.')
     uMyProfile.ea.clickAddressEdit(page, strFullName2)
     
     uCommon.log(0, 'Step 4 - Tick the "Set as Default" and click Update Address button.')
     uMyProfile.na.tickSetAsDefault(page)
+    breakpoint()
     uMyProfile.ea.clickUpdateAddress(page)
 
     uCommon.log(0, 'Step 5 - Verify if address has the Default label.')
@@ -158,6 +159,10 @@ def test_ACQ_AUTO_877_User_should_be_able_to_change_default_address(page):
     uCommon.log(0, 'Test Completed')
 
     uCommon.log(0, '[Post condition Started]: Click the kebab menu of an existing address and click Remove button. Click Yes button on confirmation modal.')
+    uMyProfile.ea.clickAddressEdit(page, strFullName2)
+    breakpoint()
+    uMyProfile.ea.untickSetAsDefault(page)
+    uMyProfile.ea.clickUpdateAddress(page)
     uMyProfile.com.deleteAddress(page, strFullName1)
     uMyProfile.com.deleteAddress(page, strFullName2)
     uCommon.log(0, '[Post condition Completed]: Addresses added are now deleted.')
@@ -191,23 +196,23 @@ def test_ACQ_AUTO_871_User_should_be_able_to_add_multiple_delivery_addresses(pag
 
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO871.firstData)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO871.firstData)
 
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO871.secondData)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO871.secondData)
 
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO871.thirdData)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO871.thirdData)
 
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO871.fourthData)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO871.fourthData)
 
     uMyProfile.com.clickAddressAddMore(page)
     uMyProfile.na.addAddress(page, dRegMyProfile.AUTO871.fifthData)
-    uMyProfile.na.clickAddNewAddress(page)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO871.fifthData)
 
     uCommon.log(0, 'Verify that all addresses were displayed on the list of addresses.')
     uMyProfile.ea.verifyNewAddressDetails(page, dRegMyProfile.AUTO871.firstData)
@@ -271,7 +276,6 @@ def test_ACQ_AUTO_1025_User_should_be_able_to_add_edit_remove_child_details(page
     
     
 """ Author: abernal_20231011 Execution Time: 23s - 28s """
-@pytest.mark.netTest()
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that the user is able to update attributes.')
@@ -300,3 +304,61 @@ def test_ACQ_AUTO_1085_User_should_be_able_to_update_remove_attributes(page):
     uCommon.log(0, '[AUTO-1082 Completed]: Removed attributes')
     uCommon.log(0, 'Test Completed')
     
+
+""" Author: abernal_20240115 Execution Time: 19s - 20s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Child Birth Month is blank')
+def test_ACQ_AUTO_1145_Error_message_should_be_displayed_if_Child_Birth_Month_is_blank(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName7)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1145.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll to My Children section and click Add Another Child button.')
+    uMyProfile.com.clickAddAChild(page)
+    
+    uCommon.log(0, 'Step 4 - Input values for the fields except for Birth Month and click Add Child button. Verify if error message is displayed.')
+    uMyProfile.ac.addChildDetails(page, dRegMyProfile.AUTO1145.newChildData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240115 Execution Time: 34s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if zip code is empty.')
+def test_ACQ_AUTO_1142_Error_message_should_be_displayed_if_zip_code_is_empty(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1145.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Zip Code under Delivery Address. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1142.addressData)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO1142.addressData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240115 Execution Time: 29s - 30s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if no value is selected for Province, City, Brgy.')
+def test_ACQ_AUTO_1139_Error_message_should_be_displayed_if_no_value_is_selected_for_Province_City_Brgy(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1139.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Zip Code under Delivery Address. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1139.addressData)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO1139.addressData)
+    uCommon.log(0, 'Test Completed')

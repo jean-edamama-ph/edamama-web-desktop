@@ -133,14 +133,14 @@ class AUTO1025:
     newChildData = {
         'strChildName': 'Child Name',
         'strMonth': 'JUN',
-        'strDay': '21',
+        'strDay': ' 21 ',
         'strYear': '2022',
         'strGender': 'Girl'
     }
     updatedChildData = {
         'strChildName': 'Child Updated',
         'strMonth': 'APR',
-        'strDay': '25',
+        'strDay': ' 25 ',
         'strYear': '2021',
         'strGender': 'Boy'
     }
@@ -156,4 +156,45 @@ class AUTO1085:
         'editAttribute3': 'Mama Chef',
         'editAttribute4': 'Mama Teacher',
         'editAttribute5': 'Mamaste'
+    }
+    
+    
+class AUTO1145:
+    strMyProfile = 'my profile'
+    newChildData = {
+        'strChildName': 'Child Name',
+        'strMonth': 'null',
+        'strDay': 'null',
+        'strYear': 'null',
+        'strGender': 'Girl'
+    }
+    
+
+class AUTO1142:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'First',
+        'strLastName': 'Address',
+        'strMobile': '9171234567',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': 'null',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    
+
+class AUTO1139:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'First',
+        'strLastName': 'Address',
+        'strMobile': '9171234567',
+        'strProvince': 'null',
+        'strCity': 'null',
+        'strZipCode': '4116',
+        'strBrgy': 'null',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
     }

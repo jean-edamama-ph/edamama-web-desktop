@@ -38,12 +38,6 @@ class com:
         return f'//app-child-card[@class="ng-star-inserted"]/../..//h3[contains(text(),"{strName}")]/../..//mat-icon[text()="more_vert"]' 
     def childNameLbl(strName):
         return f'//h3[contains(text(),"{strName}")]/../../../../app-child-card[@class="ng-star-inserted"]'
-    def addressDottedMenuIconBtn(strCount):
-        return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/following-sibling::button'
-    def addressPanelHeaderFullName(strCount):
-        return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/../following-sibling::div/div[@class="panel-header"]'
-        
-
 
 
 
@@ -118,8 +112,12 @@ class na:
     landmarkTxt = '//textarea[@formcontrolname="buildingNumber"]'
     addNewAddressBtn = f'{newAddressLbl}/../../..//button[text()=" Add New Address "]'
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
-    setAsDefaultChk = '//input[@type="checkbox"]'
-    tickedDefaultChk = '//input[@aria-checked="true"]'
+    setAsDefaultChk = '//span[@class="mat-checkbox-inner-container"]'
+    tickedDefaultChk = '//div[@class="set-default-wrap"]//mat-checkbox[contains(@class,"mat-checkbox-checked")]'
+    zipCodeErrorMsg = '//mat-error[text() = " Zip Code is required. "]'
+    provinceErrorMsg = '//mat-error[text() = " Province/District is required. "]'
+    cityErrorMsg = '//mat-error[text() = " City is required. "]'
+    brgyErrorMsg = '//mat-error[text() = " Barangay/Village is required. "]'
 
     
     
@@ -130,6 +128,7 @@ class ea:
     editAddressLbl = '//h2[text()="Edit Address"]'
     updateAddressBtn = '//button[text()=" Update Address "]'
     addressEditedSuccessMsg = '//span[text()="Address updated successfully."]'
+    untickedDefaultChk = '//div[@class="set-default-wrap"]//mat-checkbox[contains(@class,"mat-checkbox")]'
 
     
 
@@ -143,12 +142,13 @@ class ac:
     def genderRdb(strGender):
         return f'//span[contains(text(),"{strGender}")]/../..//input[@class="mat-radio-input"]'
     def birthYearBtn(strYear):
-        return f'//div[contains(text(),"{strYear}")]'
+        return f'//span[contains(text(),"{strYear}")]'
     def birthMonthBtn(strMonth):
-        return f'//div[contains(text(),"{strMonth}")]'
+        return f'//span[contains(text(),"{strMonth}")]'
     def birthDayBtn(strDay):
-        return f'//button[contains(@class, "calendar")]//div[contains(text(),"{strDay}")]'
+        return f'//button[contains(@class, "calendar")]//span[text()="{strDay}"]'
     addMoreBtn = '//span[text()="Add More +"]'
+    childBirthDateErrorMsg = '//mat-error[text() = "Date of birth is required."]'
 
 
 

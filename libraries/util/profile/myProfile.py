@@ -182,33 +182,10 @@ class com:
             uCommon.wait(page, .5)
             uCommon.waitAndClickElem(page, pMyProfile.com.deleteChildBtn)
             uCommon.waitElemNotToBeVisible(page, pMyProfile.com.childNameLbl(strChildName))
-            
-    @uCommon.ufuncLog
-    def deleteAllAddress(page):
-        """ 
-        Objective: Delete all existing address
-        param: None
-        returns: None
-        Author: jatregenio_20240113
-        """
-        strAddressCount = ''
-        intCount = uCommon.getArrayCount(page, pMyProfile.com.allMenuIconBtn)
-        if intCount > 0:
-            for item in range(intCount):
-                intAddressCount = intCount - item
-                if intAddressCount == 1:
-                    strAddressCount = ' '
-                else:
-                    strAddressCount = intAddressCount
-                
-                strFullName = uCommon.getElemText(page, pMyProfile.com.addressPanelHeaderFullName(strAddressCount))
-                com.deleteAddress(page, strFullName)
-        else:
-            uCommon.log(0, 'No existing address to be deleted.')         
-            
+                    
     
     
-
+    
     
 class na:
     @uCommon.ufuncLog
@@ -224,10 +201,14 @@ class na:
         uCommon.setElem(page, pMyProfile.na.firstNameTxt, dictData["strFirstName"])
         uCommon.setElem(page, pMyProfile.na.lastNameTxt, dictData["strLastName"])
         uCommon.setElem(page, pMyProfile.na.mobileNumberTxt, dictData["strMobile"])
-        na.selectProviceDistrict(page, dictData["strProvince"])
-        na.selectCity(page, dictData["strCity"])
-        uCommon.setElem(page, pMyProfile.na.zipCodeTxt, dictData["strZipCode"])
-        na.selectBarangay(page, dictData["strBrgy"])
+        if dictData["strProvince"] != 'null':
+            na.selectProviceDistrict(page, dictData["strProvince"])
+        if dictData["strCity"] != 'null':
+            na.selectCity(page, dictData["strCity"])
+        if dictData["strZipCode"] != 'null':
+            uCommon.setElem(page, pMyProfile.na.zipCodeTxt, dictData["strZipCode"])
+        if dictData["strBrgy"] != 'null':   
+            na.selectBarangay(page, dictData["strBrgy"])
         uCommon.setElem(page, pMyProfile.na.lotUnitStreetTxt, dictData["strLotUnitStBldg"])
         uCommon.setElem(page, pMyProfile.na.landmarkTxt, dictData["strLandmark"])        
 
@@ -271,28 +252,37 @@ class na:
         uCommon.setAndSelectFromSmartDropDown(page, pMyProfile.na.searchTxt, strBarangay, pMyProfile.na.parentDIVListBox)
         
     @uCommon.ufuncLog       
-    def clickAddNewAddress(page):
+    def clickAddNewAddress(page, dictData):
         """ 
         Objective: Click Add New Address successful
-        
+    
         param: None
         returns: None
         Author: ccapistrano_20230511
         """
-        uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
-        uCommon.waitElemToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
-        uCommon.waitElemNotToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+        if dictData["strZipCode"] == 'null':
+            uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.zipCodeErrorMsg)
+        elif dictData["strProvince"] == 'null':
+            uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.provinceErrorMsg)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.cityErrorMsg)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.brgyErrorMsg)
+        else:
+            uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
 
     @uCommon.ufuncLog       
     def tickSetAsDefault(page):
         """ 
         Objective: Tick the Set as Default checkbox.
-        
         param: None
         returns: None
         Author: abernal_20231001
         """
         uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
+        uCommon.wait(page, 1)
         uCommon.waitElemToBeVisible(page, pMyProfile.na.tickedDefaultChk)
     
     
@@ -347,8 +337,7 @@ class ea:
     @uCommon.ufuncLog       
     def verifyNewAddressDetails(page, dictNewAddress):
         """ 
-        Objective: To verify if the address details were updated.
-        
+        Objective: To verify if the address details were updated.    
         param dictNewAddress: {strFirstName, strLastName, strMobile, strProvince, strCity, strZipCode, strBrgy, strLotUnitStBldg, strLandmark}
         returns: None
         Author: abernal_20231003
@@ -360,6 +349,19 @@ class ea:
         uCommon.validateElemText(page, pMyProfile.com.addressStLbl(newAddressName), dictNewAddress["strLotUnitStBldg"], False)
         uCommon.validateElemText(page, pMyProfile.com.addressZipLbl(newAddressName), dictNewAddress["strZipCode"], False)
         uCommon.validateElemText(page, pMyProfile.com.addressMobNumLbl(newAddressName), dictNewAddress["strMobile"], False)
+        
+        
+    @uCommon.ufuncLog       
+    def untickSetAsDefault(page):
+        """ 
+        Objective: Untick the Set as Default checkbox.
+        param: None
+        returns: None
+        Author: abernal_20240116
+        """
+        uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
+        uCommon.wait(page, 1)
+        uCommon.waitElemToBeVisible(page, pMyProfile.ea.untickedDefaultChk)
 
 
 
@@ -376,15 +378,19 @@ class ac:
         Author: abernal_20231011
         """ 
         uCommon.waitAndSetElem(page, pMyProfile.ac.childNameTxt, newChildData["strChildName"])
-        uCommon.waitAndClickElem(page, pMyProfile.ac.childDateBtn)
-        uCommon.waitAndClickElem(page, pMyProfile.ac.birthYearBtn(newChildData["strYear"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ac.birthMonthBtn(newChildData["strMonth"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ac.birthDayBtn(newChildData["strDay"]))
+        if newChildData["strYear"] != 'null':
+            uCommon.waitAndClickElem(page, pMyProfile.ac.childDateBtn)
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthYearBtn(newChildData["strYear"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthMonthBtn(newChildData["strMonth"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthDayBtn(newChildData["strDay"]))
         uCommon.wait(page, .5)
         uCommon.waitAndClickElem(page, pMyProfile.ac.genderRdb(newChildData["strGender"]))
         uCommon.waitAndClickElem(page, pMyProfile.ac.addMoreBtn)
-        uCommon.waitElemToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
-        uCommon.waitElemNotToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
+        if newChildData["strYear"] != 'null':
+            uCommon.waitElemToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
+        else:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ac.childBirthDateErrorMsg)
         
         
         
