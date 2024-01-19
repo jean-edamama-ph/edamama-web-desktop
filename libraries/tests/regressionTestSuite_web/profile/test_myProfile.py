@@ -271,7 +271,6 @@ def test_ACQ_AUTO_1025_User_should_be_able_to_add_edit_remove_child_details(page
     
     
 """ Author: abernal_20231011 Execution Time: 23s - 28s """
-@pytest.mark.netTest()
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that the user is able to update attributes.')
@@ -299,4 +298,83 @@ def test_ACQ_AUTO_1085_User_should_be_able_to_update_remove_attributes(page):
     uMyProfile.at.clearAttributes(page)
     uCommon.log(0, '[AUTO-1082 Completed]: Removed attributes')
     uCommon.log(0, 'Test Completed')
+
+
+""" Author: abernal_20240116 Execution Time: 34s - 36s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Mobile Number is blank for Contact Person')
+def test_ACQ_AUTO_1136_Error_message_should_be_displayed_if_Mobile_Number_is_blank_for_Contact_Person(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName9)
     
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1136.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1136.addressData)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO1136.addressData)
+    uCommon.log(0, 'Test Completed')
+
+
+""" Author: abernal_20240116 Execution Time: 36s - 37s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Lot/Unit/Street/Building is empty.')
+def test_ACQ_AUTO_1133_Error_message_should_be_displayed_if_Lot_Unit_Street_Building_is_empty(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName10)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1133.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1133.addressData)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO1133.addressData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240117 Execution Time: 35s - 38s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Last Name is blank for Contact Person')
+def test_ACQ_AUTO_1130_Error_message_should_be_displayed_if_Last_Name_is_blank_for_Contact_Person(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName1)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1130.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1130.addressData)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO1130.addressData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240117 Execution Time: 34s - 39s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if First Name is blank for Contact Person')
+def test_ACQ_AUTO_1124_Error_message_should_be_displayed_if_First_Name_is_blank_for_Contact_Person(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName2)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1124.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1124.addressData)
+    uMyProfile.na.clickAddNewAddress(page, dRegMyProfile.AUTO1124.addressData)
+    uCommon.log(0, 'Test Completed')

@@ -182,33 +182,10 @@ class com:
             uCommon.wait(page, .5)
             uCommon.waitAndClickElem(page, pMyProfile.com.deleteChildBtn)
             uCommon.waitElemNotToBeVisible(page, pMyProfile.com.childNameLbl(strChildName))
-            
-    @uCommon.ufuncLog
-    def deleteAllAddress(page):
-        """ 
-        Objective: Delete all existing address
-        param: None
-        returns: None
-        Author: jatregenio_20240113
-        """
-        strAddressCount = ''
-        intCount = uCommon.getArrayCount(page, pMyProfile.com.allMenuIconBtn)
-        if intCount > 0:
-            for item in range(intCount):
-                intAddressCount = intCount - item
-                if intAddressCount == 1:
-                    strAddressCount = ' '
-                else:
-                    strAddressCount = intAddressCount
-                
-                strFullName = uCommon.getElemText(page, pMyProfile.com.addressPanelHeaderFullName(strAddressCount))
-                com.deleteAddress(page, strFullName)
-        else:
-            uCommon.log(0, 'No existing address to be deleted.')         
-            
+                    
     
     
-
+    
     
 class na:
     @uCommon.ufuncLog
@@ -221,15 +198,23 @@ class na:
         Author: abernal_20230511
         """ 
         
-        uCommon.setElem(page, pMyProfile.na.firstNameTxt, dictData["strFirstName"])
-        uCommon.setElem(page, pMyProfile.na.lastNameTxt, dictData["strLastName"])
-        uCommon.setElem(page, pMyProfile.na.mobileNumberTxt, dictData["strMobile"])
-        na.selectProviceDistrict(page, dictData["strProvince"])
-        na.selectCity(page, dictData["strCity"])
-        uCommon.setElem(page, pMyProfile.na.zipCodeTxt, dictData["strZipCode"])
-        na.selectBarangay(page, dictData["strBrgy"])
-        uCommon.setElem(page, pMyProfile.na.lotUnitStreetTxt, dictData["strLotUnitStBldg"])
-        uCommon.setElem(page, pMyProfile.na.landmarkTxt, dictData["strLandmark"])        
+        if dictData["strFirstName"] != 'null':
+            uCommon.setElem(page, pMyProfile.na.firstNameTxt, dictData["strFirstName"])
+        if dictData["strLastName"] != 'null':
+            uCommon.setElem(page, pMyProfile.na.lastNameTxt, dictData["strLastName"])
+        if dictData["strMobile"] != 'null':
+            uCommon.setElem(page, pMyProfile.na.mobileNumberTxt, dictData["strMobile"])
+        if dictData["strProvince"] != 'null':
+            na.selectProviceDistrict(page, dictData["strProvince"])
+        if dictData["strCity"] != 'null':
+            na.selectCity(page, dictData["strCity"])
+        if dictData["strZipCode"] != 'null':
+            uCommon.setElem(page, pMyProfile.na.zipCodeTxt, dictData["strZipCode"])
+        if dictData["strBrgy"] != 'null':   
+            na.selectBarangay(page, dictData["strBrgy"])
+        if dictData["strLotUnitStBldg"] != 'null':
+            uCommon.setElem(page, pMyProfile.na.lotUnitStreetTxt, dictData["strLotUnitStBldg"])
+        uCommon.setElem(page, pMyProfile.na.landmarkTxt, dictData["strLandmark"])          
 
     @uCommon.ufuncLog 
     def selectProviceDistrict(page, strProvince):
@@ -271,17 +256,32 @@ class na:
         uCommon.setAndSelectFromSmartDropDown(page, pMyProfile.na.searchTxt, strBarangay, pMyProfile.na.parentDIVListBox)
         
     @uCommon.ufuncLog       
-    def clickAddNewAddress(page):
+    def clickAddNewAddress(page, dictData):
         """ 
         Objective: Click Add New Address successful
-        
+    
         param: None
         returns: None
         Author: ccapistrano_20230511
         """
         uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
-        uCommon.waitElemToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
-        uCommon.waitElemNotToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+        if dictData["strZipCode"] == 'null':
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.zipCodeErrorMsg)
+        elif dictData["strProvince"] == 'null':
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.provinceErrorMsg)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.cityErrorMsg)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.brgyErrorMsg)
+        elif dictData["strMobile"] == 'null':
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.contactNumberErrorMsg)
+        elif dictData["strLotUnitStBldg"] == 'null':
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.streetAddressErrorMsg)
+        elif dictData["strFirstName"] == 'null':
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.addressFirstNameErrorMsg)
+        elif dictData["strLastName"] == 'null':
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.addressLastNameErrorMsg)
+        else:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
 
     @uCommon.ufuncLog       
     def tickSetAsDefault(page):

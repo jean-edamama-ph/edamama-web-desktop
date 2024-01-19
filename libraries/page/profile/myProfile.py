@@ -38,12 +38,6 @@ class com:
         return f'//app-child-card[@class="ng-star-inserted"]/../..//h3[contains(text(),"{strName}")]/../..//mat-icon[text()="more_vert"]' 
     def childNameLbl(strName):
         return f'//h3[contains(text(),"{strName}")]/../../../../app-child-card[@class="ng-star-inserted"]'
-    def addressDottedMenuIconBtn(strCount):
-        return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/following-sibling::button'
-    def addressPanelHeaderFullName(strCount):
-        return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/../following-sibling::div/div[@class="panel-header"]'
-        
-
 
 
 
@@ -120,6 +114,10 @@ class na:
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
     setAsDefaultChk = '//input[@type="checkbox"]'
     tickedDefaultChk = '//input[@aria-checked="true"]'
+    contactNumberErrorMsg = '//mat-error[text() = " Mobile Number is required. "]'
+    streetAddressErrorMsg = '//mat-error[text() = " Street Address is required. "]'
+    addressFirstNameErrorMsg = '//mat-error[text() = " First Name is required. "]'
+    addressLastNameErrorMsg = '//mat-error[text() = " Last Name is required. "]'
 
     
     

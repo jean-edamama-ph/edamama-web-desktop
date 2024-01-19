@@ -157,3 +157,63 @@ class AUTO1085:
         'editAttribute4': 'Mama Teacher',
         'editAttribute5': 'Mamaste'
     }
+    
+    
+class AUTO1136:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'New',
+        'strLastName': 'Address',
+        'strMobile': 'null',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+
+
+class AUTO1133:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'New',
+        'strLastName': 'Address',
+        'strMobile': '9563217736',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'null',
+        'strLandmark': 'Random landmark'
+    }
+    
+    
+class AUTO1130:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'New',
+        'strLastName': 'null',
+        'strMobile': '9563217736',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Address',
+        'strLandmark': 'Random landmark'
+    }
+    
+    
+class AUTO1124:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'null',
+        'strLastName': 'Address',
+        'strMobile': '9563217736',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Address',
+        'strLandmark': 'Random landmark'
+    }
