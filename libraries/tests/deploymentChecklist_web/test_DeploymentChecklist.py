@@ -820,7 +820,7 @@ def test_AUTO_716_Invitee_Buys_Item_from_Shared_Gift_List(page):
     uAppComm.ln.goToEdamamaURL(page)
     
     uCommon.log(0, 'Step 2 - clicking "Gift" icon')
-    uMyGifts.com.clickGiftBox(page, dDepChkLst.AUTO716.blnTrue)
+    uMyGifts.com.clickGiftBox(page, dDepChkLst.AUTO716.blnFalse)
     
     uCommon.log(0, 'Step 3 - Click "Shared With Me" tab')
     uMyGifts.sh.clickSharedWithMe(page)

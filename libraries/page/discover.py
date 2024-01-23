@@ -69,9 +69,9 @@ class pl:
 
 class ap:
     """ARTICLE PREVIEW"""
-    articlePreviewImg = '//img[@class="image"]'
-    articlePreviewDescLbl = '//p[@class="preview"]'
-    articlePreviewDateLbl = '//p[@class="date"]'
+    articlePreviewImg = '//article//img[@class="image"]'
+    articlePreviewDescLbl = '//article//p[@class="preview"]'
+    articlePreviewDateLbl = '//article//p[@class="date"]'
 
 
 
