@@ -7,7 +7,7 @@ from datetime import datetime
 def pytestIntegration(strSuite):
     strUrl = 'https://api.zephyrscale.smartbear.com/v2/automations/executions/junit?projectKey=AUTO&autoCreateTestCases=true'
 
-    strToken = Input your Zephyr Token
+    strToken = 'Input your Zephyr Token'
     dictHeaders = {'Authorization': f'Bearer {strToken}'}
 
     strFilePath = 'reports/output/junitxml_report.xml'

@@ -10,6 +10,7 @@ import libraries.data.common as dCommon
 
 """ Author: cgrapa_20230613 Execution Time: 1m 2s - 1m 4s """
 @pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
 @allure.step('To verify that OTP pin is not validated when there is no input')
 def test_AUTO_865_Pin_should_not_be_validated_when_there_is_no_input(page):
     uCommon.log(0, 'Step 1 - Open edamama website')
@@ -33,6 +34,7 @@ def test_AUTO_865_Pin_should_not_be_validated_when_there_is_no_input(page):
 
 """ Author: cgrapa_20230614 Execution Time: 21s - 24s """
 @pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
 @allure.step('To verify that the user is able to add attributes to their profile.')
 def test_AUTO_866_User_should_be_able_to_add_attributes(page):
     uCommon.log(0, 'Step 1 - Open edamama website')
@@ -48,6 +50,7 @@ def test_AUTO_866_User_should_be_able_to_add_attributes(page):
     
 """ Author: rmakiling_20230928 Execution Time: 17s - 23s"""
 @pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
 @allure.step('To verify that the user can update/edit Firstname and Lastname')
 def test_AUTO_000_Verify_that_the_user_can_update_the_profile(page):
     uCommon.log(0, 'Step 1 - Open edamama websit and Login using valid user credentials')
@@ -271,7 +274,6 @@ def test_ACQ_AUTO_1025_User_should_be_able_to_add_edit_remove_child_details(page
     
     
 """ Author: abernal_20231011 Execution Time: 23s - 28s """
-@pytest.mark.netTest()
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that the user is able to update attributes.')
@@ -299,4 +301,26 @@ def test_ACQ_AUTO_1085_User_should_be_able_to_update_remove_attributes(page):
     uMyProfile.at.clearAttributes(page)
     uCommon.log(0, '[AUTO-1082 Completed]: Removed attributes')
     uCommon.log(0, 'Test Completed')
+
+
+""" Author: jatregenio_20240123 Execution Time: 00s - 00s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@pytest.mark.thisTest()
+@allure.step('To verify that user is able to select only up to 5 attributes.')
+def test_ACQ_AUTO_1381_Only_up_to_5_attributes_can_be_selected(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName7)
     
+    uCommon.log(0, 'Step 2 - Navigate to the Profile tab.')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1381.strMyProfile)
+    
+    uCommon.log(0, '[Pre-condition Started]: User should have 5 existing attributes.')
+    uMyProfile.at.validateAndAddAttributes(page, dRegMyProfile.AUTO1381.intAddAttributes)
+    uCommon.log(0, '[Pre-condition Completed]: 5 attributes were added to the user.')
+    
+    uCommon.log(0, 'Step 3 - Scroll down to attributes and click Edit My Attributes button.')
+
+    uCommon.log(0, 'Step 4 - Select up to 5 attributes.')
+    
+    uCommon.log(0, 'Step 5 - Select another attribute.')

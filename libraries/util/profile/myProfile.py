@@ -566,6 +566,7 @@ class at:
         returns: None
         Author: cgrapa_20230613
         """
+        breakpoint()
         intAttributeCount = uCommon.getArrayCount(page, pMyProfile.ma.allMyAttributesLbl)
         if intAttributeCount > 0:
             at.clearAttributes(page)
@@ -586,17 +587,25 @@ class at:
         """
         uCommon.waitAndClickElem(page, pMyProfile.ma.myAttributesAddEditBtn)
         activeAttrCount = uCommon.getArrayCount(page, pMyProfile.ma.allActiveAttributesBtn)
-        for item in range(activeAttrCount):
+        if activeAttrCount < 5:
+            for item in range(activeAttrCount):
+                uCommon.waitAndClickElem(page, pMyProfile.ma.firstActiveAttributesBtn)
+            uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute1"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute2"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute3"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute4"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute5"]))
+            uCommon.verifyVisible(page, pMyProfile.ma.activeAttributeLbl(dictData["editAttribute1"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ma.attributesFormSubmitBtn)
+        elif activeAttrCount == 5: 
             uCommon.waitAndClickElem(page, pMyProfile.ma.firstActiveAttributesBtn)
-        uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute1"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute2"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute3"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute4"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute5"]))
-        uCommon.verifyVisible(page, pMyProfile.ma.activeAttributeLbl(dictData["editAttribute1"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ma.attributesFormSubmitBtn)
+            
         
+
+            
         
+             
+    
         
         
         

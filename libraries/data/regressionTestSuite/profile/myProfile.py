@@ -157,3 +157,16 @@ class AUTO1085:
         'editAttribute4': 'Mama Teacher',
         'editAttribute5': 'Mamaste'
     }
+    
+    
+class AUTO1381:
+    strMyProfile = 'my profile'
+    strInfoMsg = 'Only 5 Attributes Can be selected!'
+    intAddAttributes = 5
+    dicData = {
+        'editAttribute1': 'Deal Queen',
+        'editAttribute2': 'First-time Mama',
+        'editAttribute3': 'Mama Chef',
+        'editAttribute4': 'Mama Teacher',
+        'editAttribute5': 'Mamaste'
+    }
