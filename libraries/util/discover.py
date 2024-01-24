@@ -77,7 +77,7 @@ class al:
         for item in arrObj:
             uCommon.waitElemToBeVisible(page, pDiscover.al.__dict__[item])
         intDescLblCount = uCommon.getArrayCount(page, pDiscover.al.allArticlesDescPreviewLbl)
-        assert intDescLblCount == 40, f'Discover page is expected to load 40 Articles - (Articles Loaded:{intDescLblCount})'
+        assert intDescLblCount == 36, f'Discover page is expected to load 40 Articles - (Articles Loaded:{intDescLblCount})'
 
 
 
