@@ -39,7 +39,7 @@ def test_ACQ_AUTO_1053_User_should_be_able_to_add_products_to_the_gift_list(page
     
 """ Author: rmakiling_20231012 Execution Time: 40s - 47s """
 @pytest.mark.regressionTestSuite()
-@pytest.mark.thisTest()
+@pytest.mark.acquiTestSuite()
 @allure.step('To verify that user is able to archive and activate the gift list.')
 def test_ACQ_AUTO_1056_And_AUTO_1049_User_should_be_able_to_archive_activate_the_gift_list(page):
     uCommon.log(0, 'Step 1 - Open edamama website')
