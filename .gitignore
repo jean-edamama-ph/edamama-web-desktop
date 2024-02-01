@@ -5,3 +5,6 @@ __pycache__
 *-result.json
 *allure-result
 junitxml_report.xml
+node_modules/
+package-lock.json
+package.json
