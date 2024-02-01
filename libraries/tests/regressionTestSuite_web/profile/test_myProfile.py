@@ -306,21 +306,18 @@ def test_ACQ_AUTO_1085_User_should_be_able_to_update_remove_attributes(page):
 """ Author: jatregenio_20240123 Execution Time: 00s - 00s """
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
-@pytest.mark.thisTest()
 @allure.step('To verify that user is able to select only up to 5 attributes.')
-def test_ACQ_AUTO_1381_Only_up_to_5_attributes_can_be_selected(page):
+def test_ACQ_AUTO_1388_Only_up_to_5_attributes_can_be_selected(page):
     uCommon.log(0, 'Step 1 - Open edamama website')
     uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName7)
     
     uCommon.log(0, 'Step 2 - Navigate to the Profile tab.')
-    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1381.strMyProfile)
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1388.strMyProfile)
     
     uCommon.log(0, '[Pre-condition Started]: User should have 5 existing attributes.')
-    uMyProfile.at.validateAndAddAttributes(page, dRegMyProfile.AUTO1381.intAddAttributes)
+    uMyProfile.at.validateAndAddAttributes(page, dRegMyProfile.AUTO1388.intAddAttributes)
     uCommon.log(0, '[Pre-condition Completed]: 5 attributes were added to the user.')
     
-    uCommon.log(0, 'Step 3 - Scroll down to attributes and click Edit My Attributes button.')
-
-    uCommon.log(0, 'Step 4 - Select up to 5 attributes.')
-    
-    uCommon.log(0, 'Step 5 - Select another attribute.')
+    uCommon.log(0, 'Step 3 - Scroll down to attributes and click Edit My Attributes button and select another attribute.')
+    uMyProfile.at.updateAttributes(page)
+    uCommon.log(0, 'Test Completed')

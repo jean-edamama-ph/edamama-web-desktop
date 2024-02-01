@@ -78,6 +78,7 @@ class ma:
         return f'//span[text()="{editAttribute}"]'
     def activeAttributeLbl(editAttribute):
         return f'//div[@class="attribute-blk"]//span[text()="{editAttribute}"]'
+    maxAttributesSelectedMsg = '//span[text() = "Only 5 Attributes Can be selected!"]'
 
     
     
@@ -119,7 +120,7 @@ class na:
     addNewAddressBtn = f'{newAddressLbl}/../../..//button[text()=" Add New Address "]'
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
     setAsDefaultChk = '//input[@type="checkbox"]'
-    tickedDefaultChk = '//input[@aria-checked="true"]'
+    tickedDefaultChk = '//mat-checkbox[contains(@class, "mat-checkbox-checked")]'
 
     
     
@@ -130,6 +131,7 @@ class ea:
     editAddressLbl = '//h2[text()="Edit Address"]'
     updateAddressBtn = '//button[text()=" Update Address "]'
     addressEditedSuccessMsg = '//span[text()="Address updated successfully."]'
+    errorMobileNumLengthMsg = '//mat-error[contains(text(), "Mobile Number length should be less than or equal to 10")]'
 
     
 

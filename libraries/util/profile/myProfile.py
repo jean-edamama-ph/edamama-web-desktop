@@ -333,16 +333,35 @@ class ea:
         uCommon.setElem(page, pMyProfile.na.landmarkTxt, dictNewAddress["strLandmark"])      
 
     @uCommon.ufuncLog       
-    def clickUpdateAddress(page):
+    def clickUpdateAddress(page, dictNewAddress=''):
         """ 
         Objective: Click Update Address button.
         param: None
         returns: None
         Author: abernal_20231003
+        Updated By: jatregenio_20240201
         """
         uCommon.waitAndClickElem(page, pMyProfile.ea.updateAddressBtn)
-        uCommon.waitElemToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)
-        uCommon.waitElemNotToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)  
+        isMobNumLengthErrMsgDisplayed = uCommon.verifyVisible(page, pMyProfile.ea.errorMobileNumLengthMsg)
+        if isMobNumLengthErrMsgDisplayed == True:
+            ea.updateSpecificAddressField(page, pMyProfile.na.mobileNumberTxt, dictNewAddress["strMobile"])
+            uCommon.waitAndClickElem(page, pMyProfile.ea.updateAddressBtn)
+        else:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)  
+            
+    @uCommon.ufuncLog
+    def updateSpecificAddressField(page, elemAddressField, elemValue):
+        """ 
+        Objective: Set a value to specified addres field.
+        param elemAddressField: {First Name, Last Name, Mobile Number, Delivery Address(Province, City, Zip Code, Brgy, Lot, Landmarks)}
+              elemValue: new value for the specified address field  
+        returns: None
+        Author: jatregenio_20210201
+        """
+        uCommon.clickElemAndDeleteText(page, elemAddressField)
+        uCommon.setElem(page, elemAddressField, elemValue)
+        
 
     @uCommon.ufuncLog       
     def verifyNewAddressDetails(page, dictNewAddress):
@@ -566,7 +585,6 @@ class at:
         returns: None
         Author: cgrapa_20230613
         """
-        breakpoint()
         intAttributeCount = uCommon.getArrayCount(page, pMyProfile.ma.allMyAttributesLbl)
         if intAttributeCount > 0:
             at.clearAttributes(page)
@@ -578,7 +596,7 @@ class at:
         assert intAddAttributes == intNewAttributeCount, f'Number of attributes on profile ({intNewAttributeCount}) does not match with the number set on data config ({intAddAttributes})'
 
     
-    def updateAttributes(page, dictData):
+    def updateAttributes(page, dictData=''):
         """ 
         Objective: Update Attributes
         param intEditAttributes: Number of Attributes to be edited
@@ -598,7 +616,9 @@ class at:
             uCommon.verifyVisible(page, pMyProfile.ma.activeAttributeLbl(dictData["editAttribute1"]))
             uCommon.waitAndClickElem(page, pMyProfile.ma.attributesFormSubmitBtn)
         elif activeAttrCount == 5: 
-            uCommon.waitAndClickElem(page, pMyProfile.ma.firstActiveAttributesBtn)
+            uCommon.waitAndClickElem(page, pMyProfile.ma.firstAttributeItemBtn)
+            uCommon.waitElemToBeVisible(page, pMyProfile.ma.maxAttributesSelectedMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.ma.maxAttributesSelectedMsg)
             
         
 

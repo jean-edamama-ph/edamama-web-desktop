@@ -159,7 +159,7 @@ class AUTO1085:
     }
     
     
-class AUTO1381:
+class AUTO1388:
     strMyProfile = 'my profile'
     strInfoMsg = 'Only 5 Attributes Can be selected!'
     intAddAttributes = 5
