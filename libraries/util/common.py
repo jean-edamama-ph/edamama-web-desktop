@@ -666,3 +666,17 @@ def getURL(page: Page):
     """
     strUrl = page.url
     return strUrl
+
+@funcLog
+def getElemTextAndCheckIfContainsText(page: Page, elem, strToFind):
+    """ 
+    Objective: Get element text value and check if contains text
+    param elem: Element
+    param strToFind: Text
+    returns: None
+    Author: jatregenio_20240203
+    """
+    strToFindIn = getElemText(page, elem)
+    assert strToFind in strToFindIn, f'Expected text {strToFind} is NOT visible in the Actual text {strToFindIn}'
+    log(1, f'Expected text "{strToFind}" is visible in the actual text "{strToFindIn}".' )
+    

@@ -55,7 +55,7 @@ def test_AUTO_206_Guest_Checkout_COD(page):
 def test_AUTO_417_SNS_Test_Purchase_COD_plus_beans(page):
     uCommon.log(0, 'Step 1 to 2 - Go to Edamama website/App >> Login your credentials')
     uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName2)
-    
+
     uCommon.log(0, '[Precondtion Started] - Cancel All Order By Username')
     uAdminKpc.sc.cancelOrdersByUserName(page)
     uCommon.log(0, '[Precondtion Completed] - All orders were successfully cancelled')
@@ -653,6 +653,7 @@ def test_AUTO_671_Upload_Tracking_Number_Admin_Panel(page):
 
 
 """ Author: ccapistrano_20230512 | Execution Time: 1m 21s - 1m 25s """
+#Note: Existing issue - https://edamama.atlassian.net/browse/MAR-1214
 @pytest.mark.deploymentChecklist()
 @allure.step('To verify that the user should be able to edit delivery address (once)')
 def test_AUTO_666_Edit_Delivery_Address(page):
@@ -914,8 +915,8 @@ def test_AUTO_661_Remove_Product_in_Curated_Collections_Admin_Panel(page):
     
     uCommon.log(0, 'Step 8 - Check in Shop')
     uAppComm.ln.goToEdamamaURL(page)
+    uCommon.wait(page, 10)
     uShop.sp.waitAndClickCuratedTitle(page, dDepChkLst.AUTO661.intCuratedIndex)
-    uCommon.wait(page, 2)
     uCommon.expectElemTextToBeVisible(page, dDepChkLst.AUTO661.strItemName)
     uCommon.log(0, 'Test case completed')
     
@@ -944,8 +945,8 @@ def test_AUTO_661_Remove_Product_in_Curated_Collections_Admin_Panel(page):
     
     uCommon.log(0, 'Step 7 - Verify that the product were removed from the curated products')
     uAppComm.ln.goToEdamamaURL(window2)
+    uCommon.wait(page, 15)
     uShop.sp.waitAndClickCuratedTitle(window2, dDepChkLst.AUTO661.intCuratedIndex)
-    uCommon.wait(page, 2)
     uCommon.expectElemTextNotToBeVisible(window2, dDepChkLst.AUTO661.strItemName)
     uCommon.log(0, 'Test case completed')
 

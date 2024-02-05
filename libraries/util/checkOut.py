@@ -214,6 +214,7 @@ def selectModeOfPaymentAndBeansOrPromo(page, strMOP = '', strBeansPromo = '', st
     param strPromoCode: Promo Code
     returns: None
     Author: ccapistrano_20230327
+    Updated By: jatregenio_20240203
     """
     uCommon.waitForLoadState(page)
     uCommon.waitForLoadState(page, 'networkidle')
@@ -245,7 +246,24 @@ def selectModeOfPaymentAndBeansOrPromo(page, strMOP = '', strBeansPromo = '', st
 
     if strBeansPromo == 'beans':
         uCommon.waitAndClickElem(page, pCheckOut.pm.useBeansRdb)
-        uCommon.getAttributeAndCheckIfContainsText(page, f'{pCheckOut.pm.useBeansRdb}/..', 'class', 'selected')
+        uCommon.getElemTextAndCheckIfContainsText(page, f'{pCheckOut.pm.useBeansRdb}/../div/span[2]', 'out of')
+        strSubTotalAmt = uCommon.getElemText(page, pCheckOut.pm.subTotalAmountLbl).strip()
+        floatSubTotalAmt = convertTotalAmtToFloat(strSubTotalAmt)
+        blnIsMarkDownExist = uCommon.verifyVisible(page, pCheckOut.pm.markdownLbl)
+        floatMarkDownTotalAmt = 0
+        if blnIsMarkDownExist == True:
+            strMarkdownTotalAmt = uCommon.getElemText(page, pCheckOut.pm.markdownTotalAmountLbl).strip()
+            floatMarkDownTotalAmt = convertTotalAmtToFloat(strMarkdownTotalAmt)
+        floatTotalSubAmt = floatSubTotalAmt + floatMarkDownTotalAmt
+        floatComputedBeanToUse = floatTotalSubAmt * 0.15
+        if floatComputedBeanToUse < 400.0:
+            if '.0' in str(floatComputedBeanToUse):
+                strComputedBeansToUse = str(floatComputedBeanToUse).replace('.0', '')
+            else:
+                strComputedBeansToUse = str(floatComputedBeanToUse)
+        else:
+            strComputedBeansToUse = '400'
+        uCommon.getElemTextAndCheckIfContainsText(page, pCheckOut.pm.totalBeanRewardToUseLbl, strComputedBeansToUse)
     elif strBeansPromo == 'promo':
         uCommon.waitAndClickElem(page, pCheckOut.pm.enterPromoCodeRdb)
         uCommon.waitAndSetElem(page, pCheckOut.pc.enterPromoCodeTxt, strPromoCode)
@@ -274,6 +292,7 @@ def clickPlaceOrderAndGetOrderID(page, strMOP = '', strBeansPromo = ''):
     param strBeansPromo: beans | promo
     returns strOrderID: Order ID
     Author: ccapistrano_20230327
+    Updated by: jatregenio_20240204
     """
     strTotalColectible = uCommon.getElemText(page, pCheckOut.pm.totalAmountLbl)
     blnBeansFullPayment = False
@@ -284,17 +303,17 @@ def clickPlaceOrderAndGetOrderID(page, strMOP = '', strBeansPromo = ''):
     uCommon.waitAndClickElem(page, pCheckOut.pm.placeOrderBtn)
     uCommon.waitForLoadState(page)
     if strMOP == 'CREDIT CARD':
-        if strBeansPromo != 'beans':
-            if blnBeansFullPayment == True:
-                uCommon.wait(page, 27)
-                frame = uCommon.switchToFrame(page, pCheckOut.com.payerAuthenticationFrame)
-                if uCommon.verifyVisible(frame, pCheckOut.com.paymentSecurityForm) == True:
-                    uCommon.setElem(frame, pCheckOut.com.enterCodeHereTxt, dCommon.card.strPassword)
-                    uCommon.clickElem(frame, pCheckOut.com.submitBtn)
+        #if strBeansPromo != 'beans':
+        if blnBeansFullPayment == True:
+            uCommon.wait(page, 27)
+            frame = uCommon.switchToFrame(page, pCheckOut.com.payerAuthenticationFrame)
+            if uCommon.verifyVisible(frame, pCheckOut.com.paymentSecurityForm) == True:
+                uCommon.setElem(frame, pCheckOut.com.enterCodeHereTxt, dCommon.card.strPassword)
+                uCommon.clickElem(frame, pCheckOut.com.submitBtn)
                 #else:
                 #    uCommon.setElem(frame, pCheckOut.com.passwordTxt, dCommon.card.strPassword)
                 #uCommon.clickElem(frame, pCheckOut.com.submitBtn)
-                uCommon.waitForLoadState(page)
+            uCommon.waitForLoadState(page)
     elif strMOP == 'GCASH' or strMOP == 'GRAB PAY' or strMOP == 'MAYA':
         if strBeansPromo == 'beans':
             if blnBeansFullPayment == True:
@@ -374,4 +393,23 @@ def clickFirstSize(page, blnOpt = False):
             uCommon.waitAndClickElem(page, pShop.pf.firstSizeBtn)
     else:
         uCommon.waitAndClickElem(page, pShop.pf.firstSizeBtn)
+
+@uCommon.ufuncLog
+def convertTotalAmtToFloat(strTotalAmt):
+    """ 
+    Objective: Convert Total Amount either from order amount, beans or credits to Float with 2 decimal places.
     
+    param strTotalAmt: Text
+    returns strTotalAmtOnly: converted Total Amount
+    Author: jatregenio_20240203
+    """
+    if '₱' in strTotalAmt:
+        strTotalAmtOnly = strTotalAmt[1:(len(strTotalAmt))]
+    elif '-₱' in strTotalAmt:
+        strTotalAmtOnly = strTotalAmt[2:(len(strTotalAmt))]
+    else:
+        strTotalAmtOnly = strTotalAmt[0:(len(strTotalAmt))]
+    if ',' in strTotalAmtOnly:
+        strTotalAmtOnly = strTotalAmtOnly.replace(',', '')
+    floatTotalAmount = float(strTotalAmtOnly)
+    return round(floatTotalAmount, 2)

@@ -10,8 +10,8 @@ class com:
     edamamaImg = edamamaImg
     loginBtn = '//div[text()="LOG IN"]'
     signUpBtn = '//div[text()="SIGN UP"]'
-    creditsDescLbl = '//span[@class="credits"]'
-    infoIconImg = '//mat-icon[text()="info"]'
+    creditsDescLbl = '//p[@class="subtitle ng-star-inserted"]'
+    learnMoreLnk = '//a[contains(text(), "Learn more here")]'
     firstNameLbl = '//input[@data-placeholder="First Name"]/..//span[text()="First Name"]'
     emailAddressAsteriskLbl = '//input[@data-placeholder="First Name"]/..//span[text()="First Name"]/..//span[text()=" *"]'
     firstNameTxt = '//input[@data-placeholder="First Name"]'
@@ -103,9 +103,9 @@ class ad:
     """ALMOST DONE"""
     edamamaImg = edamamaImg
     almostDoneLbl = '//h2[text()="Almost done!"]'
-    pickAttributesDescLbl = '//p[contains(text(),"No two mamas are the same. Pick the attributes that best describe you,")]'
-    rewardOnCompletingDescLbl = '//p[contains(text(),"5")][text()=" will be rewarded on completing this step. "]'
-    beanIconImg = '//img[@src="assets/images/bean_solid.svg"]'
+    pickAttributesDescLbl = '//p[contains(text(),"No two mamas are the same. Select what best describes you,")]'
+    rewardOnCompletingDescLbl = '//p[contains(text()," You get 5 ")][text()="Bean Rewards"][text()=" when you complete this step. "]'
+    learnMoreLnk = '//a[contains(text(), "Learn more here")]'
     activeMamaBtn = '//span[@class="attribute-image active_mama"]'
     activeMamaLbl = '//span[text()="Active Mama"]'
     careerMamaBtn = '//span[@class="attribute-image career_mama"]'
@@ -149,5 +149,5 @@ class ty:
     """THANK YOU"""
     xBtn = xBtn
     thankYouLbl = '//h3[text()="Thank you for completing your profile!"]'
-    thankYouDescLbl = '//p[text()="By completing your profile, you have been rewarded with points. Check My Profile>>My Credits to learn more about turning your beans into peso discounts at checkout!"]'
+    thankYouDescLbl = '//p[text()="You get Bean Rewards by completing your profile. Check My Profile >> My Beans to learn more about turning your beans into peso discount upon checkout!"]'
     continueBtn = '//button/span[contains(text(),"Continue")]'

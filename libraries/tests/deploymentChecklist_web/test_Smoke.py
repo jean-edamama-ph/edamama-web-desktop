@@ -115,11 +115,13 @@ def test_AUTO_210_Register_Manual_Signup(page):
     uEmail.loginToGmail(page)
     uEmail.clickFirstConfirmEmail(page, dictData)
     uEmail.clickYesThisIsMyEmail(page)
+    uCommon.wait(page, 3)
     page = uCommon.switchToWindow(page)
     uSignUp.validateEmailVerificationPageAndClickCompleteMyProfile(page)
     uSignUp.validateAddChildPage(page)
     
     uCommon.log(0, 'Step 9 to 10 - Input Required fields Child Name/Alias, Birthdate/Due Date, Gender >> Click Add Child')
+    uCommon.wait(page, 1)
     uSignUp.fillAndAddChild(page)
     uSignUp.validateAlmostDonePage(page)
     

@@ -38,7 +38,7 @@ def validateSignUpPage(page):
     returns: None
     Author: ccapistrano_20230327
     """
-    arrObj = ['edamamaImg','loginBtn', 'signUpBtn', 'creditsDescLbl', 'infoIconImg', 'firstNameLbl', 'emailAddressAsteriskLbl', 'firstNameTxt',
+    arrObj = ['edamamaImg','loginBtn', 'signUpBtn', 'creditsDescLbl', 'learnMoreLnk', 'firstNameLbl', 'emailAddressAsteriskLbl', 'firstNameTxt',
               'lastNameLbl', 'lastAsteriskLbl', 'lastNameTxt', 'emailAddressLbl', 'emailAddressAsteriskLbl', 'emailAddressTxt', 'passwordAddressLbl', 
               'passwordAddressAsteriskLbl', 'passwordAddressTxt', 'visibilityOffIconBtn', 'acceptChk', 'acceptLbl', 'privacyPolicyLnk', 'termsOfUseLnk',
               'continueBtn', 'continueWithFacebookBtn', 'facebookImg', 'magSignInSaGoogleBtn']
@@ -181,7 +181,7 @@ def validateAlmostDonePage(page):
     returns: None
     Author: ccapistrano_20230327
     """
-    arrObj = ['edamamaImg','almostDoneLbl', 'pickAttributesDescLbl', 'rewardOnCompletingDescLbl', 'beanIconImg',
+    arrObj = ['edamamaImg','almostDoneLbl', 'pickAttributesDescLbl', 'rewardOnCompletingDescLbl', 'learnMoreLnk',
               'activeMamaBtn', 'activeMamaLbl', 'careerMamaBtn', 'careerMamaLbl', 'craftyMamaBtn', 'craftyMamaLbl',
               'dealQueenBtn', 'dealQueenLbl', 'expectingMamaBtn', 'expectingMamaLbl', 'fashionistaBtn', 'fashionistaLbl',
               'firstTimeMamaBtn', 'firstTimeMamaLbl', 'mamaChefBtn', 'mamaChefLbl', 'mamaTeacherBtn', 'mamaTeacherLbl', 'mamasteBtn',
