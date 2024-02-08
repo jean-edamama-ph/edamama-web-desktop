@@ -33,7 +33,8 @@ class com:
     continueWithFacebookBtn = '//button/span[contains(text(),"Continue with Facebook")]'
     facebookImg = '//img[@src="assets/images/socials/facebook.png"]'
     magSignInSaGoogleBtn = '//span[text()="Mag-sign up sa Google"][1]'
-
+    emailErrorMsg = '//span[text()="This email is already associated with another account."]'
+    profileIcon = '//div[@class="user_thumb"]//img'
 
 
 

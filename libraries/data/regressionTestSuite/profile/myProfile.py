@@ -170,3 +170,16 @@ class AUTO1388:
         'editAttribute4': 'Mama Teacher',
         'editAttribute5': 'Mamaste'
     }
+
+
+class AUTO1103:
+    strMyProfile = 'my profile'
+    strMobileNumber = '9933312345'
+    
+    
+class AUTO1091:
+    strMyProfile = 'my profile'
+    dictData = {
+        'strFName': 'FIRST NAME FIRST NAME FIRST NAME FIRST NA',
+        'strLName': 'LAST NAME LAST NAME LAST NAME LAST NAME L'
+    }

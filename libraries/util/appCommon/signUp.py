@@ -2,6 +2,7 @@ import libraries.page.common.signUp as pSignUp
 import libraries.page.common.common as pCommon
 
 import libraries.util.common as uCommon
+import libraries.util.appCommon.appComm as uAppComm
 
 @uCommon.ufuncLog
 def clickSignUp(page):
@@ -18,7 +19,7 @@ def clickSignUp(page):
     uCommon.waitElemToBeVisible(page, pSignUp.com.firstNameTxt)
 
 @uCommon.ufuncLog
-def clickSignUpContinue(page):
+def clickSignUpContinue(page, blnRegistered = False):
     """ 
     Objective: Click sign up page Continue button
     
@@ -27,7 +28,10 @@ def clickSignUpContinue(page):
     Author: cgrapa_20230609
     """
     uCommon.waitAndClickElem(page, pSignUp.com.continueBtn)
-    uCommon.wait(page, 1)
+    if blnRegistered == True:
+        uCommon.waitElemToBeVisible(page, pSignUp.com.emailErrorMsg)
+    else:
+        uCommon.wait(page, 1)
 
 @uCommon.ufuncLog  
 def validateSignUpPage(page):
@@ -279,3 +283,28 @@ def validatePolicyLinks(page):
     """
     clickPrivacyPolicyAndValidatePage(page)
     clickTermsOfUseAndValidatePage(page)
+
+uCommon.ufuncLog
+def clickPrivPolAndTermsOfUseCheckBox(page):
+    """ 
+    Objective: To Click the Privacy Policy and Terms of Use check box
+
+    param: None
+    returns: None
+    Author: rmakiling_20240117
+    """
+    uCommon.hoverAndClickElem(page, pSignUp.com.acceptChk)
+    
+@uCommon.ufuncLog
+def verifyIfAlreadyRegistered(page, dictData):
+    """ 
+    Objective: Verify if the Email is already registered
+
+    param: None
+    returns: None
+    Author: rmakiling_20240117
+    """
+    uAppComm.ln.loginToEdamama(page, dictData)
+    uCommon.waitElemToBeVisible(page, pSignUp.com.profileIcon)
+
+

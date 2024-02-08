@@ -147,3 +147,29 @@ def test_AUTO_833_Error_message_should_be_displayed_when_Password_is_empty(page)
     uSignUp.fillOutSignUpPage(page, dRegSignUp.AUTO833.dictData)
     uAppComm.error.validatePopUpMsg(page, dRegSignUp.AUTO833.strMsg)
     uCommon.log(0, 'Test case completed')
+    
+
+""" Author: rmakiling_20240117 Execution Time: 23s - 24s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('User is not able to sign up if the Email is already registered')
+def test_ACQ_AUTO_853_Verify_that_user_is_not_able_to_sign_up_if_the_Email_is_already_registered(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.goToEdamamaURL(page)
+    
+    uCommon.log(0, 'Step 2 - Click Signup button on header')
+    uSignUp.clickSignUp(page)
+    uSignUp.validateSignUpPage(page)
+    
+    uCommon.log(0, 'Step 3 - Populate First Name, Last Name and Password field with valid values then Email Address with already registered Email Address')
+    uSignUp.fillOutSignUpPage(page, dRegSignUp.AUTO853.dictData)
+    
+    uCommon.log(0, 'Step 4 - Click Privacy Policy and Terms of Use check box')
+    uSignUp.clickPrivPolAndTermsOfUseCheckBox(page)
+    
+    uCommon.log(0, 'Step 5 - Click Continue button')
+    uSignUp.clickSignUpContinue(page, True)
+    
+    uCommon.log(0, 'Step 6 - Verify if the email address is already registered')
+    uSignUp.verifyIfAlreadyRegistered(page, dCommon.user.strUserName1)
+    uCommon.log(0, 'Test case completed')

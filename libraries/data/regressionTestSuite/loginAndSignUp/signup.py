@@ -48,3 +48,11 @@ class AUTO833:
         'strEmailAddress': 'testemail@edamama.ph',
         'strPassword': ''}
     strMsg = 'Password is required.'
+
+class AUTO853:
+    dictData = {
+        'strFirstName': 'testFirstName',
+        'strLastName': 'testLastName',
+        'strEmailAddress': 'testkpcauto+1@gmail.com',
+        'strPassword': 'test12345'
+        }
