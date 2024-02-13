@@ -6,6 +6,9 @@ import libraries.util.appCommon.appComm as uAppComm
 import libraries.util.common as uCommon
 import libraries.util.profile.myProfile as uMyProfile
 import libraries.data.common as dCommon
+import libraries.util.shop as uShop
+import libraries.util.cart as uCart
+import libraries.util.checkOut as uCheckOut
 
 
 """ Author: cgrapa_20230613 Execution Time: 1m 2s - 1m 4s """
@@ -303,7 +306,7 @@ def test_ACQ_AUTO_1085_User_should_be_able_to_update_remove_attributes(page):
     uCommon.log(0, 'Test Completed')
 
 
-""" Author: jatregenio_20240123 Execution Time: 00s - 00s """
+""" Author: jatregenio_20240123 Execution Time: 25s - 27s """
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that user is able to select only up to 5 attributes.')
@@ -377,3 +380,47 @@ def test_ACQ_AUTO_1091_User_should_not_be_able_to_update_name_if_it_exceeds_the_
     dictDataAfter = uMyProfile.com.getMyProfileDetails(page)
     uCommon.stringCompare(dictDataBefore["strName"], dictDataAfter["strName"])
     uCommon.log(0, 'Test Completed')
+    
+""" Author: jatregenio_20240202 Execution Time: 143s - 150s """
+#logged defect: https://edamama.atlassian.net/browse/MAR-1267
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that created MM default address from Profile automatically be selected as default on checkout.')
+def test_ACQ_AUTO_1391_Created_MM_default_address_from_Profile_should_automatically_be_selected_as_default_on_checkout(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uCommon.log(0, 'Step 2 - Navigate to the Profile tab.')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1391.strMyProfile)
+
+    uCommon.log(0, 'Step 3 - Verify the default address on Delivery Address - Provincial Default Address should be displayed and has the "Default" label.')
+    uCommon.log(0, '[Pre-condition Started]: Delete if there is an existing address. Add provincial address and set it to default.')
+    uMyProfile.com.deleteAllAddress(page, dRegMyProfile.AUTO1391.provAddressData)
+    uMyProfile.na.addAddressAndSetAsDefault(page, dRegMyProfile.AUTO1391.provAddressData)
+    uCommon.log(0, '[Pre-condition Completed]: Provincial Address successfully set as default address.')
+    
+    uCommon.log(0, 'Step 4 - Navigate to shop and select any item to add to bag.')
+    uShop.com.clickShop(page)
+    uCart.checkAndDeleteAddToCartItems(page)
+    uShop.sp.clickFPfirstItem(page)
+    uCheckOut.clickFirstSize(page, True)
+    
+    uCommon.log(0, 'Click the Add to Bag button.')
+    uShop.pp.clickAddToBag(page, 'opt')
+    uAppComm.com.validateCountInCart(page, dRegMyProfile.AUTO1391.strCount)
+    
+    uCommon.log(0, 'Click the bag/cart button on the upper right side of the screen and proceed to checkout.')
+    uCart.clickCartIconThenCheckout(page)
+    
+    uCommon.log(0, 'Verify the default address is the provincial default address.')
+    uCheckOut.validateDeliveryAddressElemAndDefaultAddressByProv(page, dRegMyProfile.AUTO1391.provAddressData["strProvince"])
+    
+    uCommon.log(0, 'Click back and navigate back to profile. Click New Address and populate the fields. Address should be MM. Set it as the default address.')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1391.strMyProfile)
+    uMyProfile.na.addAddressAndSetAsDefault(page, dRegMyProfile.AUTO1391.mmAddressData)
+    
+    uCommon.log(0, 'Navigate back to cart and proceed to checkout. Verify if the Delivery Address was now updated to the new default (MM) address.')
+    uCart.clickCartIconThenCheckout(page)
+    uCheckOut.validateDeliveryAddressElemAndDefaultAddressByProv(page, dRegMyProfile.AUTO1391.mmAddressData["strProvince"])
+    uCommon.log(0, 'Test Completed')
+    

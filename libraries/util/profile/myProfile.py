@@ -184,7 +184,7 @@ class com:
             uCommon.waitElemNotToBeVisible(page, pMyProfile.com.childNameLbl(strChildName))
             
     @uCommon.ufuncLog
-    def deleteAllAddress(page):
+    def deleteAllAddress(page, dictNewAddress=''):
         """ 
         Objective: Delete all existing address
         param: None
@@ -200,17 +200,38 @@ class com:
                     strAddressCount = ' '
                 else:
                     strAddressCount = intAddressCount
-                
                 strFullName = uCommon.getElemText(page, pMyProfile.com.addressPanelHeaderFullName(strAddressCount))
-                com.deleteAddress(page, strFullName)
+                blnIsDefaultAddressSet = uCommon.verifyVisible(page, pMyProfile.com.defaultLbl(strFullName))
+                if blnIsDefaultAddressSet == True:
+                    ea.clickAddressEdit(page, strFullName)
+                    na.untickSetAsDefualt(page)
+                    ea.clickUpdateAddress(page, dictNewAddress["strMobile"])
+                    com.deleteAddress(page, strFullName)
+                else:
+                    com.deleteAddress(page, strFullName)
         else:
-            uCommon.log(0, 'No existing address to be deleted.')         
+                uCommon.log(0, 'No existing address to be deleted.')
+    
+    @uCommon.ufuncLog
+    def checkIfTheresSetDefaultAddress(page):
+        """ 
+        Objective: Check if there is an existing address that was set to default.
+        param: None
+        returns: 
+        Author: jatregenio_202400202
+        """
+        blnIsDefaultAddressSet = uCommon.verifyVisible(pMyProfile.com.defaultAddressLbl)
+        if blnIsDefaultAddressSet == True:
+            return True
+        else:
+            return False
+        
+        
+        
+        
             
-    
-    
-
-    
 class na:
+    """NEW ADDRESS"""
     @uCommon.ufuncLog
     def addAddress(page, dictData):
         """ 
@@ -294,10 +315,37 @@ class na:
         """
         uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
         uCommon.waitElemToBeVisible(page, pMyProfile.na.tickedDefaultChk)
+        
+    @uCommon.ufuncLog
+    def untickSetAsDefualt(page):
+        """ 
+        Objective: Untick the Set as Default checkbox.
+        
+        param: None
+        returns: None
+        Author: jatregenio_20240212
+        """
+        uCommon.wait(page, 0.5)
+        uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
+        uCommon.waitElemToBeVisible(page, pMyProfile.na.untickedDefaultChk)
+    
+    @uCommon.ufuncLog
+    def addAddressAndSetAsDefault(page, dictData):
+        """ 
+        Objective: Adding new address and setting it as default address.
+        
+        param dictData: {strFirstName, strLastName, strMobile, strProvince, strCity, strZipCode, strBrgy, strLotUnitStBldg, strLandmark}
+        returns: None
+        Author: jatregenio_20240202
+        """
+        com.clickAddressAddMore(page)
+        na.addAddress(page, dictData)
+        na.tickSetAsDefault(page)
+        na.clickAddNewAddress(page)
     
     
     
-    
+
 
 class ea:
     """EDIT ADDRESS"""
@@ -333,10 +381,10 @@ class ea:
         uCommon.setElem(page, pMyProfile.na.landmarkTxt, dictNewAddress["strLandmark"])      
 
     @uCommon.ufuncLog       
-    def clickUpdateAddress(page, dictNewAddress=''):
+    def clickUpdateAddress(page, strValue=''):
         """ 
         Objective: Click Update Address button.
-        param: None
+        param strValue: Text value to be updated
         returns: None
         Author: abernal_20231003
         Updated By: jatregenio_20240201
@@ -344,11 +392,11 @@ class ea:
         uCommon.waitAndClickElem(page, pMyProfile.ea.updateAddressBtn)
         isMobNumLengthErrMsgDisplayed = uCommon.verifyVisible(page, pMyProfile.ea.errorMobileNumLengthMsg)
         if isMobNumLengthErrMsgDisplayed == True:
-            ea.updateSpecificAddressField(page, pMyProfile.na.mobileNumberTxt, dictNewAddress["strMobile"])
+            ea.updateSpecificAddressField(page, pMyProfile.na.mobileNumberTxt, strValue)
             uCommon.waitAndClickElem(page, pMyProfile.ea.updateAddressBtn)
-        else:
-            uCommon.waitElemToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)
-            uCommon.waitElemNotToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)  
+        
+        uCommon.waitElemToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)
+        uCommon.waitElemNotToBeVisible(page, pMyProfile.ea.addressEditedSuccessMsg)  
             
     @uCommon.ufuncLog
     def updateSpecificAddressField(page, elemAddressField, elemValue):
@@ -409,7 +457,6 @@ class ac:
         
         
         
-        
 class ec:
     """EDIT CHILD"""
     @uCommon.ufuncLog   
@@ -431,7 +478,7 @@ class ec:
         uCommon.waitElemToBeVisible(page, pMyProfile.com.editChildSuccessMsg)
         uCommon.waitElemNotToBeVisible(page, pMyProfile.com.editChildSuccessMsg)
     
-    
+
     
     
     
@@ -551,6 +598,7 @@ class mn:
 
 
 
+
 class at:
     """MY ATTRIBUTES"""
     @uCommon.ufuncLog
@@ -611,6 +659,7 @@ class at:
         param intEditAttributes: Number of Attributes to be edited
         returns: None
         Author: abernal_20231111
+        Updated by: jatregenio_20240201
         """
         uCommon.waitAndClickElem(page, pMyProfile.ma.myAttributesAddEditBtn)
         activeAttrCount = uCommon.getArrayCount(page, pMyProfile.ma.allActiveAttributesBtn)
@@ -627,12 +676,7 @@ class at:
         elif activeAttrCount == 5: 
             uCommon.waitAndClickElem(page, pMyProfile.ma.firstAttributeItemBtn)
             uCommon.waitElemToBeVisible(page, pMyProfile.ma.maxAttributesSelectedMsg)
-            uCommon.waitElemNotToBeVisible(page, pMyProfile.ma.maxAttributesSelectedMsg)
-            
-        
-
-            
-        
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.ma.maxAttributesSelectedMsg)     
              
     
         

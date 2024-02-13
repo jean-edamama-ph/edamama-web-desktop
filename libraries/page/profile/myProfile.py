@@ -42,6 +42,7 @@ class com:
         return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/following-sibling::button'
     def addressPanelHeaderFullName(strCount):
         return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/../following-sibling::div/div[@class="panel-header"]'
+    defaultAddressLbl = '//div[@class="row"]//div[@class="col-12 d-none d-md-block"]//span[contains(text(), "Default")]'
         
 
 
@@ -125,6 +126,7 @@ class na:
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
     setAsDefaultChk = '//input[@type="checkbox"]'
     tickedDefaultChk = '//mat-checkbox[contains(@class, "mat-checkbox-checked")]'
+    untickedDefaultChk = '//mat-checkbox[contains(@class, "mat-checkbox")]'
 
     
     

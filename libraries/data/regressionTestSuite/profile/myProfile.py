@@ -183,3 +183,29 @@ class AUTO1091:
         'strFName': 'FIRST NAME FIRST NAME FIRST NAME FIRST NA',
         'strLName': 'LAST NAME LAST NAME LAST NAME LAST NAME L'
     }
+
+class AUTO1391:
+    strMyProfile = 'my profile'
+    strCount = '1'
+    mmAddressData = {
+        'strFirstName': 'METRO',
+        'strLastName': 'MANILA',
+        'strMobile': '9171234567',
+        'strProvince': 'METRO MANILA',
+        'strCity': 'MANDALUYONG CITY',
+        'strZipCode': '1234',
+        'strBrgy': 'BARANGKA DRIVE',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    provAddressData = {
+        'strFirstName': 'Provincial',
+        'strLastName': 'District',
+        'strMobile': '9171234567',
+        'strProvince': 'BULACAN',
+        'strCity': 'SAN JOSE DEL MONTE CITY',
+        'strZipCode': '1234',
+        'strBrgy': 'TUNGKONG MANGGA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }

@@ -413,3 +413,26 @@ def convertTotalAmtToFloat(strTotalAmt):
         strTotalAmtOnly = strTotalAmtOnly.replace(',', '')
     floatTotalAmount = float(strTotalAmtOnly)
     return round(floatTotalAmount, 2)
+
+@uCommon.ufuncLog
+def validateIfDefaultAddressByProvince(page, strProvince):
+    """ 
+    Objective: Verify the default delivery address by province.
+    
+    param: None
+    returns None
+    Author: jatregenio_20240212
+    """
+    uCommon.validateElemText(page, pCheckOut.co.addressLbl, strProvince, False)
+    
+@uCommon.ufuncLog
+def validateDeliveryAddressElemAndDefaultAddressByProv(page, strProv):
+    """ 
+    Objective: Verify the default delivery address by province and the elements in Delivery Address section.
+    
+    param: None
+    returns None
+    Author: jatregenio_20240213
+    """
+    validateIfDefaultAddressByProvince(page, strProv)
+    validateDeliveryAddress(page)
