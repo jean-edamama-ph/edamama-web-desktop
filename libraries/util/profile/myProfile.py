@@ -538,6 +538,15 @@ class mn:
         newWindow = uCommon.switchToWindow(page)
         uCommon.waitAndValidateElemText(newWindow, pAdminKpc.cu.customerMobileNumberLbl, dictData['strMobileNumber'].replace("+", ""))
 
+    @uCommon.ufuncLog
+    def clickCloseBtn(page):
+        """ 
+        Objective: To close the Mobile Verification modal
+        
+        returns: None
+        Author: rmakiling_20240115
+        """
+        uCommon.clickElem(page,pMyProfile.mv.closeBtn)
 
 
 
@@ -645,7 +654,7 @@ class edp:
         uCommon.uploadFile
 
     @uCommon.ufuncLog
-    def clickUpdate(page):
+    def clickUpdate(page, blnError = False):
         """ 
         Objective: To click the update button, to verify if the success message is displayed, 
         and to verify that the edit modal is not visible.
@@ -654,9 +663,13 @@ class edp:
         returns: None
         Author: rmakiling_20230928
         """
-        uCommon.waitAndClickElem(page, pMyProfile.ep.updateBtn)
-        uCommon.waitElemNotToBeVisible(page, pMyProfile.ep.editProfileLbl)
-        uCommon.verifyVisible(page, pMyProfile.ep.profileUpdatedSuccessfullyMsg)
+        uCommon.clickElem(page, pMyProfile.ep.updateBtn)
+        if blnError == True:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ep.firstNameErrorMsg)
+            uCommon.waitElemToBeVisible(page, pMyProfile.ep.lastNameErrorMsg)
+        else:
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.ep.editProfileLbl)
+            uCommon.verifyVisible(page, pMyProfile.ep.profileUpdatedSuccessfullyMsg)
     
     @uCommon.ufuncLog
     def verifyFullname(page, dictData):
@@ -675,4 +688,14 @@ class edp:
         uCommon.uploadFile(page, pMyProfile.ep.uploadPhotoBtn, strPath)
         uCommon.waitAndClickElem(page, pMyProfile.ep.selectBtn)
         uCommon.waitElemNotToBeVisible(page, pMyProfile.ep.photoImg)
+
+    @uCommon.ufuncLog
+    def clickCloseBtn(page):
+        """ 
+        Objective: To Close the Edit Profile modal
+        
+        returns: None
+        Author: rmakiling_20240115
+        """
+        uCommon.clickElem(page,pMyProfile.ep.closeBtn)
     

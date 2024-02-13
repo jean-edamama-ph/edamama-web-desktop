@@ -12,7 +12,7 @@ class com:
     mobileVerificationBtn = '//div[@class="profile-details"]//div[contains(@class,"verify-mobile")]'
     mobileEditNumberBtn = f'{mobileNumberLbl}/..//mat-icon[text()="edit"]'
     xBtn = '//mat-icon[text()="close"]'
-    editBtn = '//span[text() = " EDIT "]'
+    editBtn = '//div[@class="card-body"]/..//span[text() = " EDIT "]'
     def defaultLbl(strName):
         return f'//div[@class="row"]//div[@class="panel-header"][contains(text(),"{strName}")]/../..//span[text()=" Default "]'
     myAddressLbl = '//span[text()=" My Address "]'
@@ -57,6 +57,8 @@ class mv:
     codeInputTxt = '//code-input[@class="inputer"]'
     pinTimerLbl = '//p[contains(@class,"timer")]'
     verifyCodeBtn = '//button//span[normalize-space(text())="Verify Code"]'
+    closeBtn = '//mat-icon[text()="close"]'
+    invalidPinErrorMsg = '//span[text()="PIN is required. Please input a PIN."]'
 
 
 
@@ -95,7 +97,9 @@ class ep:
     photoImg = f'{editProfileLbl}/..//img[@src="/assets/images/u_placeholder.svg"]' \
     f' | {editProfileLbl}/..//img[@src="https://media.kpc.edamamalabs.net/user/642397a6289a738f9b5a9133/profile-photo/profilepicture-default.jpg"]'
     selectBtn = '//button/span[text()=" Select "]'
-
+    firstNameErrorMsg = '//mat-error[text()="Firstname can not be more than 40 characters long"]'
+    lastNameErrorMsg = '//mat-error[text()="Lastname can not be more than 40 characters long"]'
+    closeBtn = '//mat-icon[text()="close"]'
 
 
     

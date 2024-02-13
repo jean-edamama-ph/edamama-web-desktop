@@ -321,3 +321,59 @@ def test_ACQ_AUTO_1388_Only_up_to_5_attributes_can_be_selected(page):
     uCommon.log(0, 'Step 3 - Scroll down to attributes and click Edit My Attributes button and select another attribute.')
     uMyProfile.at.updateAttributes(page)
     uCommon.log(0, 'Test Completed')
+
+
+""" Author: rmakiling_20240115 Execution Time: 29s - 30s """   
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that account should not be verified if pin provided is incorrect.')
+def test_ACQ_AUTO_1103_User_should_not_be_able_to_verify_account_if_pin_provided_is_incorrect(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1103.strMyProfile)
+    dictDataBefore = uMyProfile.com.getMyProfileDetails(page)
+    
+    uCommon.log(0, 'Step 3 - Click edit mobile number button')
+    uMyProfile.mn.clickEditMobileNumber(page)
+    
+    uCommon.log(0, 'Step 4 - Input Mobile Nubmer and send code')
+    uMyProfile.mn.inputNumberAndSendCode(page, dRegMyProfile.AUTO1103.strMobileNumber)
+    
+    uCommon.log(0, 'Step 5 - Click Verify Code button')
+    uMyProfile.mn.clickVerifyCode(page)
+    
+    uCommon.log(0, 'Step 7 - Verify if the Mobile Number is updated')  
+    uMyProfile.mn.clickCloseBtn(page)
+    dictDataAfter = uMyProfile.com.getMyProfileDetails(page)
+    uCommon.stringCompare(dictDataBefore["strMobileNumber"], dictDataAfter["strMobileNumber"])
+    uCommon.log(0, 'Test Completed')
+
+
+""" Author: rmakiling_20240115 Execution Time: 16s - 22s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user cannot update the name if it exceeds the maximum allowed characters.')
+def test_ACQ_AUTO_1091_User_should_not_be_able_to_update_name_if_it_exceeds_the_maximum_allowed_characters(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName7)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1091.strMyProfile)
+    dictDataBefore = uMyProfile.com.getMyProfileDetails(page)
+
+    uCommon.log(0, 'Step 3 - Click Edit button')
+    uMyProfile.com.clickEditbtn(page)
+ 
+    uCommon.log(0, 'Step 5 - Update First Name and Last Name')
+    uMyProfile.edp.fillDetails(page, dRegMyProfile.AUTO1091.dictData)
+    
+    uCommon.log(0, 'Step 6 - Update First Name and Last Name')
+    uMyProfile.edp.clickUpdate(page, True)
+    
+    uCommon.log(0, 'Step 7 - Verify if the First Name and Last Name is updated')
+    uMyProfile.edp.clickCloseBtn(page)
+    dictDataAfter = uMyProfile.com.getMyProfileDetails(page)
+    uCommon.stringCompare(dictDataBefore["strName"], dictDataAfter["strName"])
+    uCommon.log(0, 'Test Completed')

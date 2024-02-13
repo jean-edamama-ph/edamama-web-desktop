@@ -680,3 +680,16 @@ def getElemTextAndCheckIfContainsText(page: Page, elem, strToFind):
     assert strToFind in strToFindIn, f'Expected text {strToFind} is NOT visible in the Actual text {strToFindIn}'
     log(1, f'Expected text "{strToFind}" is visible in the actual text "{strToFindIn}".' )
     
+@funcLog  
+def stringCompare(strToCompare, strToCompareIn, blnExact = True):
+    """ 
+    Objective: Compare Strings
+    param strToCompare: String 1
+    param strToCompareIn: String 2
+    returns: None
+    Author: ccapistrano_20231005
+    """
+    if blnExact == True:
+        assert strToCompare == strToCompareIn, f'Actual: "{strToCompare}" is not equal to Expected: "{strToCompareIn}"'
+    elif blnExact == False:
+        assert strToCompare in strToCompareIn, f'Actual: "{strToCompare}" is not in Expected: "{strToCompareIn}"'
