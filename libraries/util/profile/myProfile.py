@@ -184,10 +184,10 @@ class com:
             uCommon.waitElemNotToBeVisible(page, pMyProfile.com.childNameLbl(strChildName))
             
     @uCommon.ufuncLog
-    def deleteAllAddress(page, dictNewAddress=''):
+    def deleteAllAddress(page, dictAddress=''):
         """ 
         Objective: Delete all existing address
-        param: None
+        param dictAddress: dictionary for the existing address of the user acct.
         returns: None
         Author: jatregenio_20240113
         """
@@ -205,7 +205,7 @@ class com:
                 if blnIsDefaultAddressSet == True:
                     ea.clickAddressEdit(page, strFullName)
                     na.untickSetAsDefualt(page)
-                    ea.clickUpdateAddress(page, dictNewAddress["strMobile"])
+                    ea.clickUpdateAddress(page, dictAddress["strMobile"])
                     com.deleteAddress(page, strFullName)
                 else:
                     com.deleteAddress(page, strFullName)
