@@ -681,15 +681,15 @@ def getElemTextAndCheckIfContainsText(page: Page, elem, strToFind):
     log(1, f'Expected text "{strToFind}" is visible in the actual text "{strToFindIn}".' )
     
 @funcLog  
-def stringCompare(str1, str2, blnExact = True):
+def stringCompare(strToCompare, strToCompareIn, blnExact = True):
     """ 
     Objective: Compare Strings
-    param str1: String 1
-    param str2: String 2
+    param strToCompare: String 1
+    param strToCompareIn: String 2
     returns: None
     Author: ccapistrano_20231005
     """
     if blnExact == True:
-        assert str1 == str2, f'Actual: "{str1}" is not equal to Expected: "{str2}"'
+        assert strToCompare == strToCompareIn, f'Actual: "{strToCompare}" is not equal to Expected: "{strToCompareIn}"'
     elif blnExact == False:
-        assert str1 in str2, f'Actual: "{str1}" is not in Expected: "{str2}"'
+        assert strToCompare in strToCompareIn, f'Actual: "{strToCompare}" is not in Expected: "{strToCompareIn}"'
