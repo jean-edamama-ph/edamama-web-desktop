@@ -182,4 +182,104 @@ class AUTO1091:
     dictData = {
         'strFName': 'FIRST NAME FIRST NAME FIRST NAME FIRST NA',
         'strLName': 'LAST NAME LAST NAME LAST NAME LAST NAME L'
+    }    
+        
+class AUTO1136:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'New',
+        'strLastName': 'Address',
+        'strMobile': None,
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+
+
+class AUTO1133:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'New',
+        'strLastName': 'Address',
+        'strMobile': '9563217736',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': None,
+        'strLandmark': 'Random landmark'
+    }
+    
+    
+class AUTO1130:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'New',
+        'strLastName': None,
+        'strMobile': '9563217736',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Address',
+        'strLandmark': 'Random landmark'
+    }
+    
+    
+class AUTO1124:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': None,
+        'strLastName': 'Address',
+        'strMobile': '9563217736',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Address',
+        'strLandmark': 'Random landmark'
+    }
+    
+    
+class AUTO1145:
+    strMyProfile = 'my profile'
+    newChildData = {
+        'strChildName': 'Child Name',
+        'strMonth': None,
+        'strDay': None,
+        'strYear': None,
+        'strGender': 'Girl'
+    }
+    
+
+class AUTO1142:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'First',
+        'strLastName': 'Address',
+        'strMobile': '9171234567',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': None,
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    
+
+class AUTO1139:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'First',
+        'strLastName': 'Address',
+        'strMobile': '9171234567',
+        'strProvince': None,
+        'strCity': None,
+        'strZipCode': '4116',
+        'strBrgy': None,
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
     }

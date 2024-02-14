@@ -123,8 +123,16 @@ class na:
     landmarkTxt = '//textarea[@formcontrolname="buildingNumber"]'
     addNewAddressBtn = f'{newAddressLbl}/../../..//button[text()=" Add New Address "]'
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
-    setAsDefaultChk = '//input[@type="checkbox"]'
-    tickedDefaultChk = '//mat-checkbox[contains(@class, "mat-checkbox-checked")]'
+    setAsDefaultChk = '//span[@class="mat-checkbox-inner-container"]'
+    tickedDefaultChk = '//div[@class="set-default-wrap"]//mat-checkbox[contains(@class,"mat-checkbox-checked")]'
+    contactNumberErrorMsg = '//mat-error[text() = " Mobile Number is required. "]'
+    streetAddressErrorMsg = '//mat-error[text() = " Street Address is required. "]'
+    addressFirstNameErrorMsg = '//mat-error[text() = " First Name is required. "]'
+    addressLastNameErrorMsg = '//mat-error[text() = " Last Name is required. "]'
+    zipCodeErrorMsg = '//mat-error[text() = " Zip Code is required. "]'
+    provinceErrorMsg = '//mat-error[text() = " Province/District is required. "]'
+    cityErrorMsg = '//mat-error[text() = " City is required. "]'
+    brgyErrorMsg = '//mat-error[text() = " Barangay/Village is required. "]'
 
     
     
@@ -155,6 +163,7 @@ class ac:
     def birthDayBtn(strDay):
         return f'//button[contains(@class, "calendar")]//div[contains(text(),"{strDay}")]'
     addMoreBtn = '//span[text()="Add More +"]'
+    childBirthDateErrorMsg = '//mat-error[text() = "Date of birth is required."]'
 
 
 

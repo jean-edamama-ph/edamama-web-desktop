@@ -221,15 +221,23 @@ class na:
         Author: abernal_20230511
         """ 
         
-        uCommon.setElem(page, pMyProfile.na.firstNameTxt, dictData["strFirstName"])
-        uCommon.setElem(page, pMyProfile.na.lastNameTxt, dictData["strLastName"])
-        uCommon.setElem(page, pMyProfile.na.mobileNumberTxt, dictData["strMobile"])
-        na.selectProviceDistrict(page, dictData["strProvince"])
-        na.selectCity(page, dictData["strCity"])
-        uCommon.setElem(page, pMyProfile.na.zipCodeTxt, dictData["strZipCode"])
-        na.selectBarangay(page, dictData["strBrgy"])
-        uCommon.setElem(page, pMyProfile.na.lotUnitStreetTxt, dictData["strLotUnitStBldg"])
-        uCommon.setElem(page, pMyProfile.na.landmarkTxt, dictData["strLandmark"])        
+        if dictData["strFirstName"] != None:
+            uCommon.setElem(page, pMyProfile.na.firstNameTxt, dictData["strFirstName"])
+        if dictData["strLastName"] != None:
+            uCommon.setElem(page, pMyProfile.na.lastNameTxt, dictData["strLastName"])
+        if dictData["strMobile"] != None:
+            uCommon.setElem(page, pMyProfile.na.mobileNumberTxt, dictData["strMobile"])
+        if dictData["strProvince"] != None:
+            na.selectProviceDistrict(page, dictData["strProvince"])
+        if dictData["strCity"] != None:
+            na.selectCity(page, dictData["strCity"])
+        if dictData["strZipCode"] != None:
+            uCommon.setElem(page, pMyProfile.na.zipCodeTxt, dictData["strZipCode"])
+        if dictData["strBrgy"] != None:   
+            na.selectBarangay(page, dictData["strBrgy"])
+        if dictData["strLotUnitStBldg"] != None:
+            uCommon.setElem(page, pMyProfile.na.lotUnitStreetTxt, dictData["strLotUnitStBldg"])
+        uCommon.setElem(page, pMyProfile.na.landmarkTxt, dictData["strLandmark"])          
 
     @uCommon.ufuncLog 
     def selectProviceDistrict(page, strProvince):
@@ -282,6 +290,47 @@ class na:
         uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
         uCommon.waitElemToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
         uCommon.waitElemNotToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+        
+    @uCommon.ufuncLog       
+    def clickAndVerifyAddNewAddress(page, dictData):
+        """ 
+        Objective: Click Add New Address successful
+    
+        param: dictData: {strFirstName, strLastName, strMobile, strProvince, strCity, strZipCode, strBrgy, strLotUnitStBldg, strLandmark}
+        returns: None
+        Author: ccapistrano_20230511
+        """
+        uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
+        if dictData["strZipCode"] == None or dictData["strProvince"] == None or dictData["strMobile"] == None or dictData["strLotUnitStBldg"] == None or dictData["strFirstName"] == None or dictData["strLastName"] == None:
+            na.verifyNewAddressMandatoryFields(page, dictData)
+        else:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+            
+    @uCommon.ufuncLog       
+    def verifyNewAddressMandatoryFields(page, dictData):
+        """ 
+        Objective: Verify Mandatory Fields on New Address.
+    
+        param: dictData: {strFirstName, strLastName, strMobile, strProvince, strCity, strZipCode, strBrgy, strLotUnitStBldg, strLandmark}
+        returns: None
+        Author: abernal_20240124
+        """
+        uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
+        if dictData["strZipCode"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.zipCodeErrorMsg)
+        elif dictData["strProvince"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.provinceErrorMsg)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.cityErrorMsg)
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.brgyErrorMsg)
+        elif dictData["strMobile"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.contactNumberErrorMsg)
+        elif dictData["strLotUnitStBldg"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.streetAddressErrorMsg)
+        elif dictData["strFirstName"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.addressFirstNameErrorMsg)
+        elif dictData["strLastName"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.na.addressLastNameErrorMsg)
 
     @uCommon.ufuncLog       
     def tickSetAsDefault(page):
@@ -395,15 +444,20 @@ class ac:
         Author: abernal_20231011
         """ 
         uCommon.waitAndSetElem(page, pMyProfile.ac.childNameTxt, newChildData["strChildName"])
-        uCommon.waitAndClickElem(page, pMyProfile.ac.childDateBtn)
-        uCommon.waitAndClickElem(page, pMyProfile.ac.birthYearBtn(newChildData["strYear"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ac.birthMonthBtn(newChildData["strMonth"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ac.birthDayBtn(newChildData["strDay"]))
+        if newChildData["strYear"] != None:
+            uCommon.waitAndClickElem(page, pMyProfile.ac.childDateBtn)
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthYearBtn(newChildData["strYear"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthMonthBtn(newChildData["strMonth"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthDayBtn(newChildData["strDay"]))
         uCommon.wait(page, .5)
         uCommon.waitAndClickElem(page, pMyProfile.ac.genderRdb(newChildData["strGender"]))
         uCommon.waitAndClickElem(page, pMyProfile.ac.addMoreBtn)
-        uCommon.waitElemToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
-        uCommon.waitElemNotToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
+        if newChildData["strYear"] != None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
+        else:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ac.childBirthDateErrorMsg)
+
         
         
         

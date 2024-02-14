@@ -377,3 +377,143 @@ def test_ACQ_AUTO_1091_User_should_not_be_able_to_update_name_if_it_exceeds_the_
     dictDataAfter = uMyProfile.com.getMyProfileDetails(page)
     uCommon.stringCompare(dictDataBefore["strName"], dictDataAfter["strName"])
     uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240116 Execution Time: 34s - 36s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Mobile Number is blank for Contact Person')
+def test_ACQ_AUTO_1136_Error_message_should_be_displayed_if_Mobile_Number_is_blank_for_Contact_Person(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName9)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1136.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1136.addressData)
+    uMyProfile.na.clickAndVerifyAddNewAddress(page, dRegMyProfile.AUTO1136.addressData)
+    uCommon.log(0, 'Test Completed')
+
+
+""" Author: abernal_20240116 Execution Time: 36s - 37s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Lot/Unit/Street/Building is empty.')
+def test_ACQ_AUTO_1133_Error_message_should_be_displayed_if_Lot_Unit_Street_Building_is_empty(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName10)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1133.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1133.addressData)
+    uMyProfile.na.clickAndVerifyAddNewAddress(page, dRegMyProfile.AUTO1133.addressData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240117 Execution Time: 35s - 38s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Last Name is blank for Contact Person')
+def test_ACQ_AUTO_1130_Error_message_should_be_displayed_if_Last_Name_is_blank_for_Contact_Person(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName1)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1130.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1130.addressData)
+    uMyProfile.na.clickAndVerifyAddNewAddress(page, dRegMyProfile.AUTO1130.addressData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240117 Execution Time: 34s - 39s """
+@pytest.mark.netTest()
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if First Name is blank for Contact Person')
+def test_ACQ_AUTO_1124_Error_message_should_be_displayed_if_First_Name_is_blank_for_Contact_Person(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName2)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1124.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Mobile Number under Contact Person. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1124.addressData)
+    uMyProfile.na.clickAndVerifyAddNewAddress(page, dRegMyProfile.AUTO1124.addressData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240115 Execution Time: 19s - 20s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if Child Birth Month is blank')
+def test_ACQ_AUTO_1145_Error_message_should_be_displayed_if_Child_Birth_Month_is_blank(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName7)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1145.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll to My Children section and click Add Another Child button.')
+    uMyProfile.com.clickAddAChild(page)
+    
+    uCommon.log(0, 'Step 4 - Input values for the fields except for Birth Month and click Add Child button. Verify if error message is displayed.')
+    uMyProfile.ac.addChildDetails(page, dRegMyProfile.AUTO1145.newChildData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240115 Execution Time: 34s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if zip code is empty.')
+def test_ACQ_AUTO_1142_Error_message_should_be_displayed_if_zip_code_is_empty(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1145.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Zip Code under Delivery Address. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1142.addressData)
+    uMyProfile.na.clickAndVerifyAddNewAddress(page, dRegMyProfile.AUTO1142.addressData)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240115 Execution Time: 29s - 30s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if no value is selected for Province, City, Brgy.')
+def test_ACQ_AUTO_1139_Error_message_should_be_displayed_if_no_value_is_selected_for_Province_City_Brgy(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1139.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Scroll down to My Address. Click Add More button.')
+    uMyProfile.com.clickAddressAddMore(page)
+    
+    uCommon.log(0, 'Step 4 - Enter values for all fields except Zip Code under Delivery Address. Click the Add Address button.')
+    uMyProfile.na.addAddress(page, dRegMyProfile.AUTO1139.addressData)
+    uMyProfile.na.clickAndVerifyAddNewAddress(page, dRegMyProfile.AUTO1139.addressData)
+    uCommon.log(0, 'Test Completed')
