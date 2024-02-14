@@ -439,8 +439,8 @@ class ea:
         Updated By: jatregenio_20240201
         """
         uCommon.waitAndClickElem(page, pMyProfile.ea.updateAddressBtn)
-        isMobNumLengthErrMsgDisplayed = uCommon.verifyVisible(page, pMyProfile.ea.errorMobileNumLengthMsg)
-        if isMobNumLengthErrMsgDisplayed == True:
+        blnIsMobNumLengthErrMsgDisplayed = uCommon.verifyVisible(page, pMyProfile.ea.errorMobileNumLengthMsg)
+        if blnIsMobNumLengthErrMsgDisplayed == True:
             ea.updateSpecificAddressField(page, pMyProfile.na.mobileNumberTxt, strValue)
             uCommon.waitAndClickElem(page, pMyProfile.ea.updateAddressBtn)
 
@@ -488,7 +488,7 @@ class ea:
         """
         uCommon.wait(page, 0.5)
         uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
-        uCommon.waitElemToBeVisible(page, pMyProfile.na.untickedDefaultChk)
+        uCommon.waitElemNotToBeVisible(page, pMyProfile.na.tickedDefaultChk)
 
     @uCommon.ufuncLog
     def clickEditAndUpdateAddressToDefault(page, strFullName, strValue = ''):

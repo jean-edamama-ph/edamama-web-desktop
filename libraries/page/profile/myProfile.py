@@ -126,7 +126,6 @@ class na:
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
     setAsDefaultChk = '//span[@class="mat-checkbox-inner-container"]'
     tickedDefaultChk = '//div[@class="set-default-wrap"]//mat-checkbox[contains(@class,"mat-checkbox-checked")]'
-    untickedDefaultChk = '//div[@class="set-default-wrap"]//mat-checkbox[contains(@class, "mat-checkbox")]'
     contactNumberErrorMsg = '//mat-error[text() = " Mobile Number is required. "]'
     streetAddressErrorMsg = '//mat-error[text() = " Street Address is required. "]'
     addressFirstNameErrorMsg = '//mat-error[text() = " First Name is required. "]'
