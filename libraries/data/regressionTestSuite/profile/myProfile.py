@@ -184,6 +184,7 @@ class AUTO1091:
         'strLName': 'LAST NAME LAST NAME LAST NAME LAST NAME L'
     }
 
+
 class AUTO1391:
     strMyProfile = 'my profile'
     strCount = '1'
@@ -199,6 +200,38 @@ class AUTO1391:
         'strLandmark': 'Random landmark'
     }
     provAddressData = {
+        'strFirstName': 'Provincial',
+        'strLastName': 'District',
+        'strMobile': '9171234567',
+        'strProvince': 'BULACAN',
+        'strCity': 'SAN JOSE DEL MONTE CITY',
+        'strZipCode': '1234',
+        'strBrgy': 'TUNGKONG MANGGA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    
+
+class AUTO1394_AUTO1397:
+    strMyProfile = 'my profile'
+    strCount = '1'
+    defaultValue = {
+    'strMobile': '9171234567'
+    }
+    mmAddressData = {
+        'strFullName': 'METRO MANILA',
+        'strFirstName': 'METRO',
+        'strLastName': 'MANILA',
+        'strMobile': '9171234567',
+        'strProvince': 'METRO MANILA',
+        'strCity': 'MANDALUYONG CITY',
+        'strZipCode': '1234',
+        'strBrgy': 'BARANGKA DRIVE',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    provAddressData = {
+        'strFullName': 'Provincial District',
         'strFirstName': 'Provincial',
         'strLastName': 'District',
         'strMobile': '9171234567',

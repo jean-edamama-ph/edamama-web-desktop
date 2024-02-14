@@ -204,7 +204,7 @@ class com:
                 blnIsDefaultAddressSet = uCommon.verifyVisible(page, pMyProfile.com.defaultLbl(strFullName))
                 if blnIsDefaultAddressSet == True:
                     ea.clickAddressEdit(page, strFullName)
-                    na.untickSetAsDefualt(page)
+                    ea.untickSetAsDefualt(page)
                     ea.clickUpdateAddress(page, dictAddress["strMobile"])
                     com.deleteAddress(page, strFullName)
                 else:
@@ -217,7 +217,7 @@ class com:
         """ 
         Objective: Check if there is an existing address that was set to default.
         param: None
-        returns: 
+        returns: True | False
         Author: jatregenio_202400202
         """
         blnIsDefaultAddressSet = uCommon.verifyVisible(pMyProfile.com.defaultAddressLbl)
@@ -315,19 +315,6 @@ class na:
         """
         uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
         uCommon.waitElemToBeVisible(page, pMyProfile.na.tickedDefaultChk)
-        
-    @uCommon.ufuncLog
-    def untickSetAsDefualt(page):
-        """ 
-        Objective: Untick the Set as Default checkbox.
-        
-        param: None
-        returns: None
-        Author: jatregenio_20240212
-        """
-        uCommon.wait(page, 0.5)
-        uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
-        uCommon.waitElemToBeVisible(page, pMyProfile.na.untickedDefaultChk)
     
     @uCommon.ufuncLog
     def addAddressAndSetAsDefault(page, dictData):
@@ -343,7 +330,18 @@ class na:
         na.tickSetAsDefault(page)
         na.clickAddNewAddress(page)
     
-    
+    @uCommon.ufuncLog
+    def clickAddNewAddressAndSetDetails(page, dictData):
+        """ 
+        Objective: Click 'Add More' and add new address.
+        
+        param dictData: {strFirstName, strLastName, strMobile, strProvince, strCity, strZipCode, strBrgy, strLotUnitStBldg, strLandmark}
+        returns: None
+        Author: jatregenio_20240214
+        """
+        com.clickAddressAddMore(page)
+        na.addAddress(page, dictData)
+        na.clickAddNewAddress(page)
     
 
 
@@ -427,7 +425,32 @@ class ea:
         uCommon.validateElemText(page, pMyProfile.com.addressStLbl(newAddressName), dictNewAddress["strLotUnitStBldg"], False)
         uCommon.validateElemText(page, pMyProfile.com.addressZipLbl(newAddressName), dictNewAddress["strZipCode"], False)
         uCommon.validateElemText(page, pMyProfile.com.addressMobNumLbl(newAddressName), dictNewAddress["strMobile"], False)
-
+        
+    @uCommon.ufuncLog
+    def untickSetAsDefualt(page):
+        """ 
+        Objective: Untick the Set as Default checkbox.
+        
+        param: None
+        returns: None
+        Author: jatregenio_20240212
+        """
+        uCommon.wait(page, 0.5)
+        uCommon.waitAndClickElem(page, pMyProfile.na.setAsDefaultChk)
+        uCommon.waitElemToBeVisible(page, pMyProfile.na.untickedDefaultChk)
+        
+    @uCommon.ufuncLog
+    def clickEditAndUpdateAddressToDefault(page, strFullName, strValue = ''):
+        """ 
+        Objective: Untick the Set as Default checkbox.
+        
+        param: None
+        returns: None
+        Author: jatregenio_20240212
+        """
+        ea.clickAddressEdit(page, strFullName)
+        na.tickSetAsDefault(page)
+        ea.clickUpdateAddress(page, strValue)
 
 
 

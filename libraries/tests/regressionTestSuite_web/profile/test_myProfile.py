@@ -405,22 +405,78 @@ def test_ACQ_AUTO_1391_Created_MM_default_address_from_Profile_should_automatica
     uShop.sp.clickFPfirstItem(page)
     uCheckOut.clickFirstSize(page, True)
     
-    uCommon.log(0, 'Click the Add to Bag button.')
+    uCommon.log(0, 'Step 5 - Click the Add to Bag button.')
     uShop.pp.clickAddToBag(page, 'opt')
     uAppComm.com.validateCountInCart(page, dRegMyProfile.AUTO1391.strCount)
     
-    uCommon.log(0, 'Click the bag/cart button on the upper right side of the screen and proceed to checkout.')
+    uCommon.log(0, 'Step 6 - Click the bag/cart button on the upper right side of the screen and proceed to checkout.')
     uCart.clickCartIconThenCheckout(page)
     
-    uCommon.log(0, 'Verify the default address is the provincial default address.')
+    uCommon.log(0, 'Step 7 - Verify the default address is the provincial default address.')
     uCheckOut.validateDeliveryAddressElemAndDefaultAddressByProv(page, dRegMyProfile.AUTO1391.provAddressData["strProvince"])
     
-    uCommon.log(0, 'Click back and navigate back to profile. Click New Address and populate the fields. Address should be MM. Set it as the default address.')
+    uCommon.log(0, 'Step 8 - Click back and navigate back to profile. Click New Address and populate the fields. Address should be MM. Set it as the default address.')
     uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1391.strMyProfile)
     uMyProfile.na.addAddressAndSetAsDefault(page, dRegMyProfile.AUTO1391.mmAddressData)
     
-    uCommon.log(0, 'Navigate back to cart and proceed to checkout. Verify if the Delivery Address was now updated to the new default (MM) address.')
+    uCommon.log(0, 'Step 9 - Navigate back to cart and proceed to checkout. Verify if the Delivery Address was now updated to the new default (MM) address.')
     uCart.clickCartIconThenCheckout(page)
     uCheckOut.validateDeliveryAddressElemAndDefaultAddressByProv(page, dRegMyProfile.AUTO1391.mmAddressData["strProvince"])
     uCommon.log(0, 'Test Completed')
+
+
+""" Author: jatregenio_20240214 Execution Time: 123s - 125s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify changing default address to provincial from Profile is automatically selected in checkout.')
+def test_ACQ_AUTO_1394_Changing_default_address_to_provincial_from_Profile_should_automatically_be_selected_in_checkout(page):
+#test_ACQ_AUTO_1397_Changing_default_address_to_MM_from_Profile_should_automatically_be_selected_in_checkout
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName9)
+    
+    uCommon.log(0, 'Step 2 - Navigate to the Profile tab.')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397.strMyProfile)
+
+    uCommon.log(0, 'Step 3 - Verify the default address on Delivery Address - Provincial Default Address should be displayed and has the "Default" label.')
+    uCommon.log(0, '[Pre-condition Started]: Delete if there is an existing address. Add provincial address and set it to default.')
+    uMyProfile.com.deleteAllAddress(page, dRegMyProfile.AUTO1394_AUTO1397.defaultValue)
+    uMyProfile.na.addAddressAndSetAsDefault(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData)
+    uMyProfile.na.clickAddNewAddressAndSetDetails(page, dRegMyProfile.AUTO1394_AUTO1397.provAddressData)
+    uCommon.log(0, '[Pre-condition Completed]: Provincial Address successfully set as default address.')
+    
+    uCommon.log(0, 'Step 4 - Navigate to shop and select any item to add to bag.')
+    uShop.com.clickShop(page)
+    uCart.checkAndDeleteAddToCartItems(page)
+    uShop.sp.clickFPfirstItem(page)
+    uCheckOut.clickFirstSize(page, True)
+    
+    uCommon.log(0, 'Step 5 - Click the Add to Bag button.')
+    uShop.pp.clickAddToBag(page, 'opt')
+    uAppComm.com.validateCountInCart(page, dRegMyProfile.AUTO1391.strCount)
+    
+    uCommon.log(0, 'Step 6 - Click the bag/cart button on the upper right side of the screen and proceed to checkout.')
+    uCart.clickCartIconThenCheckout(page)
+    
+    uCommon.log(0, 'Step 7 - Verify the default address is the MM default address.')
+    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData["strProvince"])
+    
+    uCommon.log(0, 'Step 8 - Click back and navigate back to profile. Click the meatball menu of a provincial address and click Set As Default.')
+    uCommon.wait(page, 0.5)
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397.strMyProfile)
+    uMyProfile.ea.clickEditAndUpdateAddressToDefault(page, dRegMyProfile.AUTO1394_AUTO1397.provAddressData["strFullName"], dRegMyProfile.AUTO1394_AUTO1397.defaultValue["strMobile"])
+    
+    uCommon.log(0, 'Step 9 - Navigate back to cart and proceed to checkout. Verify if the Delivery Address was now updated to the new default (provincial) address.')
+    uCart.clickCartIconThenCheckout(page)
+    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397.provAddressData["strProvince"])
+    uCommon.log(0, 'AUTO-1394: Test Completed')
+    
+    uCommon.log(0, 'Start of AUTO-1397: Step 1 - Click back and navigate back to profile. Click the meatball menu of a provincial address and click Set As Default.')
+    uCommon.wait(page, 0.5)
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397.strMyProfile)
+    uMyProfile.ea.clickEditAndUpdateAddressToDefault(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData["strFullName"], dRegMyProfile.AUTO1394_AUTO1397.defaultValue["strMobile"])
+    
+    uCommon.log(0, 'Step 2 - Navigate back to cart and proceed to checkout. Verify if the Delivery Address was now updated to the new default (MM) address.')
+    uCart.clickCartIconThenCheckout(page)
+    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData["strProvince"])
+    uCommon.log(0, 'AUTO-1397: Test Completed')
     

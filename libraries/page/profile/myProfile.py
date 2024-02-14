@@ -124,7 +124,7 @@ class na:
     landmarkTxt = '//textarea[@formcontrolname="buildingNumber"]'
     addNewAddressBtn = f'{newAddressLbl}/../../..//button[text()=" Add New Address "]'
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
-    setAsDefaultChk = '//input[@type="checkbox"]'
+    setAsDefaultChk = '//span[@class="mat-checkbox-inner-container"]'
     tickedDefaultChk = '//mat-checkbox[contains(@class, "mat-checkbox-checked")]'
     untickedDefaultChk = '//mat-checkbox[contains(@class, "mat-checkbox")]'
 

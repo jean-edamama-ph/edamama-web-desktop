@@ -417,7 +417,7 @@ def convertTotalAmtToFloat(strTotalAmt):
 @uCommon.ufuncLog
 def validateIfDefaultAddressByProvince(page, strProvince):
     """ 
-    Objective: Verify the default delivery address by province.
+    Objective: Verify the default delivery address by province in checkout page.
     
     param: None
     returns None
@@ -428,7 +428,7 @@ def validateIfDefaultAddressByProvince(page, strProvince):
 @uCommon.ufuncLog
 def validateDeliveryAddressElemAndDefaultAddressByProv(page, strProv):
     """ 
-    Objective: Verify the default delivery address by province and the elements in Delivery Address section.
+    Objective: Verify the default delivery address by province and the elements in Delivery Address section in checkout page.
     
     param: None
     returns None
