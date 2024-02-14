@@ -42,6 +42,7 @@ class com:
         return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/following-sibling::button'
     def addressPanelHeaderFullName(strCount):
         return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/../following-sibling::div/div[@class="panel-header"]'
+    defaultAddressLbl = '//div[@class="row"]//div[@class="col-12 d-none d-md-block"]//span[contains(text(), "Default")]'
         
 
 
@@ -125,6 +126,7 @@ class na:
     addressAddedSuccessMsg = '//span[text()="Address added successfully."]'
     setAsDefaultChk = '//span[@class="mat-checkbox-inner-container"]'
     tickedDefaultChk = '//div[@class="set-default-wrap"]//mat-checkbox[contains(@class,"mat-checkbox-checked")]'
+    untickedDefaultChk = '//div[@class="set-default-wrap"]//mat-checkbox[contains(@class, "mat-checkbox")]'
     contactNumberErrorMsg = '//mat-error[text() = " Mobile Number is required. "]'
     streetAddressErrorMsg = '//mat-error[text() = " Street Address is required. "]'
     addressFirstNameErrorMsg = '//mat-error[text() = " First Name is required. "]'

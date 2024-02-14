@@ -150,3 +150,27 @@ def clickCheckOut(page):
     Author: ccapistrano_20230327
     """
     uCommon.clickElem(page, pCart.od.checkOutBtn)
+
+@uCommon.ufuncLog
+def clickCartIcon(page):
+    """ 
+    Objective: Click check out 
+    
+    param: None
+    returns: None
+    Author: jatregenio_20240212
+    """
+    uCommon.clickElem(page, pCommon.header.cartIconBtn)
+    
+@uCommon.ufuncLog
+def clickCartIconThenCheckout(page):
+    """ 
+    Objective: Click cart icon then proceed to checkout
+    
+    param: None
+    returns: None
+    Author: jatregenio_20240213
+    """
+    clickCartIcon(page)
+    uCommon.wait(page, 1)
+    clickCheckOut(page)
