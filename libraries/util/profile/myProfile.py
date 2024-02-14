@@ -279,6 +279,19 @@ class na:
         uCommon.setAndSelectFromSmartDropDown(page, pMyProfile.na.searchTxt, strBarangay, pMyProfile.na.parentDIVListBox)
         
     @uCommon.ufuncLog       
+    def clickAddNewAddress(page):
+        """ 
+        Objective: Click Add New Address successful
+        
+        param: None
+        returns: None
+        Author: ccapistrano_20230511
+        """
+        uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
+        uCommon.waitElemToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+        uCommon.waitElemNotToBeVisible(page, pMyProfile.na.addressAddedSuccessMsg)
+        
+    @uCommon.ufuncLog       
     def clickAndVerifyAddNewAddress(page, dictData):
         """ 
         Objective: Click Add New Address successful
