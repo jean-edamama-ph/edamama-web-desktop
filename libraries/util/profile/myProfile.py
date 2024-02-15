@@ -493,7 +493,7 @@ class ea:
     @uCommon.ufuncLog
     def clickEditAndUpdateAddressToDefault(page, strFullName, strValue = ''):
         """ 
-        Objective: Untick the Set as Default checkbox.
+        Objective: Tick the Set as Default checkbox.
         
         param: None
         returns: None
@@ -501,6 +501,19 @@ class ea:
         """
         ea.clickAddressEdit(page, strFullName)
         na.tickSetAsDefault(page)
+        ea.clickUpdateAddress(page, strValue)
+        
+    @uCommon.ufuncLog
+    def clickEditAndUpdateAddressToNotDefault(page, strFullName, strValue = ''):
+        """ 
+        Objective: Untick the Set as Default checkbox.
+        
+        param: None
+        returns: None
+        Author: jatregenio_20240215
+        """
+        ea.clickAddressEdit(page, strFullName)
+        ea.untickSetAsDefault(page)
         ea.clickUpdateAddress(page, strValue)
 
 

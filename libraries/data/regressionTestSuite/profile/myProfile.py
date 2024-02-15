@@ -312,7 +312,7 @@ class AUTO1391:
     }
 
 
-class AUTO1394_AUTO1397:
+class AUTO1394_AUTO1397_1400:
     strMyProfile = 'my profile'
     strCount = '1'
     defaultValue = {

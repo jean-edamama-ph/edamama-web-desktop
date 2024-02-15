@@ -566,23 +566,25 @@ def test_ACQ_AUTO_1391_Created_MM_default_address_from_Profile_should_automatica
     uCommon.log(0, 'Test Completed')
 
 
-""" Author: jatregenio_20240214 Execution Time: 123s - 125s """
+""" Author: jatregenio_20240214 Execution Time: 137s - 139s """
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify changing default address to provincial from Profile is automatically selected in checkout.')
 def test_ACQ_AUTO_1394_Changing_default_address_to_provincial_from_Profile_should_automatically_be_selected_in_checkout(page):
 #test_ACQ_AUTO_1397_Changing_default_address_to_MM_from_Profile_should_automatically_be_selected_in_checkout
+#test_ACQ_AUTO_1400_Non-default_address_should_be_pre-selected_as_address_upon_checkout
+
     uCommon.log(0, 'Step 1 - Open edamama website')
-    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName9)
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName7)
     
     uCommon.log(0, 'Step 2 - Navigate to the Profile tab.')
-    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397.strMyProfile)
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397_1400.strMyProfile)
 
     uCommon.log(0, 'Step 3 - Verify the default address on Delivery Address - Provincial Default Address should be displayed and has the "Default" label.')
     uCommon.log(0, '[Pre-condition Started]: Delete if there is an existing address. Add provincial address and set it to default.')
-    uMyProfile.com.deleteAllAddress(page, dRegMyProfile.AUTO1394_AUTO1397.defaultValue)
-    uMyProfile.na.addAddressAndSetAsDefault(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData)
-    uMyProfile.na.clickAddNewAddressAndSetDetails(page, dRegMyProfile.AUTO1394_AUTO1397.provAddressData)
+    uMyProfile.com.deleteAllAddress(page, dRegMyProfile.AUTO1394_AUTO1397_1400.defaultValue)
+    uMyProfile.na.addAddressAndSetAsDefault(page, dRegMyProfile.AUTO1394_AUTO1397_1400.mmAddressData)
+    uMyProfile.na.clickAddNewAddressAndSetDetails(page, dRegMyProfile.AUTO1394_AUTO1397_1400.provAddressData)
     uCommon.log(0, '[Pre-condition Completed]: Provincial Address successfully set as default address.')
     
     uCommon.log(0, 'Step 4 - Navigate to shop and select any item to add to bag.')
@@ -599,25 +601,37 @@ def test_ACQ_AUTO_1394_Changing_default_address_to_provincial_from_Profile_shoul
     uCart.clickCartIconThenCheckout(page)
     
     uCommon.log(0, 'Step 7 - Verify the default address is the MM default address.')
-    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData["strProvince"])
+    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397_1400.mmAddressData["strProvince"])
     
     uCommon.log(0, 'Step 8 - Click back and navigate back to profile. Click the meatball menu of a provincial address and click Set As Default.')
     uCommon.wait(page, 0.5)
-    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397.strMyProfile)
-    uMyProfile.ea.clickEditAndUpdateAddressToDefault(page, dRegMyProfile.AUTO1394_AUTO1397.provAddressData["strFullName"], dRegMyProfile.AUTO1394_AUTO1397.defaultValue["strMobile"])
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397_1400.strMyProfile)
+    uMyProfile.ea.clickEditAndUpdateAddressToDefault(page, dRegMyProfile.AUTO1394_AUTO1397_1400.provAddressData["strFullName"], dRegMyProfile.AUTO1394_AUTO1397_1400.defaultValue["strMobile"])
     
     uCommon.log(0, 'Step 9 - Navigate back to cart and proceed to checkout. Verify if the Delivery Address was now updated to the new default (provincial) address.')
     uCart.clickCartIconThenCheckout(page)
-    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397.provAddressData["strProvince"])
+    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397_1400.provAddressData["strProvince"])
     uCommon.log(0, 'AUTO-1394: Test Completed')
+    
     
     uCommon.log(0, 'Start of AUTO-1397: Step 1 - Click back and navigate back to profile. Click the meatball menu of a provincial address and click Set As Default.')
     uCommon.wait(page, 0.5)
-    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397.strMyProfile)
-    uMyProfile.ea.clickEditAndUpdateAddressToDefault(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData["strFullName"], dRegMyProfile.AUTO1394_AUTO1397.defaultValue["strMobile"])
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397_1400.strMyProfile)
+    uMyProfile.ea.clickEditAndUpdateAddressToDefault(page, dRegMyProfile.AUTO1394_AUTO1397_1400.mmAddressData["strFullName"], dRegMyProfile.AUTO1394_AUTO1397_1400.defaultValue["strMobile"])
     
     uCommon.log(0, 'Step 2 - Navigate back to cart and proceed to checkout. Verify if the Delivery Address was now updated to the new default (MM) address.')
     uCart.clickCartIconThenCheckout(page)
-    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397.mmAddressData["strProvince"])
+    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397_1400.mmAddressData["strProvince"])
     uCommon.log(0, 'AUTO-1397: Test Completed')
     
+    
+    uCommon.log(0, 'Start of AUTO-1400: Step 1 - Click back and navigate back to profile. Click the meatball menu of a provincial address and click Set As Default.')
+    uCommon.wait(page, 0.5)
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1394_AUTO1397_1400.strMyProfile)
+    uMyProfile.ea.clickEditAndUpdateAddressToNotDefault(page, dRegMyProfile.AUTO1394_AUTO1397_1400.mmAddressData["strFullName"], dRegMyProfile.AUTO1394_AUTO1397_1400.defaultValue["strMobile"])
+    
+    uCommon.log(0, 'Step 2 - Navigate back to cart and proceed to checkout. Verify if the Delivery Address was the non-default (MM) address.')
+    uCart.clickCartIconThenCheckout(page)
+    uCheckOut.validateIfDefaultAddressByProvince(page, dRegMyProfile.AUTO1394_AUTO1397_1400.mmAddressData["strProvince"])
+    uCommon.log(0, 'AUTO-1400: Test Completed')
+
