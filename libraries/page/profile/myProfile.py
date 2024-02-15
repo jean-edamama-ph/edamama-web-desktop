@@ -2,9 +2,13 @@ class com:
     """COMMON"""
     nameLbl = '//h2[@class="name"]'
     emailLbl = '(//p[contains(@class,"user-email")])[2]'
-    allMenuIconBtn = '//div[@class="row"]//div[@class="col-12 d-none d-md-block"]//mat-icon[text()="more_vert"]'
+    allAddressPnl = '//div[@class="row"]//div[@class="col-12 d-none d-md-block"]'
+    allHeaderPnl = '//div[@class="row"]//div[@class="panel-header"]'
+    moreIconBtn = '//mat-icon[text()="more_vert"]'
+    moreMenuPnl = '//div[@role="menu"]'
+    allMenuIconBtn = f'{allAddressPnl}{moreIconBtn}'
     def secondMenuIconBtn(strName):
-        return f'(//div[@class="row"]//div[@class="col-12 d-none d-md-block"]//div[contains(text(),"{strName}")]/../..//mat-icon[text()="more_vert"])[1]' 
+        return f'({com.allAddressPnl}//div[contains(text(),"{strName}")]/../..{com.moreIconBtn})[1]' 
     removeIconBtn = '//mat-icon[text()="delete"]'
     yesBtn = '//span[text()=" Yes "]'
     addressDeletedSuccessMsg = '//span[text()="Address deleted successfully."]'
@@ -14,35 +18,35 @@ class com:
     xBtn = '//mat-icon[text()="close"]'
     editBtn = '//div[@class="card-body"]/..//span[text() = " EDIT "]'
     def defaultLbl(strName):
-        return f'//div[@class="row"]//div[@class="panel-header"][contains(text(),"{strName}")]/../..//span[text()=" Default "]'
+        return f'{com.allHeaderPnl}[contains(text(),"{strName}")]/../..//span[text()=" Default "]'
     myAddressLbl = '//span[text()=" My Address "]'
     addressAddMoreBtn = f'{myAddressLbl}/..//span[text()=" ADD MORE "]'
-    addressEditBtn = '//div[@role="menu"]/..//button[text()=" Edit "]'
+    addressEditBtn = f'{moreMenuPnl}/..//button[text()=" Edit "]'
     def addressContactNameLbl(strName):
-        return f'//div[@class="row"]//div[@class="panel-header"][contains(text(),"{strName}")]'
+        return f'{com.allHeaderPnl}[contains(text(),"{strName}")]'
     def addressDetailsLbl(strName): 
-        return f'//div[@class="row"]//div[@class="panel-header"][contains(text(),"{strName}")]/../..//div[@class="adr"][1]'
+        return f'{com.allHeaderPnl}[contains(text(),"{strName}")]/../..//div[@class="adr"][1]'
     def addressStLbl(strName):
-        return f'//div[@class="row"]//div[@class="panel-header"][contains(text(),"{strName}")]/../..//div[contains(text(),"Street")]'
+        return f'{com.allHeaderPnl}[contains(text(),"{strName}")]/../..//div[contains(text(),"Street")]'
     def addressZipLbl(strName):
-        return f'//div[@class="row"]//div[@class="panel-header"][contains(text(),"{strName}")]/../..//div[contains(text(),"ZipCode")]'
+        return f'{com.allHeaderPnl}[contains(text(),"{strName}")]/../..//div[contains(text(),"ZipCode")]'
     def addressMobNumLbl(strName):
-        return f'//div[@class="row"]//div[@class="panel-header"][contains(text(),"{strName}")]/..//div[contains(text(),"Contact")]'
+        return f'{com.allHeaderPnl}[contains(text(),"{strName}")]/..//div[contains(text(),"Contact")]'
     childDetailsLbl = '//span[text()=" Child Details "]'
     addChildBtn = '//mat-icon[text()="add"]'
     addChildSuccessMsg = '//span[text()="Child has been added successfully"]'
     editChildSuccessMsg = '//span[text()="Child has been updated successfully"]'
-    editChildBtn = '//div[@role="menu"]//button[text()="Edit"]'
-    deleteChildBtn = '//div[@role="menu"]//button[text()="Delete"]'
+    editChildBtn = f'{moreMenuPnl}//button[text()="Edit"]'
+    deleteChildBtn = f'{moreMenuPnl}//button[text()="Delete"]'
     def childKebabBtn(strName):
-        return f'//app-child-card[@class="ng-star-inserted"]/../..//h3[contains(text(),"{strName}")]/../..//mat-icon[text()="more_vert"]' 
+        return f'//app-child-card[@class="ng-star-inserted"]/../..//h3[contains(text(),"{strName}")]/../..{com.moreIconBtn}' 
     def childNameLbl(strName):
         return f'//h3[contains(text(),"{strName}")]/../../../../app-child-card[@class="ng-star-inserted"]'
     def addressDottedMenuIconBtn(strCount):
-        return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/following-sibling::button'
+        return f'{com.allAddressPnl}//div[contains(text(), "Address {strCount}")]/..//button'
     def addressPanelHeaderFullName(strCount):
-        return f'//div[@class="row"]//div[@class="col-12 d-none d-md-block"]/div[1]/div[contains(text(), "Address {strCount}")]/../following-sibling::div/div[@class="panel-header"]'
-    defaultAddressLbl = '//div[@class="row"]//div[@class="col-12 d-none d-md-block"]//span[contains(text(), "Default")]'
+        return f'{com.allAddressPnl}//div[contains(text(), "Address {strCount}")]/../..//div[@class="panel-header"]'
+    defaultAddressLbl = f'{allAddressPnl}//span[contains(text(), "Default")]'
         
 
 
