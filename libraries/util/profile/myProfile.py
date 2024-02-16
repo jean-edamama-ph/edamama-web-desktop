@@ -340,17 +340,17 @@ class na:
         uCommon.waitAndClickElem(page, pMyProfile.na.addNewAddressBtn)
         if dictData["strZipCode"] == None:
             uCommon.waitElemToBeVisible(page, pMyProfile.na.zipCodeErrorMsg)
-        elif dictData["strProvince"] == None:
+        if dictData["strProvince"] == None:
             uCommon.waitElemToBeVisible(page, pMyProfile.na.provinceErrorMsg)
             uCommon.waitElemToBeVisible(page, pMyProfile.na.cityErrorMsg)
             uCommon.waitElemToBeVisible(page, pMyProfile.na.brgyErrorMsg)
-        elif dictData["strMobile"] == None:
+        if dictData["strMobile"] == None:
             uCommon.waitElemToBeVisible(page, pMyProfile.na.contactNumberErrorMsg)
-        elif dictData["strLotUnitStBldg"] == None:
+        if dictData["strLotUnitStBldg"] == None:
             uCommon.waitElemToBeVisible(page, pMyProfile.na.streetAddressErrorMsg)
-        elif dictData["strFirstName"] == None:
+        if dictData["strFirstName"] == None:
             uCommon.waitElemToBeVisible(page, pMyProfile.na.addressFirstNameErrorMsg)
-        elif dictData["strLastName"] == None:
+        if dictData["strLastName"] == None:
             uCommon.waitElemToBeVisible(page, pMyProfile.na.addressLastNameErrorMsg)
 
     @uCommon.ufuncLog       
@@ -523,28 +523,61 @@ class ea:
 class ac:
     """ADD CHILD"""
     @uCommon.ufuncLog   
-    def addChildDetails(page, newChildData):
+    def addChildDetails(page, dictData):
         """ 
         Objective: Perform adding details to child.
         param newChildData: Child Name, Child Year, Child Month, Child Day, Child Gender
         returns: None
         Author: abernal_20231011
         """ 
-        uCommon.waitAndSetElem(page, pMyProfile.ac.childNameTxt, newChildData["strChildName"])
-        if newChildData["strYear"] != None:
+        if dictData["strChildName"] != None:
+            uCommon.waitAndSetElem(page, pMyProfile.ac.childNameTxt, dictData["strChildName"])
+        if dictData["strYear"] != None:
             uCommon.waitAndClickElem(page, pMyProfile.ac.childDateBtn)
-            uCommon.waitAndClickElem(page, pMyProfile.ac.birthYearBtn(newChildData["strYear"]))
-            uCommon.waitAndClickElem(page, pMyProfile.ac.birthMonthBtn(newChildData["strMonth"]))
-            uCommon.waitAndClickElem(page, pMyProfile.ac.birthDayBtn(newChildData["strDay"]))
-        uCommon.wait(page, .5)
-        uCommon.waitAndClickElem(page, pMyProfile.ac.genderRdb(newChildData["strGender"]))
-        uCommon.waitAndClickElem(page, pMyProfile.ac.addMoreBtn)
-        if newChildData["strYear"] != None:
-            uCommon.waitElemToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
-            uCommon.waitElemNotToBeVisible(page, pMyProfile.com.addChildSuccessMsg)
-        else:
-            uCommon.waitElemToBeVisible(page, pMyProfile.ac.childBirthDateErrorMsg)
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthYearBtn(dictData["strYear"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthMonthBtn(dictData["strMonth"]))
+            uCommon.waitAndClickElem(page, pMyProfile.ac.birthDayBtn(dictData["strDay"]))
+        if dictData["strGender"] != None:
+            uCommon.wait(page, 0.5)
+            uCommon.waitAndClickElem(page, pMyProfile.ac.genderRdb(dictData["strGender"]))
 
+
+    @uCommon.ufuncLog       
+    def clickAndVerifyAddChild(page, dictData):
+        """ 
+        Objective: Click Add More + button.
+    
+        param: dictData: {strChildName, strMonth, strDay, strYear, strGender}
+        returns: None
+        Author: abernal_20240216
+        """
+        uCommon.wait(page, 0.5)
+        if uCommon.verifyVisible(page, pMyProfile.ac.addMoreBtn) == True:
+            uCommon.waitAndClickElem(page, pMyProfile.ac.addMoreBtn)
+        elif uCommon.verifyVisible(page, pMyProfile.ac.addChildBtn) == True:
+            uCommon.waitAndClickElem(page, pMyProfile.ac.addChildBtn)
+        if dictData["strChildName"] == None or dictData["strMonth"] == None or dictData["strDay"] == None or dictData["strYear"] == None or dictData["strGender"] == None:
+            ac.verifyChildMandatoryFields(page, dictData)
+        else:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ac.addChildSuccessMsg)
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.ac.addChildSuccessMsg)
+            
+            
+    @uCommon.ufuncLog       
+    def verifyChildMandatoryFields(page, dictData):
+        """ 
+        Objective: Verify Mandatory Fields on New Address.
+    
+        param: dictData: {strChildName, strMonth, strDay, strYear, strGender}
+        returns: None
+        Author: abernal_20240216
+        """
+        if dictData["strChildName"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ac.childNameErrorMsg)
+        if dictData["strYear"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ac.childBirthDateErrorMsg)
+        if dictData["strGender"] == None:
+            uCommon.waitElemToBeVisible(page, pMyProfile.ac.childGenderErrorMsg)
         
         
         

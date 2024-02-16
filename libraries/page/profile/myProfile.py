@@ -162,13 +162,17 @@ class ac:
     def genderRdb(strGender):
         return f'//span[contains(text(),"{strGender}")]/../..//input[@class="mat-radio-input"]'
     def birthYearBtn(strYear):
-        return f'//div[contains(text(),"{strYear}")]'
+        return f'//span[contains(text(),"{strYear}")]'
     def birthMonthBtn(strMonth):
-        return f'//div[contains(text(),"{strMonth}")]'
+        return f'//span[contains(text(),"{strMonth}")]'
     def birthDayBtn(strDay):
-        return f'//button[contains(@class, "calendar")]//div[contains(text(),"{strDay}")]'
+        return f'//button[contains(@class, "calendar")]//span[text()="{strDay}"]'
     addMoreBtn = '//span[text()="Add More +"]'
+    addChildBtn = '//span[text()="Add Child"]'
     childBirthDateErrorMsg = '//mat-error[text() = "Date of birth is required."]'
+    childNameErrorMsg = '//mat-error[text() = "Child name is required."]'
+    childGenderErrorMsg = '//mat-error[text() = " Gender is required. "]'
+    addChildSuccessMsg = '//span[text()="Child has been added successfully"]'
 
 
 

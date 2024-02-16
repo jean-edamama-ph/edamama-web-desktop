@@ -133,14 +133,14 @@ class AUTO1025:
     newChildData = {
         'strChildName': 'Child Name',
         'strMonth': 'JUN',
-        'strDay': '21',
+        'strDay': ' 21 ',
         'strYear': '2022',
         'strGender': 'Girl'
     }
     updatedChildData = {
         'strChildName': 'Child Updated',
         'strMonth': 'APR',
-        'strDay': '25',
+        'strDay': ' 25 ',
         'strYear': '2021',
         'strGender': 'Boy'
     }
@@ -341,4 +341,67 @@ class AUTO1394_AUTO1397_1400:
         'strBrgy': 'TUNGKONG MANGGA',
         'strLotUnitStBldg': 'Test Street',
         'strLandmark': 'Random landmark'
+    }
+    
+    
+class AUTO1097:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': None,
+        'strLastName': None,
+        'strMobile': None,
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1242',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    
+
+class AUTO1100:
+    strMyProfile = 'my profile'
+    addressData = {
+        'strFirstName': 'New',
+        'strLastName': 'Address',
+        'strMobile': '9562347564',
+        'strProvince': None,
+        'strCity': None,
+        'strZipCode': None,
+        'strBrgy': None,
+        'strLotUnitStBldg': None,
+        'strLandmark': 'Random landmark'
+    }
+    
+    
+class AUTO1094:
+    strMyProfile = 'my profile'
+    newChildData = {
+        'strChildName': None,
+        'strMonth': None,
+        'strDay': None,
+        'strYear': None,
+        'strGender': None
+    }
+    
+    
+class AUTO1115:
+    strMyProfile = 'my profile'
+    newChildData = {
+        'strChildName': None,
+        'strMonth': 'JUN',
+        'strDay': ' 21 ',
+        'strYear': '2022',
+        'strGender': 'Girl'
+    }
+    
+    
+class AUTO1118:
+    strMyProfile = 'my profile'
+    newChildData = {
+        'strChildName': 'New Child',
+        'strMonth': 'JUN',
+        'strDay': ' 21 ',
+        'strYear': '2022',
+        'strGender': None
     }
