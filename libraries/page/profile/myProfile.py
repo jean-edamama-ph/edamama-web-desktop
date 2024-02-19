@@ -166,7 +166,7 @@ class ac:
     def birthMonthBtn(strMonth):
         return f'//span[contains(text(),"{strMonth}")]'
     def birthDayBtn(strDay):
-        return f'//button[contains(@class, "calendar")]//span[text()="{strDay}"]'
+        return f'//button[contains(@class, "calendar")]//span[text()=" {strDay} "]'
     addMoreBtn = '//span[text()="Add More +"]'
     addChildBtn = '//span[text()="Add Child"]'
     childBirthDateErrorMsg = '//mat-error[text() = "Date of birth is required."]'

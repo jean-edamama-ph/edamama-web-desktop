@@ -133,14 +133,14 @@ class AUTO1025:
     newChildData = {
         'strChildName': 'Child Name',
         'strMonth': 'JUN',
-        'strDay': ' 21 ',
+        'strDay': '21',
         'strYear': '2022',
         'strGender': 'Girl'
     }
     updatedChildData = {
         'strChildName': 'Child Updated',
         'strMonth': 'APR',
-        'strDay': ' 25 ',
+        'strDay': '25',
         'strYear': '2021',
         'strGender': 'Boy'
     }
@@ -390,7 +390,7 @@ class AUTO1115:
     newChildData = {
         'strChildName': None,
         'strMonth': 'JUN',
-        'strDay': ' 21 ',
+        'strDay': '21',
         'strYear': '2022',
         'strGender': 'Girl'
     }
@@ -401,7 +401,7 @@ class AUTO1118:
     newChildData = {
         'strChildName': 'New Child',
         'strMonth': 'JUN',
-        'strDay': ' 21 ',
+        'strDay': '21',
         'strYear': '2022',
         'strGender': None
     }
