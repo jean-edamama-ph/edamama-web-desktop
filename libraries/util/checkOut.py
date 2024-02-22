@@ -9,6 +9,9 @@ import libraries.util.cart as uCart
 import libraries.util.shop as uShop
 import libraries.util.common as uCommon
 
+import libraries.api.ap.util.apiCall.rewards as apiRewards
+import libraries.api.ap.util.apiCall.login as apiLogin
+
 @uCommon.ufuncLog  
 def checkOutItem(page, strItemName = '', strType = 'fp'):   
     """ 
@@ -255,14 +258,14 @@ def selectModeOfPaymentAndBeansOrPromo(page, strMOP = '', strBeansPromo = '', st
             strMarkdownTotalAmt = uCommon.getElemText(page, pCheckOut.pm.markdownTotalAmountLbl).strip()
             floatMarkDownTotalAmt = convertTotalAmtToFloat(strMarkdownTotalAmt)
         floatTotalSubAmt = floatSubTotalAmt + floatMarkDownTotalAmt
-        floatComputedBeanToUse = floatTotalSubAmt * 0.15
-        if floatComputedBeanToUse < 400.0:
-            if '.0' in str(floatComputedBeanToUse):
-                strComputedBeansToUse = str(floatComputedBeanToUse).replace('.0', '')
-            else:
-                strComputedBeansToUse = str(floatComputedBeanToUse)
+        apiLogin.postLogin()
+        dictCreditsConfigurations = apiRewards.getCreditsConfigurations()
+        floatRewardsPercentageCap = dictCreditsConfigurations['floatRewardsPercentageCap'] / 100
+        floatComputedBeanToUse = floatTotalSubAmt * floatRewardsPercentageCap
+        if floatComputedBeanToUse < dictCreditsConfigurations['floatRewardsAmountCap']:
+            strComputedBeansToUse = str(int(floatComputedBeanToUse))
         else:
-            strComputedBeansToUse = '400'
+            strComputedBeansToUse = str(int(dictCreditsConfigurations['floatRewardsAmountCap']))
         uCommon.getElemTextAndCheckIfContainsText(page, pCheckOut.pm.totalBeanRewardToUseLbl, strComputedBeansToUse)
     elif strBeansPromo == 'promo':
         uCommon.waitAndClickElem(page, pCheckOut.pm.enterPromoCodeRdb)
