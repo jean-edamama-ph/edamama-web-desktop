@@ -17,5 +17,5 @@ def getCreditsConfigurations():
     responseData = uCommon.getResponseData(strResponse)
     intRewardsPercentageCap = (responseData["data"])["rewardsPercentageCap"]
     intRewardsAmountCap = (responseData["data"])["rewardsAmountCap"]
-    dictCreditsConfigurations = {'intRewardsPercentageCap': intRewardsPercentageCap, 'intRewardsAmountCap': intRewardsAmountCap}
+    dictCreditsConfigurations = {'floatRewardsPercentageCap': float(intRewardsPercentageCap), 'floatRewardsAmountCap': float(intRewardsAmountCap)}
     return dictCreditsConfigurations

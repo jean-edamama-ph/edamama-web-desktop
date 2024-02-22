@@ -260,15 +260,12 @@ def selectModeOfPaymentAndBeansOrPromo(page, strMOP = '', strBeansPromo = '', st
         floatTotalSubAmt = floatSubTotalAmt + floatMarkDownTotalAmt
         apiLogin.postLogin()
         dictCreditsConfigurations = apiRewards.getCreditsConfigurations()
-        floatRewardsPercentageCap = float(dictCreditsConfigurations['intRewardsPercentageCap'] / 100)
+        floatRewardsPercentageCap = dictCreditsConfigurations['floatRewardsPercentageCap'] / 100
         floatComputedBeanToUse = floatTotalSubAmt * floatRewardsPercentageCap
-        if floatComputedBeanToUse < 400.0:
-            if '.0' in str(floatComputedBeanToUse):
-                strComputedBeansToUse = str(floatComputedBeanToUse).replace('.0', '')
-            else:
-                strComputedBeansToUse = str(floatComputedBeanToUse)
+        if floatComputedBeanToUse < dictCreditsConfigurations['floatRewardsAmountCap']:
+            strComputedBeansToUse = str(int(floatComputedBeanToUse))
         else:
-            strComputedBeansToUse = str(dictCreditsConfigurations['intRewardsAmountCap'])
+            strComputedBeansToUse = str(int(dictCreditsConfigurations['floatRewardsAmountCap']))
         uCommon.getElemTextAndCheckIfContainsText(page, pCheckOut.pm.totalBeanRewardToUseLbl, strComputedBeansToUse)
     elif strBeansPromo == 'promo':
         uCommon.waitAndClickElem(page, pCheckOut.pm.enterPromoCodeRdb)
