@@ -54,3 +54,6 @@ class card:
     strDate  ='08/24'
     strCvv = '123'
     strPassword = '1234'
+
+class api:
+    strAccessToken = ''
