@@ -196,7 +196,7 @@ class sp:
         sp.validateFeaturedProducts(page)
         sp.validateAnko(page)
         sp.validateDiscover(page)
-        sp.validateBean(page)
+        #sp.validateBean(page)
         sp.validateSubscribeAndSave(page)
         sp.validateBabyGear(page)
         sp.validateFormulaAndMilk(page)

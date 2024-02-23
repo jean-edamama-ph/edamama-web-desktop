@@ -90,9 +90,10 @@ class ln:
         returns: None
         Author: ccapistrano_20230327
         """
-        uCommon.waitAndClickElem(page, pCommon.header.shopBtn)
-        uCommon.waitForLoadState(page, 'networkidle')
-        uCommon.waitAndClickElem(page, pCommon.header.LoginBtn)
+        if uCommon.verifyVisible(page, pLogin.com.emailAddressTxt) == False:
+            #uCommon.waitAndClickElem(page, pCommon.header.shopBtn)
+            #uCommon.waitForLoadState(page, 'networkidle')
+            uCommon.waitAndClickElem(page, pCommon.header.LoginBtn)
         uCommon.wait(page, 2)
         uCommon.waitElemToBeVisible(page, pLogin.com.emailAddressTxt)
         uCommon.setElem(page, pLogin.com.emailAddressTxt, strUserName)
@@ -347,7 +348,7 @@ class rp:
         uCommon.closeWindow(window, 0)
         rp.validateResetPasswordPage(window)
         rp.fillAndClickSubmitResetPassword(window, strNewPassword)
-        uCommon.wait(page, 1)
+        uCommon.wait(window, 1)
         rp.validateAndClickProceedToLogin(window)
         return window
 

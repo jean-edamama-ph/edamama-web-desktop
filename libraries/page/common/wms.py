@@ -1,4 +1,4 @@
-dsORwhLst = '//facilitymodule[@class="facility_module "]//a[@class="select2-choice"]'
+dsORwhLst = '//facilitymodule[@class="facility_module"]//a[@class="select2-choice"]'
 dropShipOption = '//div[text()="Edamama Dropship"]'
 wareHouseOption = '//div[text()="Edamama Warehouse"]'
 
