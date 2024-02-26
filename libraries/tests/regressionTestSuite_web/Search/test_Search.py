@@ -24,7 +24,6 @@ def test_FND_AUTO_1275_Search_001_Search_Bar_UI_in_Shop_Homepage(page):
 """ Author: jatregenio_20240219 Execution Time: 22s - 24s """
 @pytest.mark.regressionTestSuite()
 @pytest.mark.findTestSuite()
-@pytest.mark.thisTest()
 @allure.step('Verify Entered Searched Keyword (without clicking Search) and the Search Drawer contents')
 def test_FND_AUTO_1281_Search_003_Entering_Search_Keyword_without_clicking_Search(page):
     uCommon.log(0, 'Step 1 - Open edamama website')
@@ -35,7 +34,7 @@ def test_FND_AUTO_1281_Search_003_Entering_Search_Keyword_without_clicking_Searc
     uCommon.wait(page, 3)
     
     uCommon.log(0, 'Step 3 - Check Search Results in the Search Drawer')
-    uSearch.com.verifySearchDrawersIfVisible(page)
+    uSearch.com.validateSearchDrawersIfVisible(page)
     uCommon.log(0, 'Test Complete')
     
     
