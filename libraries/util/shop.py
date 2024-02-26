@@ -284,6 +284,7 @@ class sp:
         param strName: Item or Brand Name
         returns: None
         Author: ccapistrano_20230327
+        Update: jatregenio_20240219
         """
         sp.searchName(page, strName)
         if uCommon.verifyVisible(page, pShop.sl.showingOutOfLbl) == False:
@@ -295,7 +296,11 @@ class sp:
         elif strType == 'item':
             intItemNameCnt = uCommon.getArrayCount(page, pShop.sl.allItemNameLbl)
             for item in range(intItemNameCnt):
-                uCommon.validateElemText(page, pShop.sl.itemNameLbl(item+1), strName) 
+                if item == 0:
+                    uCommon.validateElemText(page, pShop.sl.itemNameLbl(item+1), strName) 
+                else:
+                    break
+
     
     @uCommon.ufuncLog  
     def searchAndWaitItem(page, strName, blnVisible = True, intMin = 20):
