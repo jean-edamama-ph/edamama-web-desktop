@@ -13,7 +13,7 @@ class com:
 
     cartIconBtn = '//nav[contains(@class,"navbar")]//span[text()="Signup"]//img[@src="./assets/images/header/cart.svg"]'
     giftBoxIconBtn = '//nav[contains(@class,"navbar")]//span[text()="Signup"]//img[@src="assets/images/header/gift-registry.svg"]'
-    profileIcon = '//div[@class="user_thumb"]//img'
+    profileIcon = '//div[@class="profile-thumbnail"]//img'
     arrowDownBtn = '//mat-icon[text()="keyboard_arrow_down"]'
     cartCounterLbl = '//span[@id="cartCounter"]'
 
@@ -62,12 +62,12 @@ class footer:
     
 class pb:
     """PROFILE BUTTONS"""
-    myProfileBtn = '//button[text()="My Profile"]'
-    myBeansBtn = '//button[text()="My Beans"]'
-    wishlistBtn = '//button[text()="Wishlist"]'
-    myOrdersBtn = '//button[text()="My Orders"]'
-    mySubscriptionBtn = '//button[text()="My Subscriptions"]'
-    logOutBtn = '//button[text()=" Logout "]'
+    myProfileBtn = '//button[contains(text(),"My Profile")]'
+    myBeansBtn = '//button[contains(text(),"My Beans")]'
+    wishlistBtn = '//button[contains(text(),"Wishlist")]'
+    myOrdersBtn = '//button[contains(text(),"My Orders")]'
+    mySubscriptionBtn = '//button[contains(text(),"My Subscriptions")]'
+    logOutBtn = '//button[contains(text(),"Logout")]'
     
 class fp:
     """FORGOT PASSWORD"""

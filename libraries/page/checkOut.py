@@ -70,7 +70,7 @@ class pm:
     totalBeanLbl = '//span[@class="total-beans"]'
     toalBeanImg = f'{totalBeanLbl}/..//img[@src="assets/images/discounts/beans.svg"]'
     totalBeanRewardToUseLbl = f'{useBeansLbl}/../div/span[1]'
-    enterPromoCodeLbl = '//span[contains(text(),"Enter Promo Code")]'
+    enterPromoCodeLbl = '//span[contains(text(),"Enter Voucher Code")]'
     enterPromoCodeRdb = f'{enterPromoCodeLbl}/..//input[@type="radio"]'
     availablePromoCodeLbl = '//span[contains(text(),"Available")]'
     arrowForwardIconBtn = f'{availablePromoCodeLbl}/..//mat-icon'
@@ -131,9 +131,9 @@ class cc:
     
 class pc:
     """ENTER PROMO CODE"""
-    enterPromocodeLbl = '//p[text()="Enter Promo Code"]'
+    enterPromocodeLbl = '//p[text()="Enter Voucher Code"]'
     xbtn = xbtn
-    enterPromoCodeTxt = '//input[@placeholder="Enter Promo Code"]'
+    enterPromoCodeTxt = '//input[@placeholder="Enter Voucher Code"]'
     applyBtn = '//button[contains(text(),"Apply")]'
     
 class ty:
