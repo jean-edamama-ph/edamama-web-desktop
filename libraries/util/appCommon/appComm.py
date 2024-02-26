@@ -91,8 +91,6 @@ class ln:
         Author: ccapistrano_20230327
         """
         if uCommon.verifyVisible(page, pLogin.com.emailAddressTxt) == False:
-            #uCommon.waitAndClickElem(page, pCommon.header.shopBtn)
-            #uCommon.waitForLoadState(page, 'networkidle')
             uCommon.waitAndClickElem(page, pCommon.header.LoginBtn)
         uCommon.wait(page, 2)
         uCommon.waitElemToBeVisible(page, pLogin.com.emailAddressTxt)

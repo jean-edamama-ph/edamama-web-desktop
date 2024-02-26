@@ -62,12 +62,12 @@ class footer:
     
 class pb:
     """PROFILE BUTTONS"""
-    myProfileBtn = '//button[text()=" My Profile "]'
-    myBeansBtn = '//button[text()=" My Beans "]'
-    wishlistBtn = '//button[text()=" Wishlist "]'
-    myOrdersBtn = '//button[text()=" My Orders "]'
-    mySubscriptionBtn = '//button[text()=" My Subscriptions "]'
-    logOutBtn = '//button[text()="Logout"]'
+    myProfileBtn = '//button[contains(text(),"My Profile")]'
+    myBeansBtn = '//button[contains(text(),"My Beans")]'
+    wishlistBtn = '//button[contains(text(),"Wishlist")]'
+    myOrdersBtn = '//button[contains(text(),"My Orders")]'
+    mySubscriptionBtn = '//button[contains(text(),"My Subscriptions")]'
+    logOutBtn = '//button[contains(text(),"Logout")]'
     
 class fp:
     """FORGOT PASSWORD"""
