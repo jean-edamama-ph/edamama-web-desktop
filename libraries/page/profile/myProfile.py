@@ -64,6 +64,7 @@ class mv:
     verifyCodeBtn = '//button//span[normalize-space(text())="Verify Code"]'
     closeBtn = '//mat-icon[text()="close"]'
     invalidPinErrorMsg = '//span[text()="PIN is required. Please input a PIN."]'
+    invalidNumberErrorMsg = '//mat-error[text()=" Phone Number is not a valid number. "]'
 
 
 
@@ -105,6 +106,8 @@ class ep:
     firstNameErrorMsg = '//mat-error[text()="Firstname can not be more than 40 characters long"]'
     lastNameErrorMsg = '//mat-error[text()="Lastname can not be more than 40 characters long"]'
     closeBtn = '//mat-icon[text()="close"]'
+    firstNameBlankErrorMsg = '//mat-error[text()="Firstname is required"]'
+    lastNameBlankErrorMsg = '//mat-error[text()="Lastname is required"]'
 
 
     
