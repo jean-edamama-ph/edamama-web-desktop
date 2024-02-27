@@ -226,6 +226,17 @@ class com:
             return True
         else:
             return False      
+        
+    @uCommon.ufuncLog
+    def verifyEmailAddress(page):
+        """ 
+        Objective: To check that email address exists on Profile page.
+        param: None
+        returns: None
+        Author: abernal_20240227
+        """
+        strEmail = uCommon.getElemText(page, pMyProfile.com.emailLbl)
+        uCommon.validateElemText(page, pMyProfile.com.emailLbl, strEmail)
     
     
     
@@ -721,6 +732,16 @@ class mn:
         Author: rmakiling_20240115
         """
         uCommon.clickElem(page,pMyProfile.mv.closeBtn)
+        
+    @uCommon.ufuncLog
+    def verifyValidPhoneNumber(page):
+        """ 
+        Objective: To verify that phone number is valid.
+        
+        returns: None
+        Author: abernal_20240227
+        """
+        uCommon.waitElemToBeVisible(page, pMyProfile.mv.invalidNumberErrorMsg)
 
 
 
@@ -873,4 +894,37 @@ class edp:
         Author: rmakiling_20240115
         """
         uCommon.clickElem(page,pMyProfile.ep.closeBtn)
+        
+    @uCommon.ufuncLog
+    def clickAndVerifyProfileDetails(page, dictData):
+        """ 
+        Objective: To click the update button, to verify if error message is displayed.
+        
+        param dictData: Text
+        returns: None
+        Author: abernal_20240219
+        """
+        uCommon.clickElem(page, pMyProfile.ep.updateBtn)
+        if dictData["strFName"] == "":
+            uCommon.waitElemToBeVisible(page, pMyProfile.ep.firstNameBlankErrorMsg)
+        elif dictData["strLName"] == "":
+            uCommon.waitElemToBeVisible(page, pMyProfile.ep.lastNameBlankErrorMsg)
+        else:
+            uCommon.waitElemNotToBeVisible(page, pMyProfile.ep.editProfileLbl)
+            uCommon.verifyVisible(page, pMyProfile.ep.profileUpdatedSuccessfullyMsg)
+            
+    @uCommon.ufuncLog
+    def clickEditAndVerifyProfileDetails(page, dictData):
+        """ 
+        Objective: To click the edit button, update profile details, and verify.
+        
+        param dictData: Text
+        returns: None
+        Author: abernal_20240219
+        """
+        
+        com.clickEditbtn(page)
+        edp.fillDetails(page, dictData)
+        edp.clickAndVerifyProfileDetails(page, dictData)
+        edp.clickCloseBtn(page)
     

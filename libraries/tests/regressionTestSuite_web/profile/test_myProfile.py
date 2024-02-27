@@ -734,3 +734,60 @@ def test_ACQ_AUTO_1118_Error_message_should_be_displayed_if_Child_Gender_is_blan
     uMyProfile.ac.addChildDetails(page, dRegMyProfile.AUTO1118.newChildData)
     uMyProfile.ac.clickAndVerifyAddChild(page, dRegMyProfile.AUTO1118.newChildData)
     uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240219 Execution Time: 15s - 25s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is displayed if First Name is blank.')
+#test_ACQ_AUTO_1127_Error_message_should_be_displayed_if_Last_Name_is_blank
+def test_ACQ_AUTO_1121_Error_message_should_be_displayed_if_First_Name_is_blank(page):
+
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName3)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1121.strMyProfile)
+    
+    uCommon.log(0, '[AUTO-1121 Started]: Remove value under First Name.')
+    uCommon.log(0, 'Step 3 - Click Edit button. Remove the value under First Name and click Update button. Verify if error message is displayed.')
+    uMyProfile.edp.clickEditAndVerifyProfileDetails(page, dRegMyProfile.AUTO1121.dictData)
+    uCommon.log(0, '[AUTO-1121 Completed]: Removed value under First Name.')
+    
+    uCommon.log(0, '[AUTO-1127 Started]: Remove value under Last Name.')
+    uCommon.log(0, 'Step 4 - Remove the value under Last Name and click Update button. Verify if error message is displayed.')
+    uMyProfile.edp.clickEditAndVerifyProfileDetails(page, dRegMyProfile.AUTO1127.dictData)
+    uCommon.log(0, '[AUTO-1127 Completed]: Removed value under Last Name.')
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240226 Execution Time: 23s - 25s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that email is not editable.')
+def test_ACQ_AUTO_1109_Email_should_not_be_editable(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName4)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1109.strMyProfile)
+
+    uCommon.log(0, 'Step 3 - Verify that email is not editable.')
+    uMyProfile.com.verifyEmailAddress(page)
+    
+    
+""" Author: abernal_20240226 Execution Time: 14s - 17s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error is encountered upon entering an invalid phone number.')
+def test_ACQ_AUTO_1749_Error_should_be_encountered_upon_entering_an_invalid_phone_number(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName5)
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1749.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Click the edit icon on the phone number and input an invalid number. Verify if an error is encountered.')
+    uMyProfile.mn.clickEditMobileNumber(page)
+    uMyProfile.mn.inputNumberAndSendCode(page, dRegMyProfile.AUTO1749.strMobileNumber)
+    uMyProfile.mn.verifyValidPhoneNumber(page)

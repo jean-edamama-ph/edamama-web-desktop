@@ -405,3 +405,28 @@ class AUTO1118:
         'strYear': '2022',
         'strGender': None
     }
+    
+    
+class AUTO1121:
+    strMyProfile = 'my profile'
+    dictData = {
+    'strFName': '',
+    'strLName': 'Update'
+    }
+    
+    
+class AUTO1127:
+    strMyProfile = 'my profile'
+    dictData = {
+    'strFName': 'Nads',
+    'strLName': ''
+    }
+
+
+class AUTO1109:
+    strMyProfile = 'my profile'
+    
+    
+class AUTO1749:
+    strMyProfile = 'my profile'
+    strMobileNumber = '000000'
