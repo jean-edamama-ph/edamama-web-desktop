@@ -64,7 +64,7 @@ class mv:
     verifyCodeBtn = '//button//span[normalize-space(text())="Verify Code"]'
     closeBtn = '//mat-icon[text()="close"]'
     invalidPinErrorMsg = '//span[text()="PIN is required. Please input a PIN."]'
-    invalidNumberErrorMsg = '//mat-error[text()=" Phone Number is not a valid number. "]'
+    invalidNumberErrorMsg = '//mat-error[contains(text(),"Phone Number is not a valid number.")]'
 
 
 

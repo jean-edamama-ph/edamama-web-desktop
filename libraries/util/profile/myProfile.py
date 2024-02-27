@@ -900,7 +900,7 @@ class edp:
         """ 
         Objective: To click the update button, to verify if error message is displayed.
         
-        param None
+        param dictData: Text
         returns: None
         Author: abernal_20240219
         """
@@ -912,4 +912,19 @@ class edp:
         else:
             uCommon.waitElemNotToBeVisible(page, pMyProfile.ep.editProfileLbl)
             uCommon.verifyVisible(page, pMyProfile.ep.profileUpdatedSuccessfullyMsg)
+            
+    @uCommon.ufuncLog
+    def clickEditAndVerifyProfileDetails(page, dictData):
+        """ 
+        Objective: To click the edit button, update profile details, and verify.
+        
+        param dictData: Text
+        returns: None
+        Author: abernal_20240219
+        """
+        
+        com.clickEditbtn(page)
+        edp.fillDetails(page, dictData)
+        edp.clickAndVerifyProfileDetails(page, dictData)
+        edp.clickCloseBtn(page)
     

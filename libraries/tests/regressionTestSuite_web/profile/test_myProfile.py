@@ -736,7 +736,7 @@ def test_ACQ_AUTO_1118_Error_message_should_be_displayed_if_Child_Gender_is_blan
     uCommon.log(0, 'Test Completed')
     
     
-""" Author: abernal_20240219 Execution Time: 19s - 25s """
+""" Author: abernal_20240219 Execution Time: 15s - 25s """
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that error message is displayed if First Name is blank.')
@@ -749,21 +749,14 @@ def test_ACQ_AUTO_1121_Error_message_should_be_displayed_if_First_Name_is_blank(
     uCommon.log(0, 'Step 2 - Navigate to My Profile page')
     uAppComm.com.navigateToProfileMenu(page, dRegMyProfile.AUTO1121.strMyProfile)
     
-    uCommon.log(0, 'Step 3 - Click Edit button on Profile details.')
-    uMyProfile.com.clickEditbtn(page)
-    
     uCommon.log(0, '[AUTO-1121 Started]: Remove value under First Name.')
-    uCommon.log(0, 'Step 4 - Remove the value under First Name and click Update button. Verify if error message is displayed.')
-    uMyProfile.edp.fillDetails(page, dRegMyProfile.AUTO1121.dictData)
-    uMyProfile.edp.clickAndVerifyProfileDetails(page, dRegMyProfile.AUTO1121.dictData)
-    uMyProfile.edp.clickCloseBtn(page)
+    uCommon.log(0, 'Step 3 - Click Edit button. Remove the value under First Name and click Update button. Verify if error message is displayed.')
+    uMyProfile.edp.clickEditAndVerifyProfileDetails(page, dRegMyProfile.AUTO1121.dictData)
     uCommon.log(0, '[AUTO-1121 Completed]: Removed value under First Name.')
     
     uCommon.log(0, '[AUTO-1127 Started]: Remove value under Last Name.')
-    uCommon.log(0, 'Step 5 - Remove the value under Last Name and click Update button. Verify if error message is displayed.')
-    uMyProfile.com.clickEditbtn(page)
-    uMyProfile.edp.fillDetails(page, dRegMyProfile.AUTO1127.dictData)
-    uMyProfile.edp.clickAndVerifyProfileDetails(page, dRegMyProfile.AUTO1127.dictData)
+    uCommon.log(0, 'Step 4 - Remove the value under Last Name and click Update button. Verify if error message is displayed.')
+    uMyProfile.edp.clickEditAndVerifyProfileDetails(page, dRegMyProfile.AUTO1127.dictData)
     uCommon.log(0, '[AUTO-1127 Completed]: Removed value under Last Name.')
     uCommon.log(0, 'Test Completed')
     
