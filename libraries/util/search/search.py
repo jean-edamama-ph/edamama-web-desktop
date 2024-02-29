@@ -1,3 +1,4 @@
+from selenium.common.exceptions import NoSuchElementException
 import libraries.page.common.common as pCommon
 import libraries.util.common as uCommon
 import libraries.util.appCommon.appComm as uAppComm
@@ -33,8 +34,50 @@ class com:
         """
         uCommon.waitElemToBeVisible(page, pSearch.com.shopDrawerPnl)
         uCommon.waitElemToBeVisible(page, pSearch.com.discoverDrawerPnl)
-        
 
+    @uCommon.funcLog
+    def clickSearchBar(page):
+        """ 
+        Objective: Click the search bar header
+        
+        param: None
+        returns: None
+        Author: jatregenio_20240229
+        """
+        uCommon.waitAndClickElem(page, pCommon.header.searchForYourFavTxt)
+        
+    @uCommon.funcLog
+    def validateRecentSearchesIfVisible(page, strValue):
+        """ 
+        Objective: Validate if previous search is existing in recent searches UI
+        
+        param strValue: Text
+        returns: None
+        Author: jatregenio_20240229
+        """
+
+        if uCommon.verifyVisible(page, pSearch.com.recentSearchLbl(strValue)) == False:
+            NoSuchElementException
+        
+    @uCommon.funcLog
+    def validateRecentSearchesSequence(page, intCtr, strValue):
+        """ 
+        Objective: Validate the sequence of the recent searches
+        
+        param intCtr: Integer
+        param strValue: Text
+        returns: None
+        Author: jatregenio_20240229
+        """
+        if uCommon.verifyVisible(page, pSearch.com.recentSearchSequenceLbl(intCtr)) == False:
+            NoSuchElementException
+        else:
+            uCommon.validateElemText(page, pSearch.com.recentSearchSequenceLbl(intCtr), strValue)
+
+
+
+
+    
 class plp:
     """SEARCH PRODUCT LISTING PAGE"""
     
@@ -49,7 +92,31 @@ class plp:
         Author: jatregenio_20240219
         """
         uShop.sp.searchAndValidateName(page, strType, strValue)
-        arrObj = ['plpStatusLbl','colorSectionPnl', 'ageGroupSectionPnl', 'genderSectionPnl', 'brandSectionPnl', 'sortByLbl', 'relevanceBtn']
-        for item in arrObj:
-            uCommon.waitElemToBeVisible(page, pSearch.com.__dict__[item])
-
+        uCommon.wait(page, 0.5)
+        plp.validatePlpElem(page, strType)
+            
+    @uCommon.funcLog
+    def validatePlpElem(page, strType):
+        """ 
+        Objective: validate the PLP elements
+        
+        param strType: brand|item|keyword
+        returns: None
+        Author: jatregenio_20240228
+        """
+        if strType == 'brand' or strType == 'keyword':
+            arrObj = ['plpStatusLbl','colorSectionPnl', 'ageGroupSectionPnl', 'genderSectionPnl', 'brandSectionPnl', 'sortByLbl', 'relevanceBtn', 'priceFilterSectionPnl']
+            for item in arrObj:
+                uCommon.waitElemToBeVisible(page, pSearch.com.__dict__[item])          
+                      
+            arrObj = ['priceHeaderLbl', 'maxPriceLbl', 'minPesoSignLbl', 'maxPesoSignLbl', 'minPriceTxt', 'maxPriceTxt', 'applyBtn', 'colorHeaderLbl', 'ageGrpHeaderLbl',
+                      'genderHeaderLbl', 'brandHeaderLbl']
+            for item in arrObj:
+                uCommon.waitElemToBeVisible(page, pSearch.flt.__dict__[item])
+        else:
+            arrObj = ['sortByLbl', 'relevanceBtn', 'priceFilterSectionPnl']
+            for item in arrObj:
+                uCommon.waitElemToBeVisible(page, pSearch.com.__dict__[item])     
+            arrObj = ['priceHeaderLbl', 'minPriceLbl', 'maxPriceLbl', 'minPesoSignLbl', 'maxPesoSignLbl', 'minPriceTxt', 'maxPriceTxt', 'applyBtn']
+            for item in arrObj:
+                uCommon.waitElemToBeVisible(page, pSearch.flt.__dict__[item])
