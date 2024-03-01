@@ -45,6 +45,7 @@ def test_FND_AUTO_1281_Search_003_Entering_Search_Keyword_without_clicking_Searc
 @allure.step('Verify if User will be redirected to Search Results PLP - Verify if Recent Searched Keywords is displayed in the Search Drawer')
 def test_FND_AUTO_1293_Search_007_Search_for_a_Product_with_Discount_via_clicking_Search_Button(page):
 #test_FND_AUTO_1693_Recent_Searches_Section_UI
+#test_FND_AUTO_1696_Clicking_Recent_Searches_in_Search_Drawer
 
     uCommon.log(0, 'Step 1 - Go to Edamama website')
     uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName1)
@@ -76,3 +77,9 @@ def test_FND_AUTO_1293_Search_007_Search_for_a_Product_with_Discount_via_clickin
     uSearch.com.validateRecentSearchesSequence(page, dSearch.AUTO1293.intSeqItem, dSearch.AUTO1293.strItemName)
     uCommon.log(0, '[AUTO-1693] - Test Completed')
     
+    uCommon.log(0, '[AUTO-1696 Started] - Clicking Recent Searches in Search Drawer')
+    uCommon.log(0, 'Step 6 - Click Recent Searched Keyword')
+    uSearch.com.clickRecenSearch(page, dSearch.AUTO1293.strKeyword)
+    uSearch.plp.validatePlpElem(page, dSearch.AUTO1293.strTypeKeyword)
+    uCommon.log(0, '[AUTO-1696] - Test Completed')
+    uCommon.log(0, 'Test Completed')

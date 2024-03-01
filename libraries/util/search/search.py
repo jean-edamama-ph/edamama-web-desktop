@@ -74,8 +74,16 @@ class com:
         else:
             uCommon.validateElemText(page, pSearch.com.recentSearchSequenceLbl(intCtr), strValue)
 
-
-
+    @uCommon.funcLog
+    def clickRecenSearch(page, strRecenSearchValue):
+        """ 
+        Objective: Click the 
+        
+        param strRecenSearchValue: Text
+        returns: None
+        Author: jatregenio_20240301
+        """
+        uCommon.clickElem(page, pSearch.com.recentSearchLbl(strRecenSearchValue))
 
     
 class plp:
