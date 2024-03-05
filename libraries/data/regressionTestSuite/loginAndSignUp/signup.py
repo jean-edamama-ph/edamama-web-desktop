@@ -1,3 +1,6 @@
+from datetime import datetime
+strDateTimeToday = datetime.today().strftime("%Y%m%d%H%M%S")
+
 class AUTO858:
     strEmailMsg = 'Email is required.'
     strFirstNameMsg = 'First Name is required.'
@@ -56,3 +59,12 @@ class AUTO853:
         'strEmailAddress': 'testkpcauto+1@gmail.com',
         'strPassword': 'test12345'
         }
+    
+class AUTO1621:
+    strMyProfile = 'my profile'
+    dictData = {
+        'strFirstName': f'Qa{strDateTimeToday}',
+        'strLastName': 'Testing',
+        'strEmailAddress': f'qatesting{strDateTimeToday}@edamama.ph',
+        'strPassword': 'Edamama@123!'}
+    strChidlName = f'QaChild{strDateTimeToday}'

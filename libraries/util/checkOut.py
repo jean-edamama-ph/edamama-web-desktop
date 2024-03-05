@@ -336,7 +336,7 @@ def clickProceedToPay(page):
     returns: None
     Author: ccapistrano_20230511
     """
-    uCommon.wait(page, 4)
+    uCommon.wait(page, 5)
     uCommon.waitForLoadState(page, 'networkidle')
     uCommon.waitAndClickElem(page, pCheckOut.com.proceedToPayBtn)
     # uCommon.waitElemToBeVisible(page, '//mat-spinner[contains(@class,"mat-progress-spinner")]')
