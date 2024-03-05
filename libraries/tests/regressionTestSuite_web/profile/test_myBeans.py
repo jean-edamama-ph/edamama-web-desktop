@@ -22,8 +22,8 @@ import libraries.util.tcTest as uTcTest
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that 5 bean rewards will be auto-credited to the user when adds a child attribute')
 @allure.step('To verify that 5 bean rewards will be auto-credited to the user when adds mama attribute.')
-#test_ACQ_AUTO_1624_Credited_Bean_Rewards_in_Bean_History_From_Adding_Attributes_Via_Complete_My_Profile
-def test_ACQ_AUTO_1621_Credited_Bean_Rewards_in_Bean_History_From_Adding_a_Child_Via_Complete_My_Profile(page):
+#test_ACQ_AUTO_1630_Credited_Bean_Rewards_in_Bean_History_From_Adding_Attributes_Via_Profile
+def test_ACQ_AUTO_1633_Credited_Bean_Rewards_in_Bean_History_From_Adding_a_Child_Via_Profile(page):
     uCommon.log(0, 'Step 1 - Open edamama website')
     uAppComm.ln.goToEdamamaURL(page)
     
