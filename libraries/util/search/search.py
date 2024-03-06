@@ -1,4 +1,3 @@
-from selenium.common.exceptions import NoSuchElementException
 import libraries.page.common.common as pCommon
 import libraries.util.common as uCommon
 import libraries.util.appCommon.appComm as uAppComm
@@ -55,9 +54,7 @@ class com:
         returns: None
         Author: jatregenio_20240229
         """
-
-        if uCommon.verifyVisible(page, pSearch.com.recentSearchLbl(strValue)) == False:
-            NoSuchElementException
+        uCommon.expectElemToBeVisible(page, pSearch.com.recentSearchLbl(strValue))
         
     @uCommon.funcLog
     def validateRecentSearchesSequence(page, intCtr, strValue):
@@ -69,9 +66,7 @@ class com:
         returns: None
         Author: jatregenio_20240229
         """
-        if uCommon.verifyVisible(page, pSearch.com.recentSearchSequenceLbl(intCtr)) == False:
-            NoSuchElementException
-        else:
+        if uCommon.verifyVisible(page, pSearch.com.recentSearchSequenceLbl(intCtr)) == True:
             uCommon.validateElemText(page, pSearch.com.recentSearchSequenceLbl(intCtr), strValue)
 
     @uCommon.funcLog
