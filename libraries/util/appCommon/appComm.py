@@ -555,6 +555,7 @@ class com:
         returns: None
         Author: ccapistrano_20230327
         """
+        uCommon.wait(page, 1)
         com.clickProfile(page)
         uCommon.wait(page, 1)
         match strMenu:

@@ -1,4 +1,5 @@
 import libraries.page.profile.myProfile as pMyProfile
+import libraries.page.profile.myBeans as pMyBeans
 import libraries.page.common.adminKpc as pAdminKpc
 
 import libraries.util.common as uCommon
@@ -237,8 +238,17 @@ class com:
         """
         strEmail = uCommon.getElemText(page, pMyProfile.com.emailLbl)
         uCommon.validateElemText(page, pMyProfile.com.emailLbl, strEmail)
-    
-    
+        
+    @uCommon.ufuncLog
+    def clickMyBeansTab(page):
+        """ 
+        Objective: To click My Beans tab.
+        param: None
+        returns: None
+        Author: abernal_20240229
+        """
+        uCommon.waitAndClickElem(page, pMyProfile.com.myBeansBtn)
+        uCommon.waitElemToBeVisible(page, pMyBeans.com.beanRewardLbl)
     
 
     

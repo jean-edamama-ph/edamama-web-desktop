@@ -430,3 +430,27 @@ class AUTO1109:
 class AUTO1749:
     strMyProfile = 'my profile'
     strMobileNumber = '000000'
+    
+    
+class AUTO1621:
+    strMyProfile = 'my profile'
+    newChildData = {
+        'strChildName': 'New Child',
+        'strMonth': 'JUN',
+        'strDay': '21',
+        'strYear': '2022',
+        'strGender': 'Girl'
+    }
+    
+
+class AUTO1624:
+    strMyProfile = 'my profile'
+    strMsg = 'Attributes has been updated successfully'
+    intAddAttributes = 5
+    dictData = {
+        'editAttribute1': 'Fashionista',
+        'editAttribute2': 'First-time Mama',
+        'editAttribute3': 'Mama Chef',
+        'editAttribute4': 'Mama Teacher',
+        'editAttribute5': 'Mamaste'
+    }

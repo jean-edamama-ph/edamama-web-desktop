@@ -139,6 +139,18 @@ def validateEmailVerificationPageAndClickCompleteMyProfile(page):
     """
     validateEmailVerificationPage(page)
     uCommon.clickElem(page, pSignUp.ev.rightArrowBtn)
+    
+@uCommon.ufuncLog     
+def validateEmailVerificationPageAndClickStartShopping(page):
+    """ 
+    Objective: Validate email verification page and click Start Shopping.
+    
+    param: None
+    returns: None
+    Author: abernal_20240229
+    """
+    validateEmailVerificationPage(page)
+    uCommon.clickElem(page, pSignUp.ev.startShoppingBtn)
 
 @uCommon.ufuncLog  
 def validateAddChildPage(page):

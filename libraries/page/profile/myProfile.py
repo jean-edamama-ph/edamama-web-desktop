@@ -47,6 +47,7 @@ class com:
     def addressPanelHeaderFullName(strCount):
         return f'{com.allAddressPnl}//div[contains(text(), "Address {strCount}")]/../..//div[@class="panel-header"]'
     defaultAddressLbl = f'{allAddressPnl}//span[contains(text(), "Default")]'
+    myBeansBtn = '//span[contains(text(),"My Beans")]'
         
 
 
