@@ -335,6 +335,7 @@ def clickProceedToPay(page):
     param: None
     returns: None
     Author: ccapistrano_20230511
+    Updated By: abernal_20240311
     """
     uCommon.wait(page, 5)
     uCommon.waitForLoadState(page, 'networkidle')

@@ -2,7 +2,7 @@ import pytest
 import allure
 import libraries.data.regressionTestSuite.profile.myProfile as dRegMyProfile
 import libraries.data.regressionTestSuite.loginAndSignUp.signup as dRegSignUp
-import libraries.data.regressionTestSuite.checkout as dRegCheckout
+import libraries.data.regressionTestSuite.cart.checkout as dRegCheckout
 
 import libraries.util.appCommon.adminKpc as uAdminKpc
 import libraries.util.appCommon.appComm as uAppComm
@@ -17,7 +17,7 @@ import libraries.util.appCommon.signUp as uSignUp
 import libraries.util.appCommon.email as uEmail
 import libraries.util.tcTest as uTcTest
 
-""" Author: abernal_20240227 Execution Time: 50s """
+""" Author: abernal_20240227 Execution Time: 50s - 54s"""
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that 5 bean rewards will be auto-credited to the user when adds a child attribute')
