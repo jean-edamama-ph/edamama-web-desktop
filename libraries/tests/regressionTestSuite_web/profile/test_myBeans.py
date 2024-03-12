@@ -121,3 +121,73 @@ def test_ACQ_AUTO_1627_Credited_Bean_Rewards_in_Bean_History_From_Beanback_Vouch
     uMyProfile.com.clickMyBeansTab(page)
     uMyBeans.com.verifyBeansRewardFromBeanbackVoucher(page)
     uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240311 Execution Time: 45s - 49s"""
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that 5 bean rewards will be auto-credited to the user when user adds a child attribute via Complete My Profile.')
+@allure.step('To verify that 5 bean rewards will be auto-credited to the user when user adds mama attribute via Complete My Profile.')
+@allure.step('To verify that 5 bean rewards will be auto-credited to the user when user after registration.')
+#test_ACQ_AUTO_1655_Credited_Bean_Rewards_in_Bean_History_From_Registration_With_Profile_Completion
+#test_ACQ_AUTO_1624_Credited_Bean_Rewards_in_Bean_History_From_Adding_Attributes_Via_Complete_My_Profile
+def test_ACQ_AUTO_1621_Credited_Bean_Rewards_in_Bean_History_From_Adding_a_Child_Via_Complete_My_Profile(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.goToEdamamaURL(page)
+    
+    uCommon.log(0, '[Pre-condition started]: Create new account and add attributes and child.')
+    uSignUp.clickSignUp(page)
+    uSignUp.validateSignUpPage(page)
+    arrData = uSignUp.fillandContinueSignUpPage(page, dRegSignUp.AUTO1621.dictData)
+    uSignUp.validateAndClickOKinAccountVerification(page)
+    uEmail.loginToGmail(page)
+    uEmail.clickFirstConfirmEmail(page, arrData)
+    uEmail.clickYesThisIsMyEmail(page)
+    newWindow = uCommon.switchToWindow(page)
+    uCommon.log(0, '[Pre-condition Completed]: Account created.')
+    
+    uCommon.log(0, 'Step 2 - Add child and attributes.')
+    uSignUp.validateEmailVerificationPageAndClickCompleteMyProfile(newWindow)
+    uSignUp.validateAddChildPage(newWindow)
+    uSignUp.fillAndAddChild(newWindow)
+    uSignUp.validateAlmostDonePage(newWindow)
+    uSignUp.clickNotAMama(newWindow)
+    uSignUp.clickSubmit(newWindow)
+    uSignUp.validateThankYouAndClickContinue(newWindow)
+    
+    uCommon.log(0, 'Step 3 - Navigate to profile > My Beans. Verify if 5 beans was rewarded to the user for adding a child and attributes.')
+    uAppComm.com.navigateToProfileMenu(newWindow, 'my profile')
+    uMyProfile.com.clickMyBeansTab(newWindow)
+    uMyBeans.com.verifyBeansRewardFromAddingChild(newWindow)
+    uMyBeans.com.verifyBeansRewardFromAddingAttribute(newWindow)
+    uMyBeans.com.verifyBeansRewardFromOnRegistration(newWindow)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240311 Execution Time: 46s - 50s"""
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that 5 bean rewards will be auto-credited to the user after registration')
+def test_ACQ_AUTO_1652_Credited_Bean_Rewards_in_Bean_History_From_Registration_Only(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.goToEdamamaURL(page)
+    
+    uCommon.log(0, '[Pre-condition started]: Create new account without adding attributes and child.')
+    uSignUp.clickSignUp(page)
+    uSignUp.validateSignUpPage(page)
+    arrData = uSignUp.fillandContinueSignUpPage(page, dRegSignUp.AUTO1621.dictData)
+    uSignUp.validateAndClickOKinAccountVerification(page)
+    uEmail.loginToGmail(page)
+    uEmail.clickFirstConfirmEmail(page, arrData)
+    uEmail.clickYesThisIsMyEmail(page)
+    newWindow = uCommon.switchToWindow(page)
+    uSignUp.validateEmailVerificationPageAndClickStartShopping(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Account created.')
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(newWindow, dRegMyProfile.AUTO1621.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Navigate to My Beans page and verify if On Registration activity is rewarded to the user.')
+    uMyProfile.com.clickMyBeansTab(newWindow)
+    uMyBeans.com.verifyBeansRewardFromOnRegistration(newWindow)
+    uCommon.log(0, 'Test Completed')  
