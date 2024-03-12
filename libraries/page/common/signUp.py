@@ -105,7 +105,7 @@ class ad:
     edamamaImg = edamamaImg
     almostDoneLbl = '//h2[text()="Almost done!"]'
     pickAttributesDescLbl = '//p[contains(text(),"No two mamas are the same. Select what best describes you,")]'
-    rewardOnCompletingDescLbl = '//p[contains(text(),"You get 5")]'
+    rewardOnCompletingDescLbl = '//p[contains(text(),"You get 5")][text()=" when you complete this step. "]'
     learnMoreLnk = '//a[contains(text(), "Learn more here")]'
     activeMamaBtn = '//span[@class="attribute-image active_mama"]'
     activeMamaLbl = '//span[text()="Active Mama"]'
