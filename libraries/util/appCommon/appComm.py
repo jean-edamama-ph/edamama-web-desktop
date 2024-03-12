@@ -53,7 +53,7 @@ class ln:
         Author: ccapistrano_20230327
         """
         uCommon.goToURL(page, dCommon.url.strAdminUrl)
-        uCommon.wait(page, 2)
+        uCommon.wait(page, 3)
         if uCommon.verifyVisible(page, pLogin.ak.adminPanelLbl) == False:
             uCommon.setElem(page, pLogin.ak.emailTxt, dCommon.user.adminKpc.strUserName)
             uCommon.setElem(page, pLogin.ak.passwordTxt, dCommon.user.adminKpc.strPassword)
@@ -252,6 +252,7 @@ class lo:
         uCommon.waitAndClickElem(page, pCommon.com.profileIcon)
         com.validateProfileButtons(page)
         uCommon.waitForLoadState(page, 'networkidle')
+        uCommon.wait(page, 1)
         uCommon.waitAndClickElem(page, pCommon.pb.logOutBtn)
         lo.validateLogOutPage(page)
         uCommon.waitAndClickElem(page, pLogin.lo.logOutBtn)

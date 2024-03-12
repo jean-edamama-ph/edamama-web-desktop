@@ -249,6 +249,7 @@ class sc:
         # strName = dictData['strName'] # NOTE: search via Customer Name in AP not working -enable this once fix
         strName = dictData['strName']
         uAppComm.ln.loginToAdminKPC(page)
+        uCommon.wait(page, 2)
         sc.cancelAllOrders(page, strName)
 
 
