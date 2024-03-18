@@ -11,6 +11,6 @@ class com:
     onProductPurchaseRewardLbl = '(//td[contains(text(),"On Product Purchase")])[1]//..//td[text()="2"]'
     onAddChildRewardLbl = '//td[contains(text(),"On Add Child")]//..//td[text()="5"]'
     onProductReviewRewardLbl = '(//td[contains(text(),"On Product Review")])[1]//..//td[text()="5"]'
-    onAddAttributeLbl = '//td[contains(text(),"On Add Attribute")]//..//td[text()="5"]'
+    onAddAttributeRewardLbl = '//td[contains(text(),"On Add Attribute")]//..//td[text()="5"]'
     
     

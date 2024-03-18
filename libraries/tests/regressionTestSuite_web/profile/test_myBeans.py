@@ -191,3 +191,115 @@ def test_ACQ_AUTO_1652_Credited_Bean_Rewards_in_Bean_History_From_Registration_O
     uMyProfile.com.clickMyBeansTab(newWindow)
     uMyBeans.com.verifyBeansRewardFromOnRegistration(newWindow)
     uCommon.log(0, 'Test Completed')  
+    
+    
+""" Author: abernal_20240311 Execution Time: 42s - 43s"""
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that reward is not credited in Beans History when user does not add a child in the Complete My Profile.')
+@allure.step('To verify that reward is not credited in Beans History when user does not add attributes in the Complete My Profile.')
+# test_ACQ_AUTO_1667_Rewards_should_not_be_credited_in_Beans_History_when_user_does_not_add_attributes_in_Complete_My_Profile
+def test_ACQ_AUTO_1664_Rewards_should_not_be_credited_in_Beans_History_when_user_does_not_add_a_child_in_Complete_My_Profile(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.goToEdamamaURL(page)
+    
+    uCommon.log(0, '[Pre-condition started]: Create new account without adding attributes and child.')
+    uSignUp.clickSignUp(page)
+    uSignUp.validateSignUpPage(page)
+    arrData = uSignUp.fillandContinueSignUpPage(page, dRegSignUp.AUTO1621.dictData)
+    uSignUp.validateAndClickOKinAccountVerification(page)
+    uEmail.loginToGmail(page)
+    uEmail.clickFirstConfirmEmail(page, arrData)
+    uEmail.clickYesThisIsMyEmail(page)
+    newWindow = uCommon.switchToWindow(page)
+    uSignUp.validateEmailVerificationPageAndClickStartShopping(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Account created.')
+    
+    uCommon.log(0, 'Step 2 - Navigate to My Profile page')
+    uAppComm.com.navigateToProfileMenu(newWindow, dRegMyProfile.AUTO1621.strMyProfile)
+    
+    uCommon.log(0, 'Step 3 - Navigate to My Beans page and verify if On Registration activity is rewarded to the user.')
+    uMyProfile.com.clickMyBeansTab(newWindow)
+    uMyBeans.com.verifyBeansRewardFromAddingChild(newWindow)
+    uMyBeans.com.verifyBeansRewardFromAddingAttribute(newWindow)  
+    uCommon.log(0, 'Test Completed')  
+    
+    
+""" Author: abernal_20240311 Execution Time: 1.04s - 1.05s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user receives a Beans Reward emailer after registration.')
+@allure.step('To verify that user receives a Beans Reward emailer after adding a child.')
+@allure.step('To verify that user receives a Beans Reward emailer after adding attributes.')
+#test_ACQ_AUTO_1676_User_should_receive_a_Beans_reward_emailer_after_registration
+#test_ACQ_AUTO_1670_User_should_receive_a_Beans_reward_emailer_after_adding_a_child
+def test_ACQ_AUTO_1673_User_should_receive_a_Beans_reward_emailer_after_adding_attributes(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.goToEdamamaURL(page)
+    
+    uCommon.log(0, '[Pre-condition started]: Create new account and add attributes and child.')
+    uSignUp.clickSignUp(page)
+    uSignUp.validateSignUpPage(page)
+    arrData = uSignUp.fillandContinueSignUpPage(page, dRegSignUp.AUTO1621.dictData)
+    uSignUp.validateAndClickOKinAccountVerification(page)
+    uEmail.loginToGmail(page)
+    uEmail.clickFirstConfirmEmail(page, arrData)
+    uEmail.clickYesThisIsMyEmail(page)
+    window = uCommon.switchToWindow(page)
+    uCommon.log(0, '[Pre-condition Completed]: Account created.')
+    
+    uCommon.log(0, 'Step 2 - Verify if user receives a bean rewarded email for registration.')
+    uSignUp.validateEmailVerificationPageAndClickCompleteMyProfile(window)
+    uCommon.backToWindow(page)
+    uEmail.clickBackButtonOnEmail(page)
+    uCommon.reloadPage(page)
+    uEmail.clickYouveBeanRewardRegistration(page, arrData)
+    uCommon.backToSecondWindow(window)
+    
+    uCommon.log(0, 'Step 3 - Add child and verify if user receives a bean rewarded email.')
+    uSignUp.validateAddChildPage(window)
+    uSignUp.fillAndAddChild(window)
+    uCommon.backToWindow(page)
+    uEmail.clickBackButtonOnEmail(page)
+    uCommon.reloadPage(page)
+    uEmail.clickYouveBeanRewardChild(page, arrData)
+    uCommon.backToSecondWindow(window)
+                            
+    uCommon.log(0, 'Step 4 - Add attributes and verify if user receives a bean rewarded email.')
+    uSignUp.validateAlmostDonePage(window)
+    uSignUp.clickNotAMama(window)
+    uSignUp.clickSubmit(window)
+    uCommon.backToWindow(page)
+    uEmail.clickBackButtonOnEmail(page)
+    uCommon.reloadPage(page)
+    uEmail.clickYouveBeanRewardAttribute(page, arrData)
+    uCommon.backToSecondWindow(window)
+    uSignUp.validateThankYouAndClickContinue(window)    
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240227 Execution Time: 1.39s - 1.47s  """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user receives a Beans Reward emailer after purchasing a product.')
+def test_ACQ_AUTO_1682_User_should_receive_a_Bean_Reward_emailer_after_successfully_purchasing_a_product(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName3)
+    
+    uCommon.log(0, 'Step 2 - Select a product and add to bag. Proceed to checkout. Select a MOP and click Place Order.')
+    strOrderID = uTcTest.validateE2EMOP(page, dRegCheckout.AUTO1639.dictData)
+    
+    uCommon.log(0, 'Step 3 - Copy the Order ID and navigate to the Order Module in the Admin Panel. Change status to Delivered.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.od.clickOrders(page)
+    uCommon.waitAndClickElemText(page, strOrderID)
+    window = uCommon.switchToWindow(page)
+    uAdminKpc.od.od.pt.clickEdit(window)
+    uAdminKpc.od.od.pt.clickAndSelectOrderStatus(window, 'Delivered')
+    uAdminKpc.od.od.pt.clickUpdate(window)
+    uCommon.closeWindow(page)
+    
+    uCommon.log(0, 'Step 4 - Navigate to email and verify if user receives a bean reward emailer.')
+    uEmail.loginToGmail(page)
+    uEmail.clickYouveBeanRewardPurchasing(page)
+    uCommon.log(0, 'Test Completed')

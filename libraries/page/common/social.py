@@ -28,6 +28,16 @@ class gm:
         divOrderDetailsElm = '//div[contains(@class,"order-details-wrapper")]'
         closeIconBtn = '//button[@aria-label="Close"]'
         firstNameLbl = '//div[contains(@class,"msg")]//span[contains(text(), "Hello there")]'
+        congratulationsFirstNameLbl = '//td[contains(text(),"Congratulations")]'
+        successfulBeanRewardChildLbl = '//p//span[contains(text(),"successfully adding your child")]'
+        youveBeanRewardedChildLbl = '(//span[contains(text(),"adding your child")])[1]'
+        inboxBtn = '//a[text()="Inbox"]'
+        successfulBeanRewardAttributesLbl = '//p//span[contains(text(),"successfully adding what best describes you")]'
+        youveBeanRewardedAttributesLbl = '(//span[contains(text(),"successfully adding what best describes you")])[1]'
+        successfulBeanRewardRegisterLbl = '//p//span[contains(text(),"successfully registering your profile")]'
+        youveBeanRewardedRegisterLbl = '(//span[contains(text(),"successfully registering your profile")])[1]'
+        successfulBeanRewardPurchaseLbl = '//p//span[contains(text(),"purchasing")]//..//span[contains(text(),"product")]'
+        youveBeanRewardedPurchaseLbl = '(//span[contains(text(),"purchasing")]//..//span[contains(text(),"product")])[1]'
      
 class fb:
     """FACEBOOK"""   

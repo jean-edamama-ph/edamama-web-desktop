@@ -693,3 +693,16 @@ def stringCompare(strToCompare, strToCompareIn, blnExact = True):
         assert strToCompare == strToCompareIn, f'Actual: "{strToCompare}" is not equal to Expected: "{strToCompareIn}"'
     elif blnExact == False:
         assert strToCompare in strToCompareIn, f'Actual: "{strToCompare}" is not in Expected: "{strToCompareIn}"'
+
+@funcLog  
+def backToSecondWindow(page: Page):
+    """ 
+    Objective: Switch back to second window
+    param: None
+    returns page: Second window
+    Author: abernal_20240313
+    """
+    window = page.context.pages
+    page = window[1].bring_to_front()
+    log(1, f'Active window is "{page}".') 
+    return page
