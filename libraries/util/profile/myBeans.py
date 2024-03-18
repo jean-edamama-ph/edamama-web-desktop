@@ -71,3 +71,29 @@ class com:
         if uCommon.verifyVisible(page, pMyBeans.com.onRegistrationLbl) == True:
             uCommon.expectElemToBeVisible(page, pMyBeans.com.onRegistrationRewardLbl)
             uCommon.log(1, f'On Registration activity is visible.') 
+            
+    @uCommon.ufuncLog   
+    def verifyOnEdamamaRewards(page, value):
+        """ 
+        Objective: To verify On Edamama Rewards.
+        param: None
+        returns: None
+        Author: abernal_20240311
+        """  
+        if uCommon.verifyVisible(page, pMyBeans.com.onEdamamaRewardsLbl) == True:
+            elemValue = uCommon.getElemText(page, pMyBeans.com.onEdamamaRewardsValueLbl)
+            if uCommon.waitAndValidateElemText(page, elemValue, value) == True:
+                uCommon.log(1, f'On Edamama Rewards(+) activity is visible.') 
+                
+    @uCommon.ufuncLog   
+    def verifyOnEdamamaCredits(page, value):
+        """ 
+        Objective: To verify On Edamama Credits.
+        param: None
+        returns: None
+        Author: abernal_20240311
+        """  
+        if uCommon.verifyVisible(page, pMyBeans.com.onEdamamaCreditsLbl) == True:
+            elemValue = uCommon.getElemText(page, pMyBeans.com.onEdamamaCreditsValueLbl)
+            if uCommon.waitAndValidateElemText(page, elemValue, value) == True:
+                uCommon.log(1, f'On Edamama Credits(+) activity is visible.') 

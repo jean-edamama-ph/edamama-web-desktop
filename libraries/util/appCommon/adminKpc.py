@@ -1245,3 +1245,77 @@ class cu:
         uCommon.waitAndClickElem(page, pAdmin.cu.searchIconBtn)
         uCommon.wait(page, 2)
         uCommon.waitAndClickElem(page, pAdmin.cu.customerResultBtn)
+        
+    @uCommon.ufuncLog  
+    def verifyUploadRewardsOrCreditButton(page):
+        """ 
+        Objective: Verify that Upload Rewards or Credit button is displayed.
+        
+        param: None
+        returns: None
+        Author: abernal_20240318
+        """
+        if uCommon.verifyVisible(page, pAdmin.cu.uploadCreditRewardBtn) == True:
+            uCommon.log(1, f'Upload Rewards or Credit button is visible.') 
+            
+    @uCommon.ufuncLog  
+    def verifyTotalCreditAndRewardFields(page):
+        """ 
+        Objective: Verify that Total Credit and Total Reward fields are displayed.
+        
+        param: None
+        returns: None
+        Author: abernal_20240318
+        """
+        if uCommon.verifyVisible(page, pAdmin.cu.totalCreditLbl) == True:
+            uCommon.log(1, f'Total Credit is visible.') 
+        if uCommon.verifyVisible(page, pAdmin.cu.totalRewardLbl) == True:
+            uCommon.log(1, f'Total Reward is visible.') 
+            
+    @uCommon.ufuncLog  
+    def editTotalRewardsValue(page, value):
+        """ 
+        Objective: To edit the Total Rewards value.
+        
+        param: value
+        returns: None
+        Author: abernal_20240318
+        """
+        uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
+        uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, value)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModal)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        
+    @uCommon.ufuncLog  
+    def editTotalCreditsValue(page, value):
+        """ 
+        Objective: To edit the Total Credits value.
+        
+        param: value
+        returns: None
+        Author: abernal_20240318
+        """
+        uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
+        uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, value)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModal)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        
+            
+
+
+class rm:
+    """REWARDS"""
+    @uCommon.ufuncLog  
+    def clickRewardsModule(page):
+        """ 
+        Objective: Click Rewards module.
+        
+        param: None
+        returns: None
+        Author: abernal_20240318
+        """
+        uCommon.waitAndClickElem(page, pAdmin.lp.rewardsLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == True:
+            uCommon.log(1, f'Bean Rewards label is visible.') 
