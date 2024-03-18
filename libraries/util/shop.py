@@ -1,5 +1,6 @@
 import libraries.page.shop as pShop
 import libraries.page.common.common as pCommon
+import libraries.page.sns as pSNS
 import libraries.util.common as uCommon
 import datetime
 
@@ -503,7 +504,61 @@ class sp:
         uCommon.waitAndClickElem(page, strSection.heartIconBtn)
         uCommon.wait(page, 3)
         uCommon.waitAndClickElem(page, strSection.heartActiveIconBtn)
-
+        
+    @uCommon.ufuncLog
+    def clickSSMoreBtn(page):
+        """ 
+        Objective: Click 'More' button
+            
+        param: None
+        returns: None
+        Author: jatregenio_20240318
+        """
+        uCommon.waitAndClickElem(page, pShop.ss.moreBtn)
+        uCommon.wait(page, 1)
+        uCommon.waitElemToBeVisible(page, pSNS.pl.tickedSSProdSpotlightChk)
+        
+    @uCommon.ufuncLog
+    def clickSSArrowForward(page):
+        """ 
+        Objective: Click 'Arrow Forward' button
+            
+        param: None
+        returns: None
+        Author: jatregenio_20240318
+        """
+        uCommon.waitAndClickElem(page, pShop.ss.arrowForwardIconBtn)
+        uCommon.wait(page, 1)
+        uCommon.waitElemToBeVisible(page, pSNS.pl.tickedSSProdSpotlightChk)
+        
+    @uCommon.ufuncLog
+    def validateSnSBadge(page, strItemName):
+        """ 
+        Objective: Validate the Subscribe and Save Badge of the searched item
+            
+        param strItemName: Text
+        returns: None
+        Author: jatregenio_20240318
+        """
+        if uCommon.verifyVisible(page, pSNS.pl.sNSBadgeHeader(strItemName)) == True:
+            uCommon.log(1, 'Subscribe and Save badge is visible')
+        elif uCommon.verifyVisible(page, pSNS.pl.sNSBadgeHeader(strItemName)) == False:
+            uCommon.log(2, 'Subscribe and Save badge is NOT visible')
+            
+    @uCommon.ufuncLog
+    def clickProdCard(page, dictData, strPDPType):
+        """ 
+        Objective: Click product card using product/item name
+            
+        param  strItemname: Text
+        returns: None
+        Author: jatregenio_20240318
+        """
+        breakpoint()
+        uCommon.waitAndClickElem(page, pSNS.pl.prodCardImg(dictData['strName']))
+        pp.validateProductForm(page, strPDPType)
+        pp.validateDetails(page, dictData)
+        
 
 
 
