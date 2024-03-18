@@ -14,10 +14,13 @@ class com:
         param: None
         returns: None
         Author: abernal_20240229
-        """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onAddChildLbl) == True:
+        """ 
+        if uCommon.verifyVisible(page, pMyBeans.com.onAddChildLbl) == True:
             uCommon.expectElemToBeVisible(page, pMyBeans.com.onAddChildRewardLbl)
-            uCommon.log(2, f'On Add Child activity is visible.') 
+            uCommon.log(1, f'On Add Child activity is visible.') 
+        elif uCommon.verifyVisible(page, pMyBeans.com.onAddChildLbl) == False:
+            uCommon.expectElemNotToBeVisible(page, pMyBeans.com.onAddChildRewardLbl)
+            uCommon.log(1, f'On Add Child activity is not visible.') 
         
     @uCommon.ufuncLog   
     def verifyBeansRewardFromAddingAttribute(page):
@@ -27,9 +30,12 @@ class com:
         returns: None
         Author: abernal_20240229
         """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onAddAttributeLbl) == True:
-            uCommon.expectElemToBeVisible(page, pMyBeans.com.onAddAttributeLbl)
-            uCommon.log(2, f'On Add Attribute activity is visible.') 
+        if uCommon.verifyVisible(page, pMyBeans.com.onAddAttributeLbl) == True:
+            uCommon.expectElemToBeVisible(page, pMyBeans.com.onAddAttributeRewardLbl)
+            uCommon.log(1, f'On Add Attribute activity is visible.') 
+        elif uCommon.verifyVisible(page, pMyBeans.com.onAddAttributeLbl) == False:
+            uCommon.expectElemNotToBeVisible(page, pMyBeans.com.onAddAttributeRewardLbl)
+            uCommon.log(1, f'On Add Attribute activity is not visible.') 
         
     @uCommon.ufuncLog   
     def verifyBeansRewardFromProductPurchase(page):
@@ -39,9 +45,9 @@ class com:
         returns: None
         Author: abernal_20240229
         """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onProductPurchaseLbl) == True:
+        if uCommon.verifyVisible(page, pMyBeans.com.onProductPurchaseLbl) == True:
             uCommon.expectElemToBeVisible(page, pMyBeans.com.onProductPurchaseRewardLbl)
-            uCommon.log(2, f'On Product Purchase activity is visible.') 
+            uCommon.log(1, f'On Product Purchase activity is visible.') 
         
     @uCommon.ufuncLog   
     def verifyBeansRewardFromBeanbackVoucher(page):
@@ -51,8 +57,8 @@ class com:
         returns: None
         Author: abernal_20240301
         """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onCouponUseLbl) == True:
-            uCommon.log(2, f'On Coupon Use activity is visible.') 
+        if uCommon.verifyVisible(page, pMyBeans.com.onCouponUseLbl) == True:
+            uCommon.log(1, f'On Coupon Use activity is visible.') 
             
     @uCommon.ufuncLog   
     def verifyBeansRewardFromOnRegistration(page):
@@ -62,6 +68,6 @@ class com:
         returns: None
         Author: abernal_20240311
         """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onRegistrationLbl) == True:
+        if uCommon.verifyVisible(page, pMyBeans.com.onRegistrationLbl) == True:
             uCommon.expectElemToBeVisible(page, pMyBeans.com.onRegistrationRewardLbl)
-            uCommon.log(2, f'On Registration activity is visible.') 
+            uCommon.log(1, f'On Registration activity is visible.') 

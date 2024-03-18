@@ -104,3 +104,74 @@ def validateAndClickSubscriptionDetailsChangedEmail(page, strUsername, strProduc
     uCommon.waitAndClickElem(page, pSocial.gm.rp.subscriptionDetailsChangedLbl(strUsername))
     uCommon.waitAndClickElemText(page, strProductName, pSocial.gm.rp.divOrderDetailsElm)
     
+
+@uCommon.ufuncLog  
+def clickYouveBeanRewardChild(page, dictData):
+    """ 
+    Objective: Click "You've BEAN rewarded" for adding a child.
+    
+    param dictData: {strFirstName, strLastName, strEmailAddress, strPassword}
+    returns: None
+    Author: abernal_20240312
+    """
+    uCommon.wait(page, 1)
+    strFirstName = dictData['strFirstName']
+    uCommon.waitAndClickElem(page, pSocial.gm.rp.youveBeanRewardedChildLbl)
+    uCommon.waitElemToBeVisible(page, pSocial.gm.rp.successfulBeanRewardChildLbl)
+    uCommon.waitAndValidateElemText(page, pSocial.gm.rp.congratulationsFirstNameLbl, strFirstName, False)
+    
+
+@uCommon.ufuncLog  
+def clickBackButtonOnEmail(page):
+    """ 
+    Objective: Click back button on email
+    
+    param: None
+    returns: None
+    Author: abernal_20240313
+    """
+    uCommon.wait(page, 1)
+    uCommon.waitAndClickElem(page, pSocial.gm.rp.inboxBtn)
+    
+@uCommon.ufuncLog  
+def clickYouveBeanRewardAttribute(page, dictData):
+    """ 
+    Objective: Click "You've BEAN rewarded" for adding a attribute.
+    
+    param dictData: {strFirstName, strLastName, strEmailAddress, strPassword}
+    returns: None
+    Author: abernal_20240313
+    """
+    uCommon.wait(page, 1)
+    strFirstName = dictData['strFirstName']
+    uCommon.waitAndClickElem(page, pSocial.gm.rp.youveBeanRewardedAttributesLbl)
+    uCommon.waitElemToBeVisible(page, pSocial.gm.rp.successfulBeanRewardAttributesLbl)
+    uCommon.waitAndValidateElemText(page, pSocial.gm.rp.congratulationsFirstNameLbl, strFirstName, False)
+    
+@uCommon.ufuncLog  
+def clickYouveBeanRewardRegistration(page, dictData):
+    """ 
+    Objective: Click "You've BEAN rewarded" for registration.
+    
+    param dictData: {strFirstName, strLastName, strEmailAddress, strPassword}
+    returns: None
+    Author: abernal_20240313
+    """
+    uCommon.wait(page, 1)
+    strFirstName = dictData['strFirstName']
+    uCommon.waitAndClickElem(page, pSocial.gm.rp.youveBeanRewardedRegisterLbl)
+    uCommon.waitElemToBeVisible(page, pSocial.gm.rp.successfulBeanRewardRegisterLbl)
+    uCommon.waitAndValidateElemText(page, pSocial.gm.rp.congratulationsFirstNameLbl, strFirstName, False)
+    
+@uCommon.ufuncLog  
+def clickYouveBeanRewardPurchasing(page):
+    """ 
+    Objective: Click "You've BEAN rewarded" for purchasing a product.
+    
+    param: None
+    returns: None
+    Author: abernal_20240314
+    """
+    uCommon.wait(page, 1)
+    uCommon.waitAndClickElem(page, pSocial.gm.rp.youveBeanRewardedPurchaseLbl)
+    uCommon.waitElemToBeVisible(page, pSocial.gm.rp.successfulBeanRewardPurchaseLbl)
