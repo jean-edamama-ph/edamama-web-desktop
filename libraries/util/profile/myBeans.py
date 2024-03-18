@@ -45,7 +45,7 @@ class com:
         returns: None
         Author: abernal_20240229
         """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onProductPurchaseLbl) == True:
+        if uCommon.verifyVisible(page, pMyBeans.com.onProductPurchaseLbl) == True:
             uCommon.expectElemToBeVisible(page, pMyBeans.com.onProductPurchaseRewardLbl)
             uCommon.log(1, f'On Product Purchase activity is visible.') 
         
@@ -57,7 +57,7 @@ class com:
         returns: None
         Author: abernal_20240301
         """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onCouponUseLbl) == True:
+        if uCommon.verifyVisible(page, pMyBeans.com.onCouponUseLbl) == True:
             uCommon.log(1, f'On Coupon Use activity is visible.') 
             
     @uCommon.ufuncLog   
@@ -68,6 +68,6 @@ class com:
         returns: None
         Author: abernal_20240311
         """  
-        if uCommon.expectElemToBeVisible(page, pMyBeans.com.onRegistrationLbl) == True:
+        if uCommon.verifyVisible(page, pMyBeans.com.onRegistrationLbl) == True:
             uCommon.expectElemToBeVisible(page, pMyBeans.com.onRegistrationRewardLbl)
             uCommon.log(1, f'On Registration activity is visible.') 

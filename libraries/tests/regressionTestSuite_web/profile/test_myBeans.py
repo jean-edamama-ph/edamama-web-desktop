@@ -220,8 +220,14 @@ def test_ACQ_AUTO_1664_Rewards_should_not_be_credited_in_Beans_History_when_user
     
     uCommon.log(0, 'Step 3 - Navigate to My Beans page and verify if On Registration activity is rewarded to the user.')
     uMyProfile.com.clickMyBeansTab(newWindow)
+   
+    uCommon.log(0, '[AUTO-1664 Started]: Check if beans are not credited after skipping Add Child in Complete My Profile.')
     uMyBeans.com.verifyBeansRewardFromAddingChild(newWindow)
+    uCommon.log(0, '[AUTO-1624 Completed]: Checked if beans are not credited.')
+    
+    uCommon.log(0, '[AUTO-1667 Started]: Check if beans are not credited after skipping Add Attributes in Complete My Profile.')
     uMyBeans.com.verifyBeansRewardFromAddingAttribute(newWindow)  
+    uCommon.log(0, '[AUTO-1667 Completed]: Checked if beans are not credited.')
     uCommon.log(0, 'Test Completed')  
     
     
@@ -248,14 +254,17 @@ def test_ACQ_AUTO_1673_User_should_receive_a_Beans_reward_emailer_after_adding_a
     window = uCommon.switchToWindow(page)
     uCommon.log(0, '[Pre-condition Completed]: Account created.')
     
+    uCommon.log(0, '[AUTO-1676 Started]: Check beans reward emailer is received after registration.')
     uCommon.log(0, 'Step 2 - Verify if user receives a bean rewarded email for registration.')
     uSignUp.validateEmailVerificationPageAndClickCompleteMyProfile(window)
     uCommon.backToWindow(page)
     uEmail.clickBackButtonOnEmail(page)
     uCommon.reloadPage(page)
     uEmail.clickYouveBeanRewardRegistration(page, arrData)
-    uCommon.backToSecondWindow(window)
+    uCommon.switchToSecondWindow(window)
+    uCommon.log(0, '[AUTO-1676 Completed]: Checked beans reward emailer is received after registration.')
     
+    uCommon.log(0, '[AUTO-1670 Started]: Check beans reward emailer is received after adding a child.')
     uCommon.log(0, 'Step 3 - Add child and verify if user receives a bean rewarded email.')
     uSignUp.validateAddChildPage(window)
     uSignUp.fillAndAddChild(window)
@@ -263,8 +272,10 @@ def test_ACQ_AUTO_1673_User_should_receive_a_Beans_reward_emailer_after_adding_a
     uEmail.clickBackButtonOnEmail(page)
     uCommon.reloadPage(page)
     uEmail.clickYouveBeanRewardChild(page, arrData)
-    uCommon.backToSecondWindow(window)
+    uCommon.switchToSecondWindow(window)
+    uCommon.log(0, '[AUTO-1670 Started]: Checked beans reward emailer is received after adding a child.')
                             
+    uCommon.log(0, '[AUTO-1673 Started]: Check beans reward emailer is received after adding attributes.')
     uCommon.log(0, 'Step 4 - Add attributes and verify if user receives a bean rewarded email.')
     uSignUp.validateAlmostDonePage(window)
     uSignUp.clickNotAMama(window)
@@ -273,8 +284,9 @@ def test_ACQ_AUTO_1673_User_should_receive_a_Beans_reward_emailer_after_adding_a
     uEmail.clickBackButtonOnEmail(page)
     uCommon.reloadPage(page)
     uEmail.clickYouveBeanRewardAttribute(page, arrData)
-    uCommon.backToSecondWindow(window)
+    uCommon.switchToSecondWindow(window)
     uSignUp.validateThankYouAndClickContinue(window)    
+    uCommon.log(0, '[AUTO-1670 Completed]: Checked beans reward emailer is received after adding a child.')
     uCommon.log(0, 'Test Completed')
     
 

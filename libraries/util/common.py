@@ -695,7 +695,7 @@ def stringCompare(strToCompare, strToCompareIn, blnExact = True):
         assert strToCompare in strToCompareIn, f'Actual: "{strToCompare}" is not in Expected: "{strToCompareIn}"'
 
 @funcLog  
-def backToSecondWindow(page: Page):
+def switchToSecondWindow(page: Page):
     """ 
     Objective: Switch back to second window
     param: None
