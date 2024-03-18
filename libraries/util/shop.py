@@ -546,17 +546,16 @@ class sp:
             uCommon.log(2, 'Subscribe and Save badge is NOT visible')
             
     @uCommon.ufuncLog
-    def clickProdCard(page, dictData, strPDPType):
+    def clickProdCard(page, dictData):
         """ 
         Objective: Click product card using product/item name
             
-        param  strItemname: Text
+        param  dictData: Text
         returns: None
         Author: jatregenio_20240318
         """
-        breakpoint()
         uCommon.waitAndClickElem(page, pSNS.pl.prodCardImg(dictData['strName']))
-        pp.validateProductForm(page, strPDPType)
+        pp.validateProductForm(page, dictData['strPDPType'])
         pp.validateDetails(page, dictData)
         
 

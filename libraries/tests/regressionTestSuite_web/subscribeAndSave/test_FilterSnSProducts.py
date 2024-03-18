@@ -48,5 +48,5 @@ def test_SNS_AUTO_1521_TC04_SHOP_FILTER_Display_List_of_SnS_Products_Search_for_
     uShop.sp.validateSnSBadge(page, dSnS.AUTO1521.strName)
     
     uCommon.log(0, 'Step 4 - Tap the product and verify if PDP is displayed.')
-    uShop.sp.clickProdCard(page, dSnS.AUTO1521.dictdata, dSnS.AUTO1521.strPDPType)
+    uShop.sp.clickProdCard(page, dSnS.AUTO1521.dictdata)
     uCommon.log(0, 'Test Completed.')
