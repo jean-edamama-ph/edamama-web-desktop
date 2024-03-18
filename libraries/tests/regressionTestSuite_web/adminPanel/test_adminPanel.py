@@ -57,6 +57,8 @@ def test_ACQ_AUTO_1767_Credits_module_should_be_updated_to_Rewards_module(page):
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that user is able to manually credit rewards via editing Total Rewards.')
+@allure.step('To verify that Credited rewards and credits should show on Beans History.')
+#test_ACQ_AUTO_1791_Credited_rewards_and_credits_should_show_on_Beans_History
 def test_ACQ_AUTO_1785_User_should_be_able_to_manually_credit_rewards_via_editing_Total_Rewards(page):
     uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
     uAppComm.ln.loginToAdminKPC(page)
@@ -66,22 +68,27 @@ def test_ACQ_AUTO_1785_User_should_be_able_to_manually_credit_rewards_via_editin
     uAdminKpc.cu.searchCustomer(page, dCommon.user.strUserName)
     newWindow = uCommon.switchToWindow(page)
     
+    uCommon.log(0, '[AUTO-1785 Started]: Update the value of the total credit field.')
     uCommon.log(0, 'Step 3 - Click the pen on the Total Rewards field and adjust the value.')
     uAdminKpc.cu.editTotalRewardsValue(newWindow, dAdmin.AUTO1785.strRewards)
+    uCommon.log(0, '[AUTO-1785 Completed]: Updated the value of the total credit field.')
     
+    uCommon.log(0, '[AUTO-1791 Started]: Check if reward is shown on Beans History page.')
     uCommon.log(0, 'Step 4 - Verify on My Beans page if rewards was credited to account.')
     uAppComm.ln.loginToEdamama(newWindow, dCommon.user.strUserName)
     uAppComm.com.navigateToProfileMenu(newWindow, 'my profile')
     uMyProfile.com.clickMyBeansTab(newWindow)
     uMyBeans.com.verifyOnEdamamaRewards(newWindow, dAdmin.AUTO1785.strRewards)
+    uCommon.log(0, '[AUTO-1791 Completed]: Checked if reward is shown on Beans History page.')
     uCommon.log(0, 'Test Completed')
     
 
 """ Author: abernal_20240318 Execution Time: 41s - 42s """
-@pytest.mark.netTest()
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that user is able to manually credit credits via editing Total Rewards.')
+@allure.step('To verify that Credited rewards and credits should show on Beans History.')
+#test_ACQ_AUTO_1791_Credited_rewards_and_credits_should_show_on_Beans_History
 def test_ACQ_AUTO_1788_User_should_be_able_to_manually_credit_Credit_via_editing_Total_Credits(page):
     uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
     uAppComm.ln.loginToAdminKPC(page)
@@ -91,12 +98,16 @@ def test_ACQ_AUTO_1788_User_should_be_able_to_manually_credit_Credit_via_editing
     uAdminKpc.cu.searchCustomer(page, dCommon.user.strUserName)
     newWindow = uCommon.switchToWindow(page)
     
+    uCommon.log(0, '[AUTO-1788 Started]: Update the value of the total credit field.')
     uCommon.log(0, 'Step 3 - Click the pen on the Total Credit field and adjust the value.')
     uAdminKpc.cu.editTotalCreditsValue(newWindow, dAdmin.AUTO1788.strCredits)
+    uCommon.log(0, '[AUTO-1788 Completed]: Updated the value of the total credit field.')
     
+    uCommon.log(0, '[AUTO-1791 Started]: Check if reward is shown on Beans History page.')
     uCommon.log(0, 'Step 4 - Verify on My Beans page if credits was credited to account.')
     uAppComm.ln.loginToEdamama(newWindow, dCommon.user.strUserName)
     uAppComm.com.navigateToProfileMenu(newWindow, 'my profile')
     uMyProfile.com.clickMyBeansTab(newWindow)
     uMyBeans.com.verifyOnEdamamaCredits(newWindow, dAdmin.AUTO1788.strCredits)
+    uCommon.log(0, '[AUTO-1791 Completed]: Checked if reward is shown on Beans History page.')
     uCommon.log(0, 'Test Completed')
