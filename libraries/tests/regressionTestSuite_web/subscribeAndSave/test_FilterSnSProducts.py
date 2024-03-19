@@ -42,10 +42,10 @@ def test_SNS_AUTO_1521_TC04_SHOP_FILTER_Display_List_of_SnS_Products_Search_for_
     uAppComm.ln.goToEdamamaURL(page)
     
     uCommon.log(0, 'Step 2 - Go to search textbox. Enter a specific subscribe and save product')
-    uShop.sp.searchAndValidateName(page, dSnS.AUTO1521.strTypeItem, dSnS.AUTO1521.strName)
+    uShop.sp.searchAndValidateName(page, dSnS.AUTO1521.strTypeItem, dSnS.AUTO1521.dictdata['strName'])
     
     uCommon.log(0, 'Step 3 - Verify that "Subscribe and Save" banner is displayed highlighted in purple.')
-    uShop.sp.validateSnSBadge(page, dSnS.AUTO1521.strName)
+    uShop.sp.validateSnSBadge(page, dSnS.AUTO1521.dictdata['strName'])
     
     uCommon.log(0, 'Step 4 - Tap the product and verify if PDP is displayed.')
     uShop.sp.clickProdCard(page, dSnS.AUTO1521.dictdata)
