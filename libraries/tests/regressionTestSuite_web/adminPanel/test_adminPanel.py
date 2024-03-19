@@ -49,7 +49,7 @@ def test_ACQ_AUTO_1767_Credits_module_should_be_updated_to_Rewards_module(page):
     uAppComm.ln.loginToAdminKPC(page)
     
     uCommon.log(0, 'Step 2 - Verify that credits module is updated to Rewards module.')
-    uAdminKpc.rm.clickRewardsModule(page)
+    uAdminKpc.re.clickRewardsModule(page)
     uCommon.log(0, 'Test Completed')
     
     

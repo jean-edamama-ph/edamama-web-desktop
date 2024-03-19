@@ -1257,6 +1257,8 @@ class cu:
         """
         if uCommon.verifyVisible(page, pAdmin.cu.uploadCreditRewardBtn) == True:
             uCommon.log(1, f'Upload Rewards or Credit button is visible.') 
+        elif uCommon.verifyVisible(page, pAdmin.cu.uploadCreditRewardBtn) == False:
+            uCommon.log(2, f'Upload Rewards or Credit button is not visible.') 
             
     @uCommon.ufuncLog  
     def verifyTotalCreditAndRewardFields(page):
@@ -1305,7 +1307,7 @@ class cu:
             
 
 
-class rm:
+class re:
     """REWARDS"""
     @uCommon.ufuncLog  
     def clickRewardsModule(page):
@@ -1319,3 +1321,5 @@ class rm:
         uCommon.waitAndClickElem(page, pAdmin.lp.rewardsLbl)
         if uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == True:
             uCommon.log(1, f'Bean Rewards label is visible.') 
+        elif uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == False:
+            uCommon.log(2, f'Bean Rewards label is not visible.') 

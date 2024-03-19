@@ -73,27 +73,31 @@ class com:
             uCommon.log(1, f'On Registration activity is visible.') 
             
     @uCommon.ufuncLog   
-    def verifyOnEdamamaRewards(page, value):
+    def verifyOnEdamamaRewards(page, strValue):
         """ 
         Objective: To verify On Edamama Rewards.
-        param: None
+        param strValue: Text
         returns: None
         Author: abernal_20240311
         """  
         if uCommon.verifyVisible(page, pMyBeans.com.onEdamamaRewardsLbl) == True:
             elemValue = uCommon.getElemText(page, pMyBeans.com.onEdamamaRewardsValueLbl)
-            if uCommon.waitAndValidateElemText(page, elemValue, value) == True:
+            if uCommon.waitAndValidateElemText(page, elemValue, strValue) == True:
                 uCommon.log(1, f'On Edamama Rewards(+) activity is visible.') 
+            elif uCommon.waitAndValidateElemText(page, elemValue, strValue) == False:
+                uCommon.log(2, f'On Edamama Rewards(+) activity is not visible.') 
                 
     @uCommon.ufuncLog   
-    def verifyOnEdamamaCredits(page, value):
+    def verifyOnEdamamaCredits(page, strValue):
         """ 
         Objective: To verify On Edamama Credits.
-        param: None
+        param strValue: Text
         returns: None
         Author: abernal_20240311
         """  
         if uCommon.verifyVisible(page, pMyBeans.com.onEdamamaCreditsLbl) == True:
             elemValue = uCommon.getElemText(page, pMyBeans.com.onEdamamaCreditsValueLbl)
-            if uCommon.waitAndValidateElemText(page, elemValue, value) == True:
+            if uCommon.waitAndValidateElemText(page, elemValue, strValue) == True:
                 uCommon.log(1, f'On Edamama Credits(+) activity is visible.') 
+            elif uCommon.waitAndValidateElemText(page, elemValue, strValue) == False:
+                uCommon.log(2, f'On Edamama Credits(+) activity is not visible.') 
