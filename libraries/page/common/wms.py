@@ -10,8 +10,7 @@ class od:
     class od:
         """ORDERS"""
         ngframeFrame = '//iframe[@id="ngframe"]'
-        def filterBtn(strColumnName):
-            return f'//div[@column-id="saleOrderNum"]/span[contains(text(),"{strColumnName}")]/..//span[@class="filter-icon"]'
+        filtersBtn = '//span[contains(text(),"Filters")]'
         filterTxt = '//input[@placeholder="Enter Order # Contains"]'
         applyIconBtn  = '//ion-button[text()="Apply"]'
         noDataDisplayLbl = '//div[text()="No data to display"]/..'

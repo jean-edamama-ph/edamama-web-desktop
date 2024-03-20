@@ -309,7 +309,6 @@ class com:
         strItemName = com.addNewProductInGiftList(page)
         com.clickGiftBox(page)
         com.clickGiftList(page, False)
-        uCommon.waitAndClickElemText(page, strItemName,'', 2)
         return strItemName
         
     @uCommon.ufuncLog  

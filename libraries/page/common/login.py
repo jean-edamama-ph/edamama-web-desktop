@@ -29,6 +29,7 @@ class lo:
     
 class ak:
     """ADMIN KPC"""
+    loginLbl = '//h1[contains(text(),"Login")]'
     emailTxt = '//input[@formcontrolname="email"]'
     passwordTxt = '//input[@formcontrolname="password"]'
     loginBtn = '//button//span[text()="Login"]'
