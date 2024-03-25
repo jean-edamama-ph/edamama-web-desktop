@@ -1245,3 +1245,156 @@ class cu:
         uCommon.waitAndClickElem(page, pAdmin.cu.searchIconBtn)
         uCommon.wait(page, 2)
         uCommon.waitAndClickElem(page, pAdmin.cu.customerResultBtn)
+        
+    @uCommon.ufuncLog  
+    def verifyUploadRewardsOrCreditButton(page):
+        """ 
+        Objective: Verify that Upload Rewards or Credit button is displayed.
+        
+        param: None
+        returns: None
+        Author: abernal_20240318
+        """
+        if uCommon.verifyVisible(page, pAdmin.cu.uploadCreditRewardBtn) == True:
+            uCommon.log(1, f'Upload Rewards or Credit button is visible.') 
+        elif uCommon.verifyVisible(page, pAdmin.cu.uploadCreditRewardBtn) == False:
+            uCommon.log(2, f'Upload Rewards or Credit button is not visible.') 
+            
+    @uCommon.ufuncLog  
+    def verifyTotalCreditAndRewardFields(page):
+        """ 
+        Objective: Verify that Total Credit and Total Reward fields are displayed.
+        
+        param: None
+        returns: None
+        Author: abernal_20240318
+        """
+        if uCommon.verifyVisible(page, pAdmin.cu.totalCreditLbl) == True:
+            uCommon.log(1, f'Total Credit is visible.') 
+        if uCommon.verifyVisible(page, pAdmin.cu.totalRewardLbl) == True:
+            uCommon.log(1, f'Total Reward is visible.') 
+            
+    @uCommon.ufuncLog  
+    def editTotalRewardsValue(page, strValue):
+        """ 
+        Objective: To edit the Total Rewards value.
+        
+        param strValue: Text
+        returns: None
+        Author: abernal_20240318
+        """
+        uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
+        uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strValue)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        uCommon.wait(page, 2)
+        
+    @uCommon.ufuncLog  
+    def editTotalCreditsValue(page, strValue):
+        """ 
+        Objective: To edit the Total Credits value.
+        
+        param strValue: Text
+        returns: None
+        Author: abernal_20240318
+        """
+        uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
+        uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strValue)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        
+    @uCommon.ufuncLog  
+    def getTotalRewardsValue(page, strTotalRewards):
+        """ 
+        Objective: To get the Total Rewards value.
+        param: strTotalRewards: Text
+        returns strTotalRewards: Text
+        Author: abernal_20240319
+        """
+        intTotalRewards = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+        return intTotalRewards
+    
+    @uCommon.ufuncLog  
+    def getTotalCreditsValue(page, strTotalCredits):
+        """ 
+        Objective: To get the Total Credits value.
+        param strTotalCredit: Text
+        returns strTotalCredit: Text
+        Author: abernal_20240319
+        """
+        strTotalCredits = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+        return strTotalCredits
+    
+    @uCommon.ufuncLog  
+    def deductTotalRewardValue(page, strValue):
+        """ 
+        Objective: To deduct rewards from the Total Rewards.
+        param strValue: Text
+        returns: None
+        Author: abernal_20240319
+        """
+        strTotalReward = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
+        strValue = int(strValue) + 100
+        strNewValue = '-' + str(strValue)
+        uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strNewValue)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationDeductionModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.closeConfirmationDeductBtn)
+        uCommon.waitAndClickElem(page, pAdmin.cu.cancelEditBtn)
+        strTotalReward = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+        strReward = '0'
+        if strTotalReward == strReward:
+            uCommon.log(1, f'User has no rewards.')
+        else:
+            uCommon.log(2, f'User has still rewards. Nothing was deducted.')
+            
+    @uCommon.ufuncLog  
+    def deductTotalCreditValue(page, strValue):
+        """ 
+        Objective: To deduct credits from the Total Credits.
+        param strValue: Text
+        returns: None
+        Author: abernal_20240322
+        """
+        strTotalCredit = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
+        strValue = int(strValue) + 100
+        strNewValue = '-' + str(strValue)
+        uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strNewValue)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationDeductionModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.closeConfirmationDeductBtn)
+        strTotalCredit = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+        strCredit = '0'
+        if strTotalCredit == strCredit:
+            uCommon.log(1, f'User has no rewards.')
+        else:
+            uCommon.log(2, f'User has still rewards. Nothing was deducted.')
+    
+        
+            
+
+
+class re:
+    """REWARDS"""
+    @uCommon.ufuncLog  
+    def clickRewardsModule(page):
+        """ 
+        Objective: Click Rewards module.
+        
+        param: None
+        returns: None
+        Author: abernal_20240318
+        """
+        uCommon.waitAndClickElem(page, pAdmin.lp.rewardsLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == True:
+            uCommon.log(1, f'Bean Rewards label is visible.') 
+        elif uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == False:
+            uCommon.log(2, f'Bean Rewards label is not visible.') 

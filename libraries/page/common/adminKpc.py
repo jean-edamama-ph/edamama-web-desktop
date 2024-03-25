@@ -17,6 +17,7 @@ class lp:
     curatedProductsLbl = '//h3[text()="Curated Products"]/../../..'
     subscriptionLbl = '//h3[text()="Subscription"]/../../..'
     customerLbl = '//h3[text()="Customers"]/../../..'
+    rewardsLbl = '//h3[contains(text(),"Rewards")]'
     
     
     
@@ -313,3 +314,23 @@ class cu:
     customerResultBtn = '//td[contains(@class, "firstName")]//a'
     searchIconBtn = searchIconBtn
     customerMobileNumberLbl = '//p[text()="Mobile Number"]/../h3'
+    uploadCreditRewardBtn = '//label[contains(text()," Upload User Credits Or Rewards ")]'
+    totalCreditLbl = '//p[contains(text(),"Total Credit")]'
+    totalRewardLbl = '//p[contains(text(),"Total Reward")]'
+    totalCreditEditBtn = '//span//p[contains(text(),"Total Credit")]//..//..//mat-icon'
+    totalRewardEditBtn = '//span//p[contains(text(),"Total Reward")]//..//..//mat-icon'
+    rewardEditLbl = '//input[@data-placeholder="Input reward amount..."]'
+    editEnterBtn = '//mat-icon[text()="subdirectory_arrow_right"]'
+    confirmationModalLbl = '//h1[contains(text(),"Confirmation")]'
+    confirmationYesBtn = '//span[contains(text(),"Yes")]'
+    creditEditLbl = '//input[@data-placeholder="Input credit amount..."]'
+    totalCreditValueLbl = '//p[contains(text(),"Total Credit")]/../h3[@class="mat-line"]'
+    totalRewardValueLbl = '//p[contains(text(),"Total Reward")]/../h3[@class="mat-line"]'
+    confirmationDeductionModalLbl = '//p[contains(text(),"were not deducted")]'
+    closeConfirmationDeductBtn = '//button//span[text()=" Close "]'
+    cancelEditBtn = '//mat-icon[contains(text(),"cancel")]'
+    
+
+class rm:
+    "REWARDS"
+    beanRewardsLbl = '//a[contains(text(),"Bean Rewards")]'
