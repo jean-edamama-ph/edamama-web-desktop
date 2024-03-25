@@ -321,10 +321,14 @@ class cu:
     totalRewardEditBtn = '//span//p[contains(text(),"Total Reward")]//..//..//mat-icon'
     rewardEditLbl = '//input[@data-placeholder="Input reward amount..."]'
     editEnterBtn = '//mat-icon[text()="subdirectory_arrow_right"]'
-    confirmationModal = '//h1[contains(text(),"Confirmation")]'
+    confirmationModalLbl = '//h1[contains(text(),"Confirmation")]'
     confirmationYesBtn = '//span[contains(text(),"Yes")]'
     creditEditLbl = '//input[@data-placeholder="Input credit amount..."]'
-    
+    totalCreditValueLbl = '//p[contains(text(),"Total Credit")]/../h3[@class="mat-line"]'
+    totalRewardValueLbl = '//p[contains(text(),"Total Reward")]/../h3[@class="mat-line"]'
+    confirmationDeductionModalLbl = '//p[contains(text(),"were not deducted")]'
+    closeConfirmationDeductBtn = '//button//span[text()=" Close "]'
+    cancelEditBtn = '//mat-icon[contains(text(),"cancel")]'
     
 
 class rm:
