@@ -42,6 +42,8 @@ class co:
     shippingAmountLbl = '//p[contains(text(),"Shipping Amount")]'
     creditUsedTotalLbl = '//p[contains(text(),"Credit Used Total")]'
     collectibleTotalLbl = '//p[contains(text(),"Collectible Total")]'
+    mobileVerifModalLbl = '//p[contains(text(),"We will send the pin to the mobile number")]'
+    mobileVerifCloseBtn = '//mat-icon[contains(text(),"close")]'
     
     expressDeliveryLbl = '//b[text()="Express Delivery"]'
     expressDeliveryIconImg = '//img[@src="assets/images/i-icon.svg"]'
@@ -91,9 +93,12 @@ class pm:
     
     promoCodeLbl = '//p[@class="code"]'
     promoCodeDoesNotExistMsg = '//span[text()="Error: Promo code does not exist."]'
+    promoMinPurchaseErrorMsg = '//span[contains(text(),"Error: Minimum purchase not met.")]'
     promoAmountLbl = '//p[@class="amount"]'
     promoDescLbl = '//div[contains(text(),"Your bean rewards will be manually credited to your account within 30 days after all items in your order are delivered.")]'
     cardNumberLbl = '//span[@class="fullname"]'
+    couponDiscountLbl = '//p[contains(text(),"Coupon Discount")]'
+    promoCodeUsedInvalidErrorMsg = '//span[contains(text(),"Error: Promo code invalid. Review the items in your cart.")]'
     
 class cc:
     """CREDIT CARD"""
