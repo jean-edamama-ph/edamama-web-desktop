@@ -7,6 +7,8 @@ strDateTimeToday = datetime.today().strftime("%Y%m%d%H%M%S")
 # strItemName  = 'Baby Gentle Wash & Shampoo (230ml)' # AAAA02741
 #strItemName  = 'Baby Gentle Wash & Shampoo Automation Test Data' # AAAA02741
 strItemName = 'Tala Tiles Magnetic Tiles Triangles Set (48-piece)'
+strItemName2 = 'Baby Bath Emollient (150ml) - Auto Do Not Update or Delete'
+strItemName3 = '16-Piece Brick Tile Set - Auto Do Not Update or Delete'
 # strItemName = 'Baby Advanced Protection Cream with Organic Calendula (85g)' # EDA-24367
 # 'Baby Moisturizing Bath & Wash (230ML) - Buy 3 Get Free Baby Bar'
 # 'Baby Advanced Protection Cream with Organic Calendula (85g)', 
@@ -685,3 +687,157 @@ class AUTO542:
 
 class AUTO345:
     strShopSection = 'fp'
+    
+class AUTO1948:
+    dictData = {
+                'strItemName': strItemName2,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRIGCFAO',
+                'strType': 'fp',
+                'blnCoupon': True
+                }  
+
+class AUTO1951:
+    dictData = {
+                'strItemName': strItemName3,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRIBSCBTALA',
+                'strType': 'fp',
+                'blnCoupon': True
+                }  
+    
+class AUTO1954:
+    dictData = {
+                'strItemName': strItemName2,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRIBSCBTALA',
+                'strType': 'fp',
+                'blnCoupon': True
+                }  
+    
+class AUTO1960:
+    dictData = {
+                'strItemName': strItemName2,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRIESPO',
+                'strType': 'fp',
+                'blnCoupon': True
+                } 
+    
+class AUTO1969:
+    dictData = {
+                'strItemName': strItemName2,
+                'strMOP': 'GRAB PAY',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'MOPPOGRABPAY',
+                'strType': 'fp',
+                'blnCoupon': True
+                }  
+    
+class AUTO1963:
+    dictData = {
+                'strItemName': strItemName2,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRISHIPFRS',
+                'strType': 'fp',
+                'blnCoupon': True
+                } 
+    
+class AUTO1966:
+    strMyProfile = 'my profile'
+    dictDataAddress = {
+        'strFirstName': 'New',
+        'strLastName': 'Address',
+        'strMobile': '9171234567',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    dictData = {
+                'strItemName': strItemName2,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'MARRIE430921',
+                'strType': 'fp',
+                'blnCoupon': True
+    } 
+    
+class AUTO1972:
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRIGCFAO',
+                'strType': 'fp',
+                'blnCoupon': True
+                } 
+    
+class AUTO1975:
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRIBSCBTALA',
+                'strType': 'fp',
+                'blnCoupon': True
+                } 
+    
+class AUTO1978:
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRIESPO',
+                'strType': 'fp',
+                'blnCoupon': True
+                } 
+    
+class AUTO1981:
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'EDRISHIPFRS',
+                'strType': 'fp',
+                'blnCoupon': True
+                } 
+    
+class AUTO1984:
+    strMyProfile = 'my profile'
+    dictDataAddress = {
+        'strFirstName': 'New',
+        'strLastName': 'Address',
+        'strMobile': '9171234567',
+        'strProvince': 'CAVITE',
+        'strCity': 'SILANG',
+        'strZipCode': '1234',
+        'strBrgy': 'ACACIA',
+        'strLotUnitStBldg': 'Test Street',
+        'strLandmark': 'Random landmark'
+    }
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GCASH',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'MARRIE430921',
+                'strType': 'fp',
+                'blnCoupon': True
+    } 
+    
+class AUTO1987:
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GRAB PAY',
+                'strBeansPromo': 'promo',
+                'strPromoCode': 'MOPPOGRABPAY',
+                'strType': 'fp',
+                'blnCoupon': True
+                } 

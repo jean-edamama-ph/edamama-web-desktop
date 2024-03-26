@@ -3,6 +3,7 @@ import allure
 
 import libraries.data.common as dCommon
 import libraries.data.deploymentChecklist as dDepChkLst
+import libraries.data.regressionTestSuite.loginAndSignUp.signup as dRegSignUp
 
 import libraries.util.appCommon.adminKpc as uAdminKpc
 import libraries.util.appCommon.appComm as uAppComm
@@ -17,6 +18,7 @@ import libraries.util.appCommon.email as uEmail
 import libraries.util.checkOut as uCheckOut
 import libraries.util.profile.mySubscription as uMySubscription
 import libraries.util.discover as uDiscover
+import libraries.util.appCommon.signUp as uSignUp
 
     
 """ Author: ccapistrano_20230322 Execution Time: 31s - 55s  """
@@ -1181,4 +1183,196 @@ def test_AUTO_542_Discover(page):
     uDiscover.ar.validateArticlesAndContents(page, dDepChkLst.AUTO542.strNurture, dDepChkLst.AUTO542.intArticles)
     uDiscover.ar.validateArticlesAndContents(page, dDepChkLst.AUTO542.strPlayAndLearn, dDepChkLst.AUTO542.intArticles)
     uDiscover.ar.validateArticlesAndContents(page, dDepChkLst.AUTO542.strStyle, dDepChkLst.AUTO542.intArticles)
+    uCommon.log(0, 'Test case completed')
+    
+    
+""" Author: abernal_20240325 Execution Time: 48s - 1m 19s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Gift Card voucher is not applied when minimum requirements are not met.')
+def test_AUTO_1948_Voucher_Gift_Card_should_not_be_applied_when_min_reqs_are_not_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName1)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1948.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240325 Execution Time: 48s - 1m 19s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Brand Sponsored voucher is not applied when minimum requirements are not met.')
+def test_AUTO_1951_Voucher_Brand_Sponsored_should_not_be_applied_when_min_reqs_are_not_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName2)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1951.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+    
+""" Author: abernal_20240326 Execution Time: 57s - 58s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Brand Sponsored voucher is not applied when brand of the item is not the same as the voucher.')
+def test_AUTO_1954_Voucher_Brand_Sponsored_should_not_be_applied_when_item_is_not_the_same_brand(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName3)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1954.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240326 Execution Time: 53s - 58s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Edamama Sponsored voucher is not applied when minimum requirements are not met.')
+def test_AUTO_1960_Voucher_Edamama_Sponsored_should_not_be_applied_when_min_reqs_are_not_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName4)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1960.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240326 Execution Time: 58s - 60s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify MOP Edamama Sponsored voucher is not applied when minimum requirements are not met.')
+def test_AUTO_1969_MOP_Voucher_Edamama_Sponsored_should_not_be_applied_when_min_reqs_are_not_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName5)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1969.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+    
+""" Author: abernal_20240326 Execution Time: 58s - 60s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Free Shipping voucher is not applied when minimum requirements are not met.')
+def test_AUTO_1963_Voucher_Shipping_should_not_be_applied_when_min_reqs_are_not_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName6)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1963.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240326 Execution Time: 1m 53s - 1m 54s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Referral Code voucher is not applied when minimum requirements are not met.')
+def test_AUTO_1966_Voucher_Referral_Code_should_not_be_applied_when_min_reqs_are_not_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.goToEdamamaURL(page)
+    
+    uCommon.log(0, '[Pre-condition started]: Create new account without adding attributes and child.')
+    uSignUp.clickSignUp(page)
+    uSignUp.validateSignUpPage(page)
+    arrData = uSignUp.fillandContinueSignUpPage(page, dRegSignUp.AUTO1621.dictData)
+    uSignUp.validateAndClickOKinAccountVerification(page)
+    uEmail.loginToGmail(page)
+    uEmail.clickFirstConfirmEmail(page, arrData)
+    uEmail.clickYesThisIsMyEmail(page)
+    newWindow = uCommon.switchToWindow(page)
+    uSignUp.validateEmailVerificationPageAndClickStartShopping(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Account created.')
+    
+    uCommon.log(0, 'Step 2 - Add an address.')
+    uAppComm.com.navigateToProfileMenu(newWindow, dDepChkLst.AUTO1966.strMyProfile)
+    uMyProfile.com.clickAddressAddMore(newWindow)
+    uMyProfile.na.addAddress(newWindow, dDepChkLst.AUTO1966.dictDataAddress)
+    uMyProfile.na.clickAddNewAddress(newWindow)
+    
+    uCommon.log(0, 'Step 3 - Proceed to checkout.')
+    uTcTest.validateE2EMOP(newWindow, dDepChkLst.AUTO1966.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240326 Execution Time: 1m 01s - 1m 13s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Gift Card voucher is applied when minimum requirements are met.')
+def test_AUTO_1972_Voucher_Gift_Card_should_be_applied_when_min_reqs_are_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName7)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1972.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240326 Execution Time: 47s - 57s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Brand Sponsored voucher is applied when minimum requirements are met.')
+def test_AUTO_1975_Voucher_Brand_Sponsored_should_be_applied_when_min_reqs_are_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1975.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240326 Execution Time: 47s - 57s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Brand Sponsored voucher is applied when minimum requirements are met.')
+def test_AUTO_1975_Voucher_Brand_Sponsored_should_be_applied_when_min_reqs_are_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName8)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1975.dictData)
+    uCommon.log(0, 'Test case completed')
+ 
+    
+""" Author: abernal_20240326 Execution Time: 56s - 1m 05s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Edamama Sponsored voucher is applied when minimum requirements are met.')
+def test_AUTO_1978_Voucher_Edamama_Sponsored_should_be_applied_when_min_reqs_are_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName9)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1978.dictData)
+    uCommon.log(0, 'Test case completed')
+
+
+""" Author: abernal_20240326 Execution Time: 45s - 59s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Free Shipping voucher is applied when minimum requirements are met.')
+def test_AUTO_1981_Voucher_Shipping_should_be_applied_when_min_reqs_are_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName1)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1981.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+    
+""" Author: abernal_20240326 Execution Time: 1m 49s - 2m 14s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify Referral Code is applied when minimum requirements are met.')
+def test_AUTO_1984_Voucher_Referral_Code_should_be_applied_when_min_reqs_are_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.goToEdamamaURL(page)
+    
+    uCommon.log(0, '[Pre-condition started]: Create new account without adding attributes and child.')
+    uSignUp.clickSignUp(page)
+    uSignUp.validateSignUpPage(page)
+    arrData = uSignUp.fillandContinueSignUpPage(page, dRegSignUp.AUTO1621.dictData)
+    uSignUp.validateAndClickOKinAccountVerification(page)
+    uEmail.loginToGmail(page)
+    uEmail.clickFirstConfirmEmail(page, arrData)
+    uEmail.clickYesThisIsMyEmail(page)
+    newWindow = uCommon.switchToWindow(page)
+    uSignUp.validateEmailVerificationPageAndClickStartShopping(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Account created.')
+    
+    uCommon.log(0, 'Step 2 - Add an address.')
+    uAppComm.com.navigateToProfileMenu(newWindow, dDepChkLst.AUTO1984.strMyProfile)
+    uMyProfile.com.clickAddressAddMore(newWindow)
+    uMyProfile.na.addAddress(newWindow, dDepChkLst.AUTO1984.dictDataAddress)
+    uMyProfile.na.clickAddNewAddress(newWindow)
+    
+    uCommon.log(0, 'Step 3 - Proceed to checkout.')
+    uTcTest.validateE2EMOP(newWindow, dDepChkLst.AUTO1984.dictData)
+    uCommon.log(0, 'Test case completed')
+    
+
+""" Author: abernal_20240326 Execution Time: 50s - 56s """
+@pytest.mark.deploymentChecklist()
+@allure.step('To verify MOP Edamama Sponsored Voucher is applied when minimum requirements are met.')
+def test_AUTO_1987_MOP_Voucher_Edamama_Sponsored_should_be_applied_when_min_reqs_are_met(page):
+    uCommon.log(0, 'Step 1 - Open edamama website')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName2)
+    
+    uTcTest.validateE2EMOP(page, dDepChkLst.AUTO1987.dictData)
     uCommon.log(0, 'Test case completed')
