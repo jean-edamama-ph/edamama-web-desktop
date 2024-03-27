@@ -1275,31 +1275,31 @@ class cu:
             uCommon.log(1, f'Total Reward is visible.') 
             
     @uCommon.ufuncLog  
-    def editTotalRewardsValue(page, value):
+    def editTotalRewardsValue(page, strValue):
         """ 
         Objective: To edit the Total Rewards value.
         
-        param: value
+        param strValue: Text
         returns: None
         Author: abernal_20240318
         """
         uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
-        uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, value)
+        uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strValue)
         uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
         uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModal)
         uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
         
     @uCommon.ufuncLog  
-    def editTotalCreditsValue(page, value):
+    def editTotalCreditsValue(page, strValue):
         """ 
         Objective: To edit the Total Credits value.
         
-        param: value
+        param strValue: Text
         returns: None
         Author: abernal_20240318
         """
         uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
-        uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, value)
+        uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strValue)
         uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
         uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModal)
         uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
