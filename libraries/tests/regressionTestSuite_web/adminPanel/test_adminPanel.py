@@ -132,8 +132,8 @@ def test_ACQ_AUTO_1803_Error_message_is_encountered_when_user_deducts_more_than_
     uCommon.log(0, '[Pre-condition Completed]: Get the total rewards and credits available from the user.')
     
     uCommon.log(0, 'Step 3 - Edit the value wherein the amount to be deducted is more than the amount of balance on the users credits/rewards.')
-    uAdminKpc.cu.deductTotalRewardValue(newWindow, strOldTotalRewards)
-    uAdminKpc.cu.deductTotalCreditValue(newWindow, strOldTotalCredits)
+    uAdminKpc.cu.deductTotalRewardCreditValue(newWindow, strOldTotalRewards, strType = "Rewards")
+    uAdminKpc.cu.deductTotalRewardCreditValue(newWindow, strOldTotalCredits, strType = "Credits")
     
     uCommon.log(0, '[Post-condition Started]: Return the deducted amount of rewards/credits.')
     uAdminKpc.cu.editTotalRewardsValue(newWindow, strOldTotalRewards)
