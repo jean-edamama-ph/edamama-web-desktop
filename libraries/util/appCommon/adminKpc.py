@@ -1340,10 +1340,8 @@ class cu:
         Author: abernal_20240322
         """        
         if strType == "Rewards": 
-            strTotalReward = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
             uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
         elif strType == "Credits":
-            strTotalCredit = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
             uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
             
         strValue = int(strValue) + 100
