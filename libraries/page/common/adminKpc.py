@@ -52,7 +52,6 @@ class pl:
         """BASIC INFORMATION"""
         productbasicInfoLbl = '//h2[text()="Product basic Information"]'
         productNameTxt = '//input[@formcontrolname="name"]'
-        #updateAndContinueBtn = f'{productbasicInfoLbl}/../../../..//button/span[contains(text(),"Update & Continue")]/..'
         updateAndContinueBtn = '(//button//span[contains(text(),"Update & Continue")])[1]'
         productSuccessMsg = '//span[text()="Product has been updated successfully"]'
         nextBtn = f'{productbasicInfoLbl}/../../../..//span[text()=" Next "]'
