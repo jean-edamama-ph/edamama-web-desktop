@@ -249,7 +249,6 @@ class sc:
         # strName = dictData['strName'] # NOTE: search via Customer Name in AP not working -enable this once fix
         strName = dictData['strName']
         uAppComm.ln.loginToAdminKPC(page)
-        uCommon.wait(page, 2)
         sc.cancelAllOrders(page, strName)
 
 
@@ -855,7 +854,7 @@ class pl:
             returns: None
             Author: ccapistrano_20230508
             """  
-            uCommon.hoverAndClickElem(page, pAdmin.pl.bi.updateAndContinueBtn)
+            uCommon.waitAndClickElem(page, pAdmin.pl.bi.updateAndContinueBtn)
             uCommon.waitElemToBeVisible(page, pAdmin.pl.bi.productSuccessMsg)
             uCommon.waitElemNotToBeVisible(page, pAdmin.pl.bi.productSuccessMsg)
             

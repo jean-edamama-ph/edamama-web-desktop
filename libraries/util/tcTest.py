@@ -74,7 +74,7 @@ def checkCheckoutOIDsInWMS(page, dictData):
     uWms.selectDPorWH(page, 'dropship')
     frame = uWms.switchToFrame(page)
     uCommon.wait(page, 10)
-    uWms.clickfilter(frame, 'Order #')
+    uWms.clickfilter(frame)
     
     uCommon.log(0, 'Step 8 - Paste the OID in the Sale Order search field and enter. Verify the result')
     uWms.setFilter(frame, strOrderID)

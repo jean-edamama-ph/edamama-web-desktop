@@ -45,16 +45,17 @@ def clickOrders(page):
     uCommon.wait(page, 5)
 
 @uCommon.ufuncLog  
-def clickfilter(frame, strColHeader):
+def clickfilter(frame):
     """ 
     Objective: Click Orders
     
     param frame: iframe
-    param strColHeader: Column Header
+    param: None
     returns: None
     Author: ccapistrano_20230327
+    Updated By: abernal_20230320
     """ 
-    uCommon.clickElem(frame, pWms.od.od.filterBtn(strColHeader))
+    uCommon.clickElem(frame, pWms.od.od.filtersBtn)
 
 @uCommon.ufuncLog  
 def setFilter(frame, strOrderID):

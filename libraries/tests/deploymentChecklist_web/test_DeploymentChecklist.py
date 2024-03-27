@@ -739,7 +739,7 @@ def test_AUTO_706_Add_Product_and_Quantity_to_the_Gift_List(page):
     uCommon.log(0, 'Step 5 - Click the "Gift" icon again then select your list >>Verify the added product')
     uMyGifts.com.clickGiftBox(page)
     uMyGifts.com.clickGiftList(page, False)
-    uCommon.waitAndClickElemText(page, strItemName,'', 2)
+    uMyGifts.com.verifyGiftListProducts(page, strItemName)
     uCommon.log(0, 'Test case completed')
 
 

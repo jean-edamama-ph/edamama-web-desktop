@@ -175,7 +175,7 @@ class hs:
     happinessGuaranteedImg = '//img[@src="assets/images/why-shop/girl.svg"]'
     happinessGuaranteedLbl = '//figcaption[text()="Happiness guaranteed with our mama-led team"]' 
     referralBannerImg = '//div[@class="credit-box-desktop pointer ng-star-inserted"]'
-    referAFriendLbl = f'{referralBannerImg}//h2[contains(text()," Give ₱300, get ₱100 when you refer a friend ")]'
+    referAFriendLbl = f'{referralBannerImg}//h2[contains(text()," Give ₱400, get ₱300 when you refer a friend ")]'
     referAFriendDescLbl = f'{referralBannerImg}//p[contains(text(),"Share your unique code with your friends and family!")]'
     referralCodeLbl = f'{referralBannerImg}//p[@class="info"]'
     

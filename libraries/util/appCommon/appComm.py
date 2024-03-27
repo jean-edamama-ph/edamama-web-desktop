@@ -54,7 +54,7 @@ class ln:
         """
         uCommon.goToURL(page, dCommon.url.strAdminUrl)
         uCommon.wait(page, 3)
-        if uCommon.verifyVisible(page, pLogin.ak.adminPanelLbl) == False:
+        if uCommon.verifyVisible(page, pLogin.ak.loginLbl) == True:
             uCommon.setElem(page, pLogin.ak.emailTxt, dCommon.user.adminKpc.strUserName)
             uCommon.setElem(page, pLogin.ak.passwordTxt, dCommon.user.adminKpc.strPassword)
             uCommon.waitAndClickElem(page, pLogin.ak.loginBtn)
