@@ -12,5 +12,9 @@ class com:
     onAddChildRewardLbl = '//td[contains(text(),"On Add Child")]//..//td[text()="5"]'
     onProductReviewRewardLbl = '(//td[contains(text(),"On Product Review")])[1]//..//td[text()="5"]'
     onAddAttributeRewardLbl = '//td[contains(text(),"On Add Attribute")]//..//td[text()="5"]'
+    onEdamamaRewardsLbl = '(//tr//td[contains(text(),"On Edamama Rewards(+)")])[1]'
+    onEdamamaRewardsValueLbl = '(//td[contains(text(),"On Edamama Rewards(+)")]/../td[3])[1]'
+    onEdamamaCreditsLbl = '(//tr//td[contains(text(),"On Edamama Credits(+)")])[1]'
+    onEdamamaCreditsValueLbl = '(//td[contains(text(),"On Edamama Credits(+)")]/../td[3])[1]'
     
     
