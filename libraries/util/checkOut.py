@@ -277,7 +277,7 @@ def selectModeOfPaymentAndBeansOrPromo(page, dictData, strMOP = '', strBeansProm
         subTotalLbl = uCommon.getElemText(page, pCheckOut.pm.subTotalAmountLbl)
         newSubTotalLbl = subTotalLbl.replace("₱", "").replace(",", "")
         if float(newSubTotalLbl) < 500:
-            if dictData['strPromoCode'] == "EDRIBSCBTALA" and dictData['strItemName'] == dDepChkLst.strItemName2:
+            if dictData['strCouponTag'] == 'Brand Sponsored' and dictData['strItemName'] == dDepChkLst.strItemName2:
                 uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoCodeUsedInvalidErrorMsg)
                 uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.couponDiscountLbl)
             else:
@@ -287,10 +287,11 @@ def selectModeOfPaymentAndBeansOrPromo(page, dictData, strMOP = '', strBeansProm
             uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.promoCodeDoesNotExistMsg)
             uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoAmountLbl)
             uCommon.validateElemText(page, pCheckOut.pm.promoCodeLbl, strPromoCode)
-        if strPromoCode == 'BEAN300' or strPromoCode == "EDRIBSCBTALA":
-            uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoDescLbl)
-        else:
-            uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.promoDescLbl)
+        if float(newSubTotalLbl) > 500:    
+            if dictData['strCouponType'] == 'CREDIT BEANS' or dictData['strCouponTag'] == 'Brand Sponsored':
+                uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoDescLbl)
+            else:
+                uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.promoDescLbl)
     elif strBeansPromo == '':
         uCommon.log(0, f'No selected Beans & Promo')
     else:
