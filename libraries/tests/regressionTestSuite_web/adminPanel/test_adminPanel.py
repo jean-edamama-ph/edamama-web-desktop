@@ -111,3 +111,31 @@ def test_ACQ_AUTO_1788_User_should_be_able_to_manually_credit_Credit_via_editing
     uMyBeans.com.verifyOnEdamamaCredits(newWindow, dAdmin.AUTO1788.strCredits)
     uCommon.log(0, '[AUTO-1791 Completed]: Checked if reward is shown on Beans History page.')
     uCommon.log(0, 'Test Completed')
+
+
+""" Author: abernal_20240318 Execution Time: 25s - 27s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that error message is encountered when user deducts more than the beans available in the users credits or rewards via customers details page.')
+def test_ACQ_AUTO_1803_Error_message_is_encountered_when_user_deducts_more_than_the_beans_available_in_the_users_credits_or_rewards(page):
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Search for a user and click the First Name')
+    uAdminKpc.cu.searchCustomer(page, dCommon.user.strUserName)
+    newWindow = uCommon.switchToWindow(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the total rewards and credits available from the user.')
+    strOldTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = "")
+    strOldTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = "")
+    uCommon.log(0, '[Pre-condition Completed]: Get the total rewards and credits available from the user.')
+    
+    uCommon.log(0, 'Step 3 - Edit the value wherein the amount to be deducted is more than the amount of balance on the users credits/rewards.')
+    uAdminKpc.cu.deductTotalRewardCreditValue(newWindow, strOldTotalRewards, strType = "Rewards")
+    uAdminKpc.cu.deductTotalRewardCreditValue(newWindow, strOldTotalCredits, strType = "Credits")
+    
+    uCommon.log(0, '[Post-condition Started]: Return the deducted amount of rewards/credits.')
+    uAdminKpc.cu.editTotalRewardsValue(newWindow, strOldTotalRewards)
+    uAdminKpc.cu.editTotalCreditsValue(newWindow, strOldTotalCredits)
+    uCommon.log(0, '[Post-condition Completed]: Returned the deducted amount of rewards/credits.')

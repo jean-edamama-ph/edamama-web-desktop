@@ -1270,8 +1270,12 @@ class cu:
         """
         if uCommon.verifyVisible(page, pAdmin.cu.totalCreditLbl) == True:
             uCommon.log(1, f'Total Credit is visible.') 
+        else:
+            uCommon.log(1, f'Total Credit is not visible.') 
         if uCommon.verifyVisible(page, pAdmin.cu.totalRewardLbl) == True:
             uCommon.log(1, f'Total Reward is visible.') 
+        else:
+            uCommon.log(1, f'Total Reward is not visible.') 
             
     @uCommon.ufuncLog  
     def editTotalRewardsValue(page, strValue):
@@ -1285,8 +1289,9 @@ class cu:
         uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
         uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strValue)
         uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
-        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModal)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
         uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        uCommon.wait(page, 2)
         
     @uCommon.ufuncLog  
     def editTotalCreditsValue(page, strValue):
@@ -1300,8 +1305,73 @@ class cu:
         uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
         uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strValue)
         uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
-        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModal)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
         uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        
+    @uCommon.ufuncLog  
+    def getTotalRewardsValue(page, strTotalRewards):
+        """ 
+        Objective: To get the Total Rewards value.
+        param: strTotalRewards: Text
+        returns strTotalRewards: Text
+        Author: abernal_20240319
+        """
+        intTotalRewards = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+        return intTotalRewards
+    
+    @uCommon.ufuncLog  
+    def getTotalCreditsValue(page, strTotalCredits):
+        """ 
+        Objective: To get the Total Credits value.
+        param strTotalCredit: Text
+        returns strTotalCredit: Text
+        Author: abernal_20240319
+        """
+        strTotalCredits = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+        return strTotalCredits
+            
+    @uCommon.ufuncLog  
+    def deductTotalRewardCreditValue(page, strValue, strType):
+        """ 
+        Objective: To deduct credits from the Total Credits.
+        param strValue: Text
+        returns: None
+        Author: abernal_20240322
+        """        
+        if strType == "Rewards": 
+            uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
+        elif strType == "Credits":
+            uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
+            
+        strValue = int(strValue) + 100
+        strNewValue = '-' + str(strValue)
+        
+        if strType == "Rewards": 
+            uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strNewValue)
+        elif strType == "Credits":
+            uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strNewValue)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationDeductionModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.closeConfirmationDeductBtn)
+        if strType == "Rewards": 
+            uCommon.waitAndClickElem(page, pAdmin.cu.cancelEditBtn)
+        
+        if strType == "Rewards": 
+            strTotalReward = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+            strReward = '0'
+            if strTotalReward == strReward:
+                uCommon.log(1, f'User has no rewards.')
+            else:
+                uCommon.log(2, f'User has still rewards. Nothing was deducted.')
+        elif strType == "Credits":
+            strTotalCredit = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+            strCredit = '0'
+            if strTotalCredit == strCredit:
+                uCommon.log(1, f'User has no credits.')
+            else:
+                uCommon.log(2, f'User has still credits. Nothing was deducted.')
         
             
 
