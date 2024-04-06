@@ -19,10 +19,10 @@ class gm:
         def weGotYourOrderLbl(strOrderID):
             return f'//span[contains(text(),"We got your order!")][contains(text(),"{strOrderID}")]'
         def successfullCreatedGiftListLbl(strUsername):
-            return f'(//span[contains(text(),"{strUsername}")]/..//span[text()="[KPC] You\'ve successfully created your Gift List!"])[1]'
+            return f'//span[contains(text(),"You\'ve successfully created your Gift Registry! Hey there, {strUsername}!")]'
         def invitedGiftListLbl(strUsername):
-            return f'(//span[contains(text(),"{strUsername}")]/..//span[text()="[KPC] You\'ve been invited to a Gift List!"])[1]'
-        viewGiftListBtn = '//a//td[contains(text(),"View Gift List")]'
+            return f'(//span[contains(text(),"​ You\'ve been invited to a Gift Registry! Dear {strUsername}")])[1]'
+        viewGiftListBtn = '//a[contains(text(),"Go to Gift Registry")]'
         def subscriptionDetailsChangedLbl(strUsername):
             return f'(//span[contains(text(),"{strUsername}")]/..//span[text()="[KPC] Subscription Details Changed!"])[1]'
         divOrderDetailsElm = '//div[contains(@class,"order-details-wrapper")]'
