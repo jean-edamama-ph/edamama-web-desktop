@@ -1,6 +1,7 @@
 import libraries.page.profile.myOrders as pMyOrders
 import libraries.page.common.common as pCommon
 import libraries.util.common as uCommon
+import libraries.data.deploymentChecklist as dDepChkLst
 
 @uCommon.ufuncLog  
 def validateMyOrders(page, strOrderID, blnCoupon = False):
@@ -52,8 +53,11 @@ def validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, blnCo
     uCommon.validateElemText(page,  pMyOrders.com.myOrdersDataLbl(strOrderID, 'Shipping Price'), arrCODetails[1].replace('Shipping Amount: ', ''), False)
     uCommon.validateElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, 'Total Price'), arrCODetails[2].replace('Collectible Total: ', ''), False)
     uCommon.validateElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, 'Ship To'), arrCODetails[3])
-    if blnCoupon == True:
-        uCommon.validateElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, 'Coupon/s Used'), '1 Coupons Used keyboard_arrow_down')
+    if arrCartDetails[1] == dDepChkLst.strItemName2 or arrCartDetails[1] == dDepChkLst.strItemName3:
+        uCommon.expectElemNotToBeVisible(page, pMyOrders.com.couponUsedLbl(strOrderID))
+    else:
+        if blnCoupon == True:
+            uCommon.validateElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, 'Coupon/s Used'), '1 Coupons Used keyboard_arrow_down')
 
 @uCommon.ufuncLog       
 def cancelOrder(page, strOrderID):

@@ -60,6 +60,8 @@ class com:
     
     oneTimeDeliveryChangeMsg = '//span[text()="Order Delivery Information can only be changed once per order"]'
     
+    def couponUsedLbl(strOrderID):
+        return f'//td[contains(text(),"{strOrderID}")]//..//..//th[contains(text(),"Coupon/s Used")]'
     
     
     

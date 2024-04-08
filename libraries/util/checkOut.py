@@ -1,4 +1,5 @@
 import libraries.data.common as dCommon
+import libraries.data.deploymentChecklist as dDepChkLst
 
 import libraries.page.cart as pCart
 import libraries.page.checkOut as pCheckOut
@@ -208,7 +209,7 @@ def validateThankYouPage(page):
         uCommon.waitElemToBeVisible(page, pCheckOut.ty.__dict__[item]) 
      
 @uCommon.ufuncLog   
-def selectModeOfPaymentAndBeansOrPromo(page, strMOP = '', strBeansPromo = '', strPromoCode = ''):
+def selectModeOfPaymentAndBeansOrPromo(page, dictData, strMOP = '', strBeansPromo = '', strPromoCode = ''):
     """ 
     Objective: Validate thank you page elements
     
@@ -217,7 +218,7 @@ def selectModeOfPaymentAndBeansOrPromo(page, strMOP = '', strBeansPromo = '', st
     param strPromoCode: Promo Code
     returns: None
     Author: ccapistrano_20230327
-    Updated By: jatregenio_20240203
+    Updated By: abernal_20240326
     """
     uCommon.waitForLoadState(page)
     uCommon.waitForLoadState(page, 'networkidle')
@@ -273,13 +274,24 @@ def selectModeOfPaymentAndBeansOrPromo(page, strMOP = '', strBeansPromo = '', st
         uCommon.wait(page, 1.5) 
         uCommon.waitAndClickElem(page, pCheckOut.pc.applyBtn)
         uCommon.wait(page, 1) 
-        uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.promoCodeDoesNotExistMsg)
-        uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoAmountLbl)
-        uCommon.validateElemText(page, pCheckOut.pm.promoCodeLbl, strPromoCode)
-        if strPromoCode == 'BEAN300':
-            uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoDescLbl)
+        subTotalLbl = uCommon.getElemText(page, pCheckOut.pm.subTotalAmountLbl)
+        newSubTotalLbl = subTotalLbl.replace("₱", "").replace(",", "")
+        if float(newSubTotalLbl) < 500:
+            if dictData['strCouponTag'] == 'Brand Sponsored' and dictData['strItemName'] == dDepChkLst.strItemName2:
+                uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoCodeUsedInvalidErrorMsg)
+                uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.couponDiscountLbl)
+            else:
+                uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoMinPurchaseErrorMsg)
+                uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.couponDiscountLbl)
         else:
-            uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.promoDescLbl)
+            uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.promoCodeDoesNotExistMsg)
+            uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoAmountLbl)
+            uCommon.validateElemText(page, pCheckOut.pm.promoCodeLbl, strPromoCode)
+        if float(newSubTotalLbl) > 500:    
+            if dictData['strCouponType'] == 'CREDIT BEANS' or dictData['strCouponTag'] == 'Brand Sponsored':
+                uCommon.waitElemToBeVisible(page, pCheckOut.pm.promoDescLbl)
+            else:
+                uCommon.expectElemNotToBeVisible(page, pCheckOut.pm.promoDescLbl)
     elif strBeansPromo == '':
         uCommon.log(0, f'No selected Beans & Promo')
     else:
@@ -440,3 +452,17 @@ def validateDeliveryAddressElemAndDefaultAddressByProv(page, strProv):
     """
     validateIfDefaultAddressByProvince(page, strProv)
     validateDeliveryAddress(page)
+    
+@uCommon.ufuncLog
+def closeMobileVerificationModal(page):
+    """ 
+    Objective: To close the mobile verification modal (for non-verified users)
+    
+    param: None
+    returns None
+    Author: abernal_20240326
+    """
+    uCommon.wait(page, 2)
+    if uCommon.verifyVisible(page, pCheckOut.co.mobileVerifModalLbl) == True:
+        uCommon.clickElem(page, pCheckOut.co.mobileVerifCloseBtn)
+        uCommon.waitElemNotToBeVisible(page, pCheckOut.co.mobileVerifModalLbl)

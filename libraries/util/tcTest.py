@@ -16,7 +16,8 @@ def validateE2EMOP(page, dictData, intStep = 3):
     arrCartDetails = uCheckOut.checkOutItem(page, dictData["strItemName"], dictData["strType"])
     
     uCommon.log(0, f'Step {intStep + 1} - Select cash on delivery as payment method')
-    uCheckOut.selectModeOfPaymentAndBeansOrPromo(page, dictData["strMOP"], dictData["strBeansPromo"], dictData["strPromoCode"])
+    uCheckOut.closeMobileVerificationModal(page)
+    uCheckOut.selectModeOfPaymentAndBeansOrPromo(page, dictData, dictData["strMOP"], dictData["strBeansPromo"], dictData["strPromoCode"])
     
     uCommon.log(0, f'Step {intStep + 1} - Verify that the order id was displayed >> Take note of the order id >> Click "My Orders" page')
     arrCODetails = uCheckOut.validateCheckOutDetails(page, arrCartDetails)
