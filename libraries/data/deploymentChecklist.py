@@ -608,7 +608,7 @@ class AUTO711:
     blnOwner = True
     
 class AUTO716:
-    strOwnerUserName = 'testkpcauto+7'
+    strOwnerUserName = 'Qa20231031080254'
     blnFirstGL = 'click'
     blnTrue = True
     blnFalse = False
