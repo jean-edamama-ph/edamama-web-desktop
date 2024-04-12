@@ -837,9 +837,9 @@ def test_AUTO_716_Invitee_Buys_Item_from_Shared_Gift_List(page):
     
     uCommon.log(0, 'Step 6 - Click "Buy Selected Gifts" button')
     uMyGifts.ml.clickBuySelectedGifts(page)
-    
+
     uCommon.log(0, 'Step 7 - Select any MOP available then click "Place Order" button')
-    uCheckOut.selectModeOfPaymentAndBeansOrPromo(page, dDepChkLst.AUTO716.dictData["strMOP"], dDepChkLst.AUTO716.dictData["strBeansPromo"], dDepChkLst.AUTO716.dictData["strPromoCode"])
+    uCheckOut.selectModeOfPaymentAndBeansOrPromo(page, dDepChkLst.AUTO716.dictData, dDepChkLst.AUTO716.dictData["strMOP"], dDepChkLst.AUTO716.dictData["strBeansPromo"], dDepChkLst.AUTO716.dictData["strPromoCode"])
     uCheckOut.clickPlaceOrderAndGetOrderID(page, dDepChkLst.AUTO716.dictData["strMOP"], dDepChkLst.AUTO716.dictData["strBeansPromo"])
 
 

@@ -82,7 +82,9 @@ class AUTO270:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAPERC10',
                 'strType': 'fp',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strCouponTag': '',
+                'strCouponType': ''
                 }    
 
 class AUTO275:
@@ -103,7 +105,9 @@ class AUTO280:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'CETAFLAT50',
                 'strType': 'fp',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strCouponTag': '',
+                'strCouponType': ''
                 }    
 
 class AUTO285:
@@ -133,7 +137,9 @@ class AUTO295:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAPERC10',
                 'strType': 'fp',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strCouponTag': '',
+                'strCouponType': ''
                 }    
     
 class AUTO300:
@@ -174,7 +180,9 @@ class AUTO315:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'CETAFLAT50',
                 'strType': 'fp',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO320:
@@ -184,7 +192,9 @@ class AUTO320:
                 'strBeansPromo': '',
                 'strPromoCode': '',
                 'strType': 'fp',
-                'blnCoupon': False
+                'blnCoupon': False,
+                'strCouponType': '',
+                'strCouponTag': ''
                 } 
 
 class AUTO325:
@@ -194,7 +204,9 @@ class AUTO325:
                 'strBeansPromo': 'beans',
                 'strPromoCode': '',
                 'strType': 'fp',
-                'blnCoupon': False
+                'blnCoupon': False,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO330:
@@ -204,7 +216,9 @@ class AUTO330:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAPERC10',
                 'strType': 'fp',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO335:
@@ -214,7 +228,9 @@ class AUTO335:
                 'strBeansPromo': '',
                 'strPromoCode': '',
                 'strType': 'fp',
-                'blnCoupon': False
+                'blnCoupon': False,
+                'strCouponType': '',
+                'strCouponTag': ''
                 } 
     
 class AUTO384:
@@ -224,7 +240,9 @@ class AUTO384:
                 'strBeansPromo': 'beans',
                 'strPromoCode': '',
                 'strType': 'fp',
-                'blnCoupon': False
+                'blnCoupon': False,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO389:
@@ -234,7 +252,9 @@ class AUTO389:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAMAYA100',
                 'strType': 'fp',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO530:
@@ -244,7 +264,9 @@ class AUTO530:
                 'strBeansPromo': '',
                 'strPromoCode': '',
                 'strType': 'fp',
-                'blnCoupon': False
+                'blnCoupon': False,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }   
     
 class AUTO557:
@@ -255,7 +277,9 @@ class AUTO557:
                 'strPromoCode': '',
                 'strType': 'fp',
                 'blnCoupon': False,
-                'blnCancel': False
+                'blnCancel': False,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }   
 
 class AUTO562:
@@ -279,7 +303,9 @@ class AUTO567:
                 'strPromoCode': '',
                 'strType': 'fp',
                 'blnCoupon': False,
-                'blnCancel': True
+                'blnCancel': True,
+                'strCouponType': '',
+                'strCouponTag': ''
                 }   
 
 class AUTO572:
@@ -633,7 +659,9 @@ class AUTO716:
                 'strBeansPromo': '',
                 'strPromoCode': '',
                 'strType': 'fp',
-                'blnCoupon': False
+                'blnCoupon': False,
+                'strCouponType': '',
+                'strCouponTag': ''
                 } 
     
 class AUTO547:
@@ -789,7 +817,8 @@ class AUTO1972:
                 'strPromoCode': 'EDRIGCFAO',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Gift Card'
+                'strCouponTag': 'Gift Card',
+                'strCouponType': ''
                 } 
     
 class AUTO1975:
@@ -800,7 +829,8 @@ class AUTO1975:
                 'strPromoCode': 'EDRIBSCBTALA',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Brand Sponsored'
+                'strCouponTag': 'Brand Sponsored',
+                'strCouponType': ''
                 } 
     
 class AUTO1978:
@@ -811,7 +841,8 @@ class AUTO1978:
                 'strPromoCode': 'EDRIESPO',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Edamama Sponsored'
+                'strCouponTag': 'Edamama Sponsored',
+                'strCouponType': ''
                 } 
     
 class AUTO1981:
@@ -822,7 +853,8 @@ class AUTO1981:
                 'strPromoCode': 'EDRISHIPFRS',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Shipping'
+                'strCouponTag': 'Shipping',
+                'strCouponType': ''
                 } 
     
 class AUTO1984:
@@ -845,7 +877,8 @@ class AUTO1984:
                 'strPromoCode': 'MARRIE430921',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Referral Code'
+                'strCouponTag': 'Referral Code',
+                'strCouponType': ''
     } 
     
 class AUTO1987:
@@ -856,5 +889,6 @@ class AUTO1987:
                 'strPromoCode': 'MOPPOGRABPAY',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Edamama Sponsored'
+                'strCouponTag': 'Edamama Sponsored',
+                'strCouponType': ''
                 } 
