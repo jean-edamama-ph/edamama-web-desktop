@@ -44,6 +44,8 @@ class co:
     collectibleTotalLbl = '//p[contains(text(),"Collectible Total")]'
     mobileVerifModalLbl = '//p[contains(text(),"We will send the pin to the mobile number")]'
     mobileVerifCloseBtn = '//mat-icon[contains(text(),"close")]'
+    totalRewardsLbl = '//div[contains(@class,"rewards-amount")]//span[@class="capped"]'
+    totalCreditsLbl = '//div[contains(@class,"credits-amount")]//span[@class="capped"]'
     
     expressDeliveryLbl = '//b[text()="Express Delivery"]'
     expressDeliveryIconImg = '//img[@src="assets/images/i-icon.svg"]'

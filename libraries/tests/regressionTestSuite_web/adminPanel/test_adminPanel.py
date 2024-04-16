@@ -8,6 +8,8 @@ import libraries.data.common as dCommon
 import libraries.data.regressionTestSuite.adminPanel.adminPanel as dAdmin
 import libraries.util.profile.myProfile as uMyProfile
 import libraries.util.profile.myBeans as uMyBeans
+import libraries.util.cart as uCart
+import libraries.util.checkOut as uCheckOut
 
 """ Author: abernal_20240318 Execution Time: 15s """
 @pytest.mark.regressionTestSuite()
@@ -139,3 +141,31 @@ def test_ACQ_AUTO_1803_Error_message_is_encountered_when_user_deducts_more_than_
     uAdminKpc.cu.editTotalRewardsValue(newWindow, strOldTotalRewards)
     uAdminKpc.cu.editTotalCreditsValue(newWindow, strOldTotalCredits)
     uCommon.log(0, '[Post-condition Completed]: Returned the deducted amount of rewards/credits.')
+    uCommon.log(0, 'Test Completed')
+
+
+""" Author: abernal_20240416 Execution Time: 25s - 27s """
+@pytest.mark.netTest()
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that manually credited rewards and credits should reflect as expected on checkout page')
+def test_ACQ_AUTO_1812_Manually_credited_rewards_and_credits_should_reflect_as_expected_on_checkout_page(page):
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Search for a user and click the First Name')
+    uAdminKpc.cu.searchCustomer(page, dCommon.user.strUserName)
+    newWindow = uCommon.switchToWindow(page)
+    
+    uCommon.log(0, 'Step 3 - Click the pen on the Total Credit field and Total Rewards field and adjust the value.')
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO1812.strRewards, strType = "Rewards")
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO1812.strCredits, strType = "Credits")
+    strTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = "")
+    strTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = "")
+    
+    uCommon.log(0, 'Step 4 - Navigate to edamama site > My Cart > Proceed to checkout. Verify the amount on Total Rewards and Total Credit is the same as the value on checkout.')
+    uAppComm.ln.loginToEdamama(newWindow, dCommon.user.strUserName)
+    arrCartDetails = uCheckOut.checkOutItem(page, dAdmin.AUTO1812.dictData['strItemName'], dAdmin.AUTO1812.dictData["strType"])
+    uCheckOut.validateTotalRewardsAndCredit(page, strTotalRewards, strTotalCredits)
+    uCommon.log(0, 'Test Completed')

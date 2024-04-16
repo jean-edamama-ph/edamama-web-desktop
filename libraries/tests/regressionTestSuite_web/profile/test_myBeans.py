@@ -315,3 +315,5 @@ def test_ACQ_AUTO_1682_User_should_receive_a_Bean_Reward_emailer_after_successfu
     uEmail.loginToGmail(page)
     uEmail.clickYouveBeanRewardPurchasing(page)
     uCommon.log(0, 'Test Completed')
+    
+    

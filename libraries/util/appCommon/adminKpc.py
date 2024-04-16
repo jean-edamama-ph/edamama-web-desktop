@@ -1372,6 +1372,29 @@ class cu:
                 uCommon.log(1, f'User has no credits.')
             else:
                 uCommon.log(2, f'User has still credits. Nothing was deducted.')
+                
+    @uCommon.ufuncLog  
+    def addTotalRewardCreditValue(page, strValue, strType):
+        """ 
+        Objective: To add credits from the Total Credits.
+        param strValue: Text
+        returns: None
+        Author: abernal_20240322
+        """        
+        uCommon.wait(page, 1)
+        if strType == "Rewards": 
+            uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
+        elif strType == "Credits":
+            uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
+        
+        if strType == "Rewards": 
+            uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strValue)
+        elif strType == "Credits":
+            uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strValue)
+        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+            
         
             
 
