@@ -134,8 +134,8 @@ def test_ACQ_AUTO_1803_Error_message_is_encountered_when_user_deducts_more_than_
     uCommon.log(0, '[Pre-condition Completed]: Get the total rewards and credits available from the user.')
     
     uCommon.log(0, 'Step 3 - Edit the value wherein the amount to be deducted is more than the amount of balance on the users credits/rewards.')
-    uAdminKpc.cu.deductTotalRewardCreditValue(newWindow, strOldTotalRewards, strType = "Rewards")
-    uAdminKpc.cu.deductTotalRewardCreditValue(newWindow, strOldTotalCredits, strType = "Credits")
+    uAdminKpc.cu.deductMoreThanTotalRewardCreditValue(newWindow, strOldTotalRewards, strType = "Rewards")
+    uAdminKpc.cu.deductMoreThanTotalRewardCreditValue(newWindow, strOldTotalCredits, strType = "Credits")
     
     uCommon.log(0, '[Post-condition Started]: Return the deducted amount of rewards/credits.')
     uAdminKpc.cu.editTotalRewardsValue(newWindow, strOldTotalRewards)
@@ -144,8 +144,7 @@ def test_ACQ_AUTO_1803_Error_message_is_encountered_when_user_deducts_more_than_
     uCommon.log(0, 'Test Completed')
 
 
-""" Author: abernal_20240416 Execution Time: 25s - 27s """
-@pytest.mark.netTest()
+""" Author: abernal_20240416 Execution Time: 54s - 57s """
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that manually credited rewards and credits should reflect as expected on checkout page')
@@ -166,6 +165,54 @@ def test_ACQ_AUTO_1812_Manually_credited_rewards_and_credits_should_reflect_as_e
     
     uCommon.log(0, 'Step 4 - Navigate to edamama site > My Cart > Proceed to checkout. Verify the amount on Total Rewards and Total Credit is the same as the value on checkout.')
     uAppComm.ln.loginToEdamama(newWindow, dCommon.user.strUserName)
-    arrCartDetails = uCheckOut.checkOutItem(page, dAdmin.AUTO1812.dictData['strItemName'], dAdmin.AUTO1812.dictData["strType"])
-    uCheckOut.validateTotalRewardsAndCredit(page, strTotalRewards, strTotalCredits)
+    uCheckOut.checkOutItem(newWindow, dAdmin.AUTO1812.dictData['strItemName'], dAdmin.AUTO1812.dictData["strType"])
+    uCheckOut.validateTotalRewardsAndCredit(newWindow, strTotalRewards, strTotalCredits)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240416 Execution Time: 15s - 16s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Activity Logs should be displayed below on the Customer Module page')
+def test_ACQ_AUTO_1991_Activity_Logs_should_be_displayed_below_on_the_Customer_Module_page(page):
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Verify the Activity Logs below the Customer module.')
+    uAdminKpc.cu.validateActivityLogs(page)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240417 Execution Time: 47s - 53s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Activity log should updated when user manually credit rewards via editing Total Rewards.')
+@allure.step('To verify that Activity log should updated when user manually credit rewards via editing Total Credits.')
+#test_ACQ_AUTO_2023_Activity_log_should_be_updated_when_user_manually_credit_rewards_via_editing_Total_Credits
+def test_ACQ_AUTO_2019_Activity_log_should_be_updated_when_user_manually_credit_rewards_via_editing_Total_Rewards(page):
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Search for a user and click the First Name.')
+    uAdminKpc.cu.searchCustomer(page, dCommon.user.strUserName)
+    newWindow = uCommon.switchToWindow(page)
+    
+    uCommon.log(0, '[AUTO-2019 and AUTO-2023 Started]: Step 3 - Click the pen on the Total Rewards and Credits field and adjust the value.')
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO2019.strRewards, strType = "Rewards")
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO2019.strCredits, strType = "Credits")
+    uCommon.closeWindow(newWindow)
+    uCommon.reloadPage(page)
+    
+    uCommon.log(0, 'Step 4 - Navigate back to Customers module and verify if the activity was recorded on Bean Rewards tab.')
+    uAdminKpc.cu.verifyAddedBeansActivityLog(page, dAdmin.AUTO2019.strRewards, dCommon.user.strUserName)
+    uAdminKpc.cu.verifyAddedCreditsActivityLog(page, dAdmin.AUTO2019.strCredits, dCommon.user.strUserName)
+    
+    uCommon.log(0, '[Post-condition Started]: Deduct the added amount of rewards/credits.')
+    uAdminKpc.cu.searchCustomer(page, dCommon.user.strUserName)
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.deductRewardCreditValue(newWindow, dAdmin.AUTO2019.strRewards, strType = "Rewards")
+    uAdminKpc.cu.deductRewardCreditValue(newWindow, dAdmin.AUTO2019.strCredits, strType = "Credits")
+    uCommon.log(0, '[Post-condition Completed]: Deducted the added amount of rewards/credits.')
     uCommon.log(0, 'Test Completed')

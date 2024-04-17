@@ -17,3 +17,7 @@ class AUTO1812:
                 'strType': 'fp',
                 'blnCoupon': False,
                 } 
+    
+class AUTO2019:
+    strCredits = '150'
+    strRewards = '150'

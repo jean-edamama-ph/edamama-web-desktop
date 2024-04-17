@@ -330,6 +330,16 @@ class cu:
     closeConfirmationDeductBtn = '//button//span[text()=" Close "]'
     cancelEditBtn = '//mat-icon[contains(text(),"cancel")]'
     
+    activityLogsLbl = '//h2[contains(text(),"Activity Logs")]'
+    beanRewardsTabLbl = '//span[contains(text(),"Bean Rewards")]'
+    beanCreditsTabLbl = '//span[contains(text(),"Bean Credits")]'
+    balanceAddedLbl = '//div[contains(text(),"Balance Added")]'
+    balanceSubtractedLbl = '//div[contains(text(),"Balance Subtracted")]'
+    def balanceAddedCustomerLbl(strCustomer):
+        return f'(//td[contains(text(),"{strCustomer}")])[1]'
+    def balanceAddedRewardLbl(strCustomer):
+        return f'{cu.balanceAddedCustomerLbl(strCustomer)}/../td[6]'
+    
 
 class rm:
     "REWARDS"
