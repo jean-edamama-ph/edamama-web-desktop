@@ -193,7 +193,7 @@ def test_ACQ_AUTO_1652_Credited_Bean_Rewards_in_Bean_History_From_Registration_O
     uCommon.log(0, 'Test Completed')  
     
     
-""" Author: abernal_20240311 Execution Time: 42s - 43s"""
+""" Author: abernal_20240311 Execution Time: 42s - 58s"""
 @pytest.mark.regressionTestSuite()
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that reward is not credited in Beans History when user does not add a child in the Complete My Profile.')
@@ -315,3 +315,5 @@ def test_ACQ_AUTO_1682_User_should_receive_a_Bean_Reward_emailer_after_successfu
     uEmail.loginToGmail(page)
     uEmail.clickYouveBeanRewardPurchasing(page)
     uCommon.log(0, 'Test Completed')
+    
+    
