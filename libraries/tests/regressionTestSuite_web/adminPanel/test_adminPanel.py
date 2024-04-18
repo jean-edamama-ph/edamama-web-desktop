@@ -139,3 +139,154 @@ def test_ACQ_AUTO_1803_Error_message_is_encountered_when_user_deducts_more_than_
     uAdminKpc.cu.editTotalRewardsValue(newWindow, strOldTotalRewards)
     uAdminKpc.cu.editTotalCreditsValue(newWindow, strOldTotalCredits)
     uCommon.log(0, '[Post-condition Completed]: Returned the deducted amount of rewards/credits.')
+    
+
+""" Author: abernal_20240417 Execution Time: 39s - 42s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that User should be able to do manual adjustment on AP via the Upload Rewards or Credit button and uploading csv')
+def test_ACQ_AUTO_1761_User_should_be_able_to_do_manual_adjustment_on_AP_via_the_Upload_Rewards_or_Credit_button_and_uploading_csv(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1761.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Get the current total rewards and credits of the users.')
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO1761.strPath)
+    
+    uCommon.log(0, 'Step 3 - Search for an email from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1761.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAddedFromUpload(newWindow, strOldTotalRewards, strOldTotalCredits, dAdmin.AUTO1761.rewardCredits)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240418 Execution Time: 36s - 39s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Error message should be displayed when same balance for credit are credited to a user ID within 5 minutes of uploading a CSV file')
+def test_ACQ_AUTO_1770_Error_message_should_be_displayed_when_same_balance_for_credit_are_credited_to_a_user_ID_within_5_minutes_of_uploading_a_CSV_file(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1770.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Get the current total rewards and credits of the users.')
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO1770.strPath)
+    
+    uCommon.log(0, 'Step 3 - Search for an email from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1770.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAddedFromUpload(newWindow, strOldTotalRewards, strOldTotalCredits, dAdmin.AUTO1770.rewardCredits)
+    uCommon.closeWindow(newWindow)
+    
+    uCommon.log(0, 'Step 4 - Reupload the file again and verify if error is encountered.')
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO1770.strPath)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240418 Execution Time: 36s - 39s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Error message should be displayed when same balance for credit are deducted to a user ID within 5 minutes of uploading a CSV file')
+def test_ACQ_AUTO_1773_Error_message_should_be_displayed_when_same_balance_for_credit_are_deducted_to_a_user_ID_within_5_minutes_of_uploading_a_CSV_file(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1773.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Get the current total rewards and credits of the users.')
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO1773.strPath)
+    
+    uCommon.log(0, 'Step 3 - Search for an email from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1773.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsDeductedFromUpload(newWindow, strOldTotalRewards, strOldTotalCredits, dAdmin.AUTO1770.rewardCredits)
+    uCommon.closeWindow(newWindow)
+    
+    uCommon.log(0, 'Step 4 - Reupload the file again and verify if error is encountered.')
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO1773.strPath)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240418 Execution Time: 36s - 39s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Error message should be displayed when same balance for rewards are credited to a user ID within 5 minutes of uploading a CSV file')
+def test_ACQ_AUTO_1776_Error_message_should_be_displayed_when_same_balance_for_rewards_are_credited_to_a_user_ID_within_5_minutes_of_uploading_a_CSV_file(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1776.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Get the current total rewards and credits of the users.')
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO1776.strPath)
+    
+    uCommon.log(0, 'Step 3 - Search for an email from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1776.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAddedFromUpload(newWindow, strOldTotalRewards, strOldTotalCredits, dAdmin.AUTO1776.rewardCredits)
+    uCommon.closeWindow(newWindow)
+    
+    uCommon.log(0, 'Step 4 - Reupload the file again and verify if error is encountered.')
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO1776.strPath)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240418 Execution Time: 36s - 41s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Error message should be displayed when same balance for rewards are deducted to a user ID within 5 minutes of uploading a CSV file')
+def test_ACQ_AUTO_1779_Error_message_should_be_displayed_when_same_balance_for_rewards_are_deducted_to_a_user_ID_within_5_minutes_of_uploading_a_CSV_file(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1779.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Get the current total rewards and credits of the users.')
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO1779.strPath)
+    
+    uCommon.log(0, 'Step 3 - Search for an email from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1779.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsDeductedFromUpload(newWindow, strOldTotalRewards, strOldTotalCredits, dAdmin.AUTO1776.rewardCredits)
+    uCommon.closeWindow(newWindow)
+    
+    uCommon.log(0, 'Step 4 - Reupload the file again and verify if error is encountered.')
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO1779.strPath)
+    uCommon.log(0, 'Test Completed')
