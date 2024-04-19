@@ -1376,6 +1376,84 @@ class cu:
                 uCommon.log(2, f'User has still credits. Nothing was deducted.')
                 
     @uCommon.ufuncLog  
+    def clickUploadUserCreditsOrRewards(page):
+        """ 
+        Objective: To click the Upload User Credits or Rewards button.
+        param: None
+        returns: None
+        Author: abernal_20240417
+        """ 
+        uCommon.waitAndClickElem(page, pAdmin.cu.uploadRewardsCreditsBtn)
+        
+    @uCommon.ufuncLog  
+    def uploadUserCreditsOrRewards(page, strPath):
+        """ 
+        Objective: Upload csv file in Upload User Credits Or Rewards.
+        
+        param strPath: Path directory
+        returns: None
+        Author: abernal_20240417
+        """
+        uCommon.uploadFile(page, pAdmin.cu.uploadCreditRewardBtn, strPath)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.uploadRewardsCreditsSuccessLbl)
+        uCommon.waitElemNotToBeVisible(page, pAdmin.cu.uploadRewardsCreditsSuccessLbl)
+        
+    @uCommon.ufuncLog  
+    def validateRewardsCreditsAddedFromUpload(page, strOldTotalRewards, strOldTotalCredits, rewardCredits):
+        """ 
+        Objective: Validate Rewards and Credits are added from Upload.
+        
+        param strOldTotalRewards, strOldTotalCredits: Text
+        returns: None
+        Author: abernal_20240417
+        """
+        strNewTotalRewards = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+        strNewTotalCredits = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+        strAddedTotalRewards = int(strOldTotalRewards) + int(rewardCredits['strRewards'])
+        strAddedTotalCredits = int(strOldTotalCredits) + int(rewardCredits['strCredits'])
+        if strNewTotalRewards == str(strAddedTotalRewards) and strNewTotalCredits == str(strAddedTotalCredits):
+            uCommon.log(1, f'Rewards and credits were added.')
+        else:
+            uCommon.log(2, f'Rewards and credits were not added.')
+            
+    @uCommon.ufuncLog  
+    def verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, strPath):
+        """ 
+        Objective: Verify the error modal when credits/rewards are already credited/deducted.
+        
+        param: None
+        returns: None
+        Author: abernal_20240418
+        """
+        uCommon.uploadFile(page, pAdmin.cu.uploadCreditRewardBtn, strPath)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        if uCommon.verifyVisible(page, pAdmin.cu.creditsAlreadyCreditedLbl) == True:
+            uCommon.log(1, f'Modal with message that rewards/credits are already credited is displayed.')
+            uCommon.clickElem(page, pAdmin.cu.closeConfirmationDeductBtn)
+        elif uCommon.verifyVisible(page, pAdmin.cu.creditsAlreadyDeductedLbl) == True:
+            uCommon.log(1, f'Modal with message that rewards/credits are already deducted is displayed.')
+            uCommon.clickElem(page, pAdmin.cu.closeConfirmationDeductBtn)
+        else:
+            uCommon.log(2, f'Modal with message that rewards/credits are already credited/deducted is not displayed.')
+            
+    @uCommon.ufuncLog  
+    def validateRewardsCreditsDeductedFromUpload(page, strOldTotalRewards, strOldTotalCredits, rewardCredits):
+        """ 
+        Objective: Validate Rewards and Credits are deducted from Upload.
+        
+        param strOldTotalRewards, strOldTotalCredits: Text
+        returns: None
+        Author: abernal_20240417
+        """
+        strNewTotalRewards = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+        strNewTotalCredits = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+        strAddedTotalRewards = int(strOldTotalRewards) - int(rewardCredits['strRewards'])
+        strAddedTotalCredits = int(strOldTotalCredits) - int(rewardCredits['strCredits'])
+        if strNewTotalRewards == str(strAddedTotalRewards) and strNewTotalCredits == str(strAddedTotalCredits):
+            uCommon.log(1, f'Rewards and credits were added.')
+        else:
+            uCommon.log(2, f'Rewards and credits were not added.')
+            
     def addTotalRewardCreditValue(page, strValue, strType):
         """ 
         Objective: To add credits from the Total Credits.

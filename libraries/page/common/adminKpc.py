@@ -329,6 +329,10 @@ class cu:
     confirmationDeductionModalLbl = '//p[contains(text(),"were not deducted")]'
     closeConfirmationDeductBtn = '//button//span[text()=" Close "]'
     cancelEditBtn = '//mat-icon[contains(text(),"cancel")]'
+    uploadRewardsCreditsBtn = '//label[contains(text()," Upload User Credits Or Rewards ")]'
+    uploadRewardsCreditsSuccessLbl = '//span[contains(text(), "Your upload was successful! All users and their Rewards/Credits balances have been updated.")]'
+    creditsAlreadyCreditedLbl = '//p[contains(text(),"has already been credited")]'
+    creditsAlreadyDeductedLbl = '//p[contains(text(),"has already been deducted")]'
     
     activityLogsLbl = '//h2[contains(text(),"Activity Logs")]'
     beanRewardsTabLbl = '//span[contains(text(),"Bean Rewards")]'
