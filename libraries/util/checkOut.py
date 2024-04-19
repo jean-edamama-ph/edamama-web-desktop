@@ -466,3 +466,21 @@ def closeMobileVerificationModal(page):
     if uCommon.verifyVisible(page, pCheckOut.co.mobileVerifModalLbl) == True:
         uCommon.clickElem(page, pCheckOut.co.mobileVerifCloseBtn)
         uCommon.waitElemNotToBeVisible(page, pCheckOut.co.mobileVerifModalLbl)
+        
+@uCommon.ufuncLog
+def validateTotalRewardsAndCredit(page, strTotalRewards, strTotalCredits):
+    """ 
+    Objective: To verify the amount of Rewards and Credits.
+    
+    param strTotalRewards, strTotalCredits: Text
+    returns None
+    Author: abernal_20240416
+    """
+    strTotalCheckoutRewards = uCommon.getElemText(page, pCheckOut.co.totalRewardsLbl)
+    strTotalCheckoutCredits = uCommon.getElemText(page, pCheckOut.co.totalCreditsLbl)
+    strNewTotalCheckoutRewards = strTotalCheckoutRewards.replace(",", "")
+    strNewTotalCheckoutCredits = strTotalCheckoutCredits.replace(",", "")
+    if strTotalRewards == strNewTotalCheckoutRewards and strTotalCredits == strNewTotalCheckoutCredits:
+        uCommon.log(1, f'Credits and Rewards on checkout is the same as the Credits and Rewards on AP.')
+    else:
+        uCommon.log(2, f'Credits and Rewards on checkout is not the same as the Credits and Rewards on AP.')

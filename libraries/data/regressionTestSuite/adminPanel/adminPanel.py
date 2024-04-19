@@ -1,3 +1,5 @@
+strItemName = 'Tala Tiles Magnetic Tiles Triangles Set (48-piece)'
+
 class AUTO1785:
     strRewards = '50'
     
@@ -73,3 +75,18 @@ class AUTO1779:
         'strUser4': 'testkpcauto1004@gmail.com',
         'strUser5': 'testkpcauto1005@gmail.com',
     }
+class AUTO1812:
+    strCredits = '150'
+    strRewards = '150'
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GRAB PAY',
+                'strBeansPromo': '',
+                'strPromoCode': '',
+                'strType': 'fp',
+                'blnCoupon': False,
+                } 
+    
+class AUTO2019:
+    strCredits = '150'
+    strRewards = '150'
