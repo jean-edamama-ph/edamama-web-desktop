@@ -12,7 +12,7 @@ import libraries.data.deploymentChecklist as dDepChklist
 class com:
     """COMMON"""
     @uCommon.ufuncLog  
-    def clickGiftBox(page, blnFirstGL = False):
+    def clickGiftBox(page, blnFirstGL = 'opt'):
         """ 
         Objective: Click Gift Box successfully
         param blnFirstGL: True | False | 'opt'
@@ -26,6 +26,7 @@ class com:
             blnFirstGL= com.checkIfFirstGL(page)
         
         if blnFirstGL == False:
+            uCommon.clickElem(page, pMyGifts.ml.xIconBtn)
             uCommon.waitElemToBeVisible(page, pMyGifts.ml.welcomeGiftListLbl)
         elif blnFirstGL == True:
             uCommon.waitElemToBeVisible(page, pMyGifts.ml.howGiftRegistryWorksLbl)

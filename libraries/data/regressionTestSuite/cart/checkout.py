@@ -34,5 +34,7 @@ class AUTO1627:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'BEAN300',
                 'strType': 'fp',
-                'blnCoupon': False
+                'blnCoupon': False,
+                'strCouponTag': '',
+                'strCouponType': 'CREDIT BEANS'
                 } 

@@ -8,8 +8,8 @@ class com:
     priceFilterSectionPnl = '//section[@class="rf-product-filter no-gutters -price ng-star-inserted"]'
     sortByLbl = '//span[text()="Sort By"]'
     relevanceBtn = '//span[contains(text(), "Relevance")]'
-    shopDrawerPnl = '//div[@class="index-wrapper ng-tns-c4143205851-1 notLast isFirst ng-star-inserted"]'
-    discoverDrawerPnl = '//div[@class="index-wrapper ng-tns-c4143205851-1 isLast notFirst ng-star-inserted"]'
+    shopDrawerPnl = '//div[contains(text(), "Shop")]/../../div[contains(@class, "index-hit")]'
+    discoverDrawerPnl = '//div[contains(text(), "Discover")]/../../div[contains(@class, "index-hit")]'
     recentSearchesLbl = '//h2[contains(text(), "Recent Searches")]'
     def recentSearchLbl(strValue):
         return f'{com.recentSearchesLbl}/../..//ul/li/span[contains(text(), "{strValue}")]'
