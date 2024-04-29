@@ -43,7 +43,7 @@ class co:
     creditUsedTotalLbl = '//p[contains(text(),"Credit Used Total")]'
     collectibleTotalLbl = '//p[contains(text(),"Collectible Total")]'
     mobileVerifModalLbl = '//p[contains(text(),"We will send the pin to the mobile number")]'
-    mobileVerifCloseBtn = '//mat-icon[contains(text(),"close")]'
+    mobileVerifCloseBtn = '(//mat-icon[contains(text(),"close")])[3]'
     totalRewardsLbl = '//div[contains(@class,"rewards-amount")]//span[@class="capped"]'
     totalCreditsLbl = '//div[contains(@class,"credits-amount")]//span[@class="capped"]'
     

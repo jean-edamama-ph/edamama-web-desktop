@@ -182,9 +182,9 @@ class hs:
     allPaginatioBulletIconBtn = '//span[contains(@class,"swiper-pagination-bullet")]'
     def paginatioBulletBtn(intIndex):
         return f'(//div[contains(@class,"swiper-pagination")]/span)[{intIndex}]'
-    allDataSwiperSlideImg = '//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide ng-star-inserted")]'
+    allDataSwiperSlideImg = '//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide home_slider_image shop ng-star-inserted")]'
     def dataSwiperSlideImg(intIndex):
-        return f'(//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide ng-star-inserted")])[{intIndex}]'
+        return f'(//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide home_slider_image shop ng-star-inserted")])[{intIndex}]'
     def curatedTitleLbl(strTitle):
         return f'//section[@class="curated-products-wrapper"]//h3[@class="title -template"][contains(text(),"{strTitle}")]'
     def allCuratedTitleLbl(intIndex):
