@@ -1549,6 +1549,39 @@ class cu:
         uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
         uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
         uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        
+    @uCommon.ufuncLog  
+    def verifyUserDoesNotExistErrorMsg(page, strPath):
+        """ 
+        Objective: Verify the error modal when a userID does not exist is displayed.
+        
+        param strPath
+        returns: None
+        Author: abernal_20240422
+        """
+        uCommon.uploadFile(page, pAdmin.cu.uploadCreditRewardBtn, strPath)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        if uCommon.verifyVisible(page, pAdmin.cu.userDoesNotExistLbl) == True:
+            uCommon.log(1, f'Modal with message that a user ID does not exist.')
+            uCommon.clickElem(page, pAdmin.cu.closeConfirmationDeductBtn)
+        else:
+            uCommon.log(2, f'Modal with message that a user ID does not exist is not displayed.')
+            
+    @uCommon.ufuncLog  
+    def validateRewardsCreditsAreNotCredited(page, strOldTotalRewards, strOldTotalCredits):
+        """ 
+        Objective: Validate Rewards and Credits are added from Upload.
+        
+        param strOldTotalRewards, strOldTotalCredits: Text
+        returns: None
+        Author: abernal_20240417
+        """
+        strNewTotalRewards = uCommon.getElemText(page, pAdmin.cu.totalRewardValueLbl)
+        strNewTotalCredits = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
+        if strNewTotalRewards ==  strOldTotalRewards and strNewTotalCredits == strOldTotalCredits:
+            uCommon.log(1, f'Rewards and credits were not added.')
+        else:
+            uCommon.log(2, f'Rewards and credits were added.')
             
 
 

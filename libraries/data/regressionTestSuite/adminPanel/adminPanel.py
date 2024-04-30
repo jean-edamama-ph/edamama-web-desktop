@@ -75,6 +75,7 @@ class AUTO1779:
         'strUser4': 'testkpcauto1004@gmail.com',
         'strUser5': 'testkpcauto1005@gmail.com',
     }
+    
 class AUTO1812:
     strCredits = '150'
     strRewards = '150'
@@ -90,3 +91,32 @@ class AUTO1812:
 class AUTO2019:
     strCredits = '150'
     strRewards = '150'
+
+class AUTO1782:
+    rewardCredits = {
+        'strRewards': '100',
+        'strCredits': '100'
+    }
+    strPath = './libraries/data/uploadFile/UserDoesNotExist.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+        'strUser2': 'testkpcauto1002@gmail.com',
+        'strUser3': 'testkpcauto1003@gmail.com',
+        'strUser4': 'testkpcauto1004@gmail.com',
+        'strUser5': 'testkpcauto1005@gmail.com',
+    }
+    
+class AUTO1794:
+    rewardCredits = {
+        'strRewards': '100',
+        'strCredits': '100'
+    }
+    strPath1 = './libraries/data/uploadFile/ErrorRowCreditsRewards1.xlsx'
+    strPath2 = './libraries/data/uploadFile/ErrorRowCreditsRewards2.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+        'strUser2': 'testkpcauto1002@gmail.com',
+        'strUser3': 'testkpcauto1003@gmail.com',
+        'strUser4': 'testkpcauto1004@gmail.com',
+        'strUser5': 'testkpcauto1005@gmail.com',
+    }
