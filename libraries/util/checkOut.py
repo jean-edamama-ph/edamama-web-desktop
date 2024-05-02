@@ -330,6 +330,7 @@ def clickPlaceOrderAndGetOrderID(page, strMOP = '', strBeansPromo = ''):
                 #uCommon.clickElem(frame, pCheckOut.com.submitBtn)
             uCommon.waitForLoadState(page)
     elif strMOP == 'GCASH' or strMOP == 'GRAB PAY' or strMOP == 'MAYA':
+
         if strBeansPromo == 'beans':
             if blnBeansFullPayment == True:
                 clickProceedToPay(page)
@@ -349,7 +350,7 @@ def clickProceedToPay(page):
     Author: ccapistrano_20230511
     Updated By: abernal_20240311
     """
-    uCommon.wait(page, 5)
+    uCommon.wait(page, 8)
     uCommon.waitForLoadState(page, 'networkidle')
     uCommon.waitAndClickElem(page, pCheckOut.com.proceedToPayBtn)
     # uCommon.waitElemToBeVisible(page, '//mat-spinner[contains(@class,"mat-progress-spinner")]')
