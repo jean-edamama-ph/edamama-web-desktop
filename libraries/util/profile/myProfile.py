@@ -820,7 +820,7 @@ class at:
         """
         uCommon.waitAndClickElem(page, pMyProfile.ma.myAttributesAddEditBtn)
         activeAttrCount = uCommon.getArrayCount(page, pMyProfile.ma.allActiveAttributesBtn)
-        if activeAttrCount < 5:
+        if activeAttrCount <= 5:
             for item in range(activeAttrCount):
                 uCommon.waitAndClickElem(page, pMyProfile.ma.firstActiveAttributesBtn)
             uCommon.waitAndClickElem(page, pMyProfile.ma.attributeBtn(dictData["editAttribute1"]))

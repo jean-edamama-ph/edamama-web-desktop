@@ -165,6 +165,9 @@ def test_ACQ_AUTO_877_User_should_be_able_to_change_default_address(page):
 
     uCommon.log(0, '[Post condition Started]: Click the kebab menu of an existing address and click Remove button. Click Yes button on confirmation modal.')
     uMyProfile.com.deleteAddress(page, strFullName1)
+    uMyProfile.ea.clickAddressEdit(page, strFullName2)
+    uMyProfile.ea.untickSetAsDefault(page)
+    uMyProfile.ea.clickUpdateAddress(page)
     uMyProfile.com.deleteAddress(page, strFullName2)
     uCommon.log(0, '[Post condition Completed]: Addresses added are now deleted.')
 
@@ -255,6 +258,7 @@ def test_ACQ_AUTO_1025_User_should_be_able_to_add_edit_remove_child_details(page
     uCommon.log(0, '[AUTO-1025 Started]: Add New Child')
     uMyProfile.com.clickAddAChild(page)
     uMyProfile.ac.addChildDetails(page, dRegMyProfile.AUTO1025.newChildData)
+    uMyProfile.ac.clickAndVerifyAddChild(page, dRegMyProfile.AUTO1025.newChildData)
     uCommon.log(0, '[AUTO-1025 Completed]: Added a new child') 
 
     uCommon.log(0, '[AUTO-1155 Started]: Edit New Child')
