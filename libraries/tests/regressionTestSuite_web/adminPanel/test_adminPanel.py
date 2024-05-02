@@ -335,3 +335,111 @@ def test_ACQ_AUTO_2019_Activity_log_should_be_updated_when_user_manually_credit_
     uAdminKpc.cu.deductRewardCreditValue(newWindow, dAdmin.AUTO2019.strCredits, strType = "Credits")
     uCommon.log(0, '[Post-condition Completed]: Deducted the added amount of rewards/credits.')
     uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240418 Execution Time: 52s - 56s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Error message should be displayed when userID does not exist.')
+@allure.step('To verify that balances is not credited when there is a non-existent user that is part of the uploaded CSV file.')
+#test_ACQ_AUTO_1797_Balances_should_not_be_credited_when_there_is_a_nonexistent_user_that_is_part_of_the_uploaded_CSV_file
+def test_ACQ_AUTO_1782_Error_message_should_be_displayed_when_userID_does_not_exist(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1782.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewardsAboveError = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCreditsAboveError = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1782.dictData['strUser3'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewardsBelowError = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCreditsBelowError = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Get the current total rewards and credits of the users.')
+    
+    uCommon.log(0, '[AUTO-1782 Started]: Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.verifyUserDoesNotExistErrorMsg(page, dAdmin.AUTO1782.strPath)
+    uCommon.log(0, '[AUTO-1782 Completed]: Error message for userID does not exist is displayed.')
+    
+    uCommon.log(0, '[AUTO-1797 Started]: Step 3 - Search for an email from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1782.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAreNotCredited(newWindow, strOldTotalRewardsAboveError, strOldTotalCreditsAboveError)
+    uCommon.closeWindow(newWindow)
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1782.dictData['strUser3'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAreNotCredited(newWindow, strOldTotalRewardsBelowError, strOldTotalCreditsBelowError)
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[AUTO-1797 Completed]: Balances uploaded should not be credited.')
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240418 Execution Time: 52s - 56s """
+@pytest.mark.netTest()
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that rows below the error from the CSV file should still be uploaded.')
+@allure.step('To verify that rows above the error from the CSV file should still be uploaded.')
+#test_ACQ_AUTO_1800_Rows_above_the_error_from_the_CSV_file_should_still_be_uploaded
+def test_ACQ_AUTO_1794_Rows_below_the_error_from_the_CSV_file_should_still_be_uploaded(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1782.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewardsAboveError = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCreditsAboveError = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1779.dictData['strUser3'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1782.dictData['strUser4'])
+    newWindow = uCommon.switchToWindow(page)
+    strOldTotalRewardsBelowError = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strOldTotalCreditsBelowError = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Get the current total rewards and credits of the users.')
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO1794.strPath1)
+    
+    uCommon.log(0, 'Step 3 - Search for an email from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1794.dictData['strUser3'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAddedFromUpload(newWindow, strOldTotalRewards, strOldTotalCredits, dAdmin.AUTO1794.rewardCredits)
+    strNewTotalRewards = uAdminKpc.cu.getTotalRewardsValue(newWindow, strTotalRewards = '')
+    strNewTotalCredits = uAdminKpc.cu.getTotalCreditsValue(newWindow, strTotalCredits = '')
+    uCommon.closeWindow(newWindow)
+    
+    uCommon.log(0, 'Step 4 - Click the Upload Rewards or Credit button. Upload the second file.')
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO1794.strPath2)
+    
+    uCommon.log(0, '[AUTO-1794 Started]: Step 5 - Search for an email (above the error) from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1794.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAddedFromUpload(newWindow, strOldTotalRewardsAboveError, strOldTotalCreditsAboveError, dAdmin.AUTO1794.rewardCredits)
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[AUTO-1794 Completed]: Rewards and Credits should be added to the user.')
+    
+    uCommon.log(0, '[AUTO-1800 Started]: Step 6 - Search for an email (below the error) from the list in the CSV file. Click the First Name and verify if the amount on the CSV file was credited.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1794.dictData['strUser4'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAddedFromUpload(newWindow, strOldTotalRewardsBelowError, strOldTotalCreditsBelowError, dAdmin.AUTO1794.rewardCredits)
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[AUTO-1800 Completed]: Rewards and Credits should be added to the user.')
+    
+    uCommon.log(0, 'Step 6 - Search for an email from the list in the CSV file. Click the First Name and verify that the reward and credit is not added to the user anymore.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1794.dictData['strUser3'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.validateRewardsCreditsAreNotCredited(newWindow, strNewTotalRewards, strNewTotalCredits)
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, 'Test Completed')
+    

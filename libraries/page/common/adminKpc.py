@@ -333,6 +333,7 @@ class cu:
     uploadRewardsCreditsSuccessLbl = '//span[contains(text(), "Your upload was successful! All users and their Rewards/Credits balances have been updated.")]'
     creditsAlreadyCreditedLbl = '//p[contains(text(),"has already been credited")]'
     creditsAlreadyDeductedLbl = '//p[contains(text(),"has already been deducted")]'
+    userDoesNotExistLbl = '//p[contains(text(),"does not exist")]'
     
     activityLogsLbl = '//h2[contains(text(),"Activity Logs")]'
     beanRewardsTabLbl = '//span[contains(text(),"Bean Rewards")]'
