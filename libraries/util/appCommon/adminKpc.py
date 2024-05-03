@@ -1674,6 +1674,23 @@ class cu:
                 uCommon.log(1, f'Deducted credits is displayed on Activity Log.')
         else:
             uCommon.log(2, f'Deducted credits is not displayed on Activity Log.')
+            
+    @uCommon.ufuncLog  
+    def verifyAddedRewardsIsNotCreditedActivityLog(page, strCustomer):
+        """ 
+        Objective: To verify that added/deducted rewards is displayed on Activity Log.
+        param strCustomer: Text
+        returns: None
+        Author: abernal_20240503
+        """      
+        current_time = datetime.datetime.now()
+        formatted_time = current_time.strftime("%H:%M")
+        uCommon.clickElem(page, pAdmin.cu.beanRewardsTabLbl)
+        latest_time = uCommon.getElemText(page, pAdmin.cu.balanceAddedTimeLbl(strCustomer))
+        if latest_time != formatted_time:
+            uCommon.log(1, f'Added credits is not displayed on Activity Log.')
+        else:
+            uCommon.log(2, f'Added credits is displayed on Activity Log.')
 
 
 class re:
