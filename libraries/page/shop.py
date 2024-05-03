@@ -24,17 +24,17 @@ def nextSwiperBtn(parentElm):
 class com:
     """COMMON"""
     def itemNameLbl(strItemName):
-        return f'//span[@class="itemname"][contains(text(),"{strItemName}")]'
+        return f'(//span[@class="itemname"][contains(text(),"{strItemName}")])[1]'
     def ItemPicImg(strItemName):
-        return f'//span[@class="itemname"][contains(text(),"{strItemName}")]/../../../..//div[@class="product-card-image"]'
+        return f'(//span[@class="itemname"][contains(text(),"{strItemName}")]/../../../..//div[@class="product-card-image"])[1]'
     def itemBrandNameLbl(strItemName):
-        return f'//span[@class="itemname"][contains(text(),"{strItemName}")]/..//span[@class="brand"]'
+        return f'(//span[@class="itemname"][contains(text(),"{strItemName}")]/..//span[@class="brand"])[1]'
     def itemPriceLbl(strItemName):
-        return f'//span[@class="itemname"][contains(text(),"{strItemName}")]/../../..//div[@class="rf-product-price price"]/p'
+        return f'(//span[@class="itemname"][contains(text(),"{strItemName}")]/../../..//div[@class="rf-product-price price"]/p)[1]'
     def itemOriginalPriceLbl(strItemName):
-        return f'//span[contains(text(),"{strItemName}")]/../../..//p[contains(@class,"original")]'
+        return f'(//span[contains(text(),"{strItemName}")]/../../..//p[contains(@class,"original")])[1]'
     def itemDiscountedPriceLbl(strItemName):
-        return f'//span[contains(text(),"{strItemName}")]/../../..//p[contains(@class,"discounted")]'
+        return f'(//span[contains(text(),"{strItemName}")]/../../..//p[contains(@class,"discounted")])[1]'
    
    
    
@@ -182,9 +182,9 @@ class hs:
     allPaginatioBulletIconBtn = '//span[contains(@class,"swiper-pagination-bullet")]'
     def paginatioBulletBtn(intIndex):
         return f'(//div[contains(@class,"swiper-pagination")]/span)[{intIndex}]'
-    allDataSwiperSlideImg = '//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide ng-star-inserted")]'
+    allDataSwiperSlideImg = '//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide home_slider_image shop ng-star-inserted")]'
     def dataSwiperSlideImg(intIndex):
-        return f'(//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide ng-star-inserted")])[{intIndex}]'
+        return f'(//app-home-slider//div[@class="swiper-wrapper"]/div[contains(@class,"swiper-slide home_slider_image shop ng-star-inserted")])[{intIndex}]'
     def curatedTitleLbl(strTitle):
         return f'//section[@class="curated-products-wrapper"]//h3[@class="title -template"][contains(text(),"{strTitle}")]'
     def allCuratedTitleLbl(intIndex):

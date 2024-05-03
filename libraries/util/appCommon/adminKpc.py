@@ -1688,6 +1688,7 @@ class re:
         Author: abernal_20240318
         """
         uCommon.waitAndClickElem(page, pAdmin.lp.rewardsLbl)
+        uCommon.wait(page, 5)
         if uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == True:
             uCommon.log(1, f'Bean Rewards label is visible.') 
         elif uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == False:

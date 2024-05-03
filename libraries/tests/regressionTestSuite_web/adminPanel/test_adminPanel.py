@@ -146,6 +146,10 @@ def test_ACQ_AUTO_1761_User_should_be_able_to_do_manual_adjustment_on_AP_via_the
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that manually credited rewards and credits should reflect as expected on checkout page')
 def test_ACQ_AUTO_1812_Manually_credited_rewards_and_credits_should_reflect_as_expected_on_checkout_page(page):
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
     uCommon.log(0, 'Step 2 - Search for a user and click the First Name')
     uAdminKpc.cu.searchCustomer(page, dCommon.user.strUserName)
     newWindow = uCommon.switchToWindow(page)
@@ -181,6 +185,10 @@ def test_ACQ_AUTO_1991_Activity_Logs_should_be_displayed_below_on_the_Customer_M
 @pytest.mark.acquiTestSuite()
 @allure.step('To verify that Error message should be displayed when same balance for credit are credited to a user ID within 5 minutes of uploading a CSV file')
 def test_ACQ_AUTO_1770_Error_message_should_be_displayed_when_same_balance_for_credit_are_credited_to_a_user_ID_within_5_minutes_of_uploading_a_CSV_file(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
     uCommon.log(0, '[Pre-condition Started]: Get the current total rewards and credits of the users.')
     uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO1770.dictData['strUser1'])
     newWindow = uCommon.switchToWindow(page)
