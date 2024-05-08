@@ -347,8 +347,17 @@ class cu:
         return f'{cu.balanceAddedCustomerLbl(strCustomer)}/../td[6]'
     def balanceAddedTimeLbl(strCustomer):
         return f'{cu.balanceAddedCustomerLbl(strCustomer)}/../td[3]'
+    activityLogsRowsLbl = '//h2[contains(text(),"Activity Logs")]//..//table//tbody[@role="rowgroup"]//tr'
     
 
 class rm:
     "REWARDS"
     beanRewardsLbl = '//a[contains(text(),"Bean Rewards")]'
+    maxCapPercentLbl = '(//input[@data-placeholder="Enter 1 - 100 %"])[2]'
+    maxCapPHPLbl = '//input[@data-placeholder="Enter PHP0.01 - PHP10,000"]'
+    updateBtn = '//span[contains(text(),"Update")]'
+    rewardsRatioUpdateLbl = '//span[contains(text(),"Rewards Ratio Updated Successfully!")]'
+    positiveNumberPercentCapLbl = '//mat-error[contains(text()," Maximum Cap Percentage must be a positive whole number")]'
+    valueGreaterThanPercentCapLbl = '//mat-error[contains(text()," Maximum Cap Percentage can\'t be greater than 100")]'
+    upTo2DecimalPHPCapLbl = '//mat-error[contains(text(),"Maximum Cap Amount can contain only Valid upto 2 Decimal Numbers")]'
+    valueGreaterThanPHPCapLbl = '//mat-error[contains(text(),"Maximum Cap Amount can\'t be greater than 10000")]'

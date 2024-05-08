@@ -1691,6 +1691,20 @@ class cu:
             uCommon.log(1, f'Added credits is not displayed on Activity Log.')
         else:
             uCommon.log(2, f'Added credits is displayed on Activity Log.')
+            
+    @uCommon.ufuncLog  
+    def verifyTheAmountOfLogs(page):
+        """ 
+        Objective: To verify the amount of logs displayed on Activity Log.
+        param: None
+        returns: None
+        Author: abernal_20240507
+        """      
+        intCount = uCommon.getArrayCount(page, pAdmin.cu.activityLogsRowsLbl) 
+        if intCount == 10:
+            uCommon.log(1, f'Max of 10 logs is displayed.')
+        else:
+            uCommon.log(2, f'More than 10 logs is displayed.')
 
 
 class re:
@@ -1710,3 +1724,128 @@ class re:
             uCommon.log(1, f'Bean Rewards label is visible.') 
         elif uCommon.verifyVisible(page, pAdmin.rm.beanRewardsLbl) == False:
             uCommon.log(2, f'Bean Rewards label is not visible.') 
+            
+    @uCommon.ufuncLog  
+    def validatePlaceHolderMaxCap(page):
+        """ 
+        Objective: To validate the placeholder displayed on Max Cap.
+        
+        param: None
+        returns: None
+        Author: abernal_20240507
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.maxCapPercentLbl) == True and uCommon.verifyVisible(page, pAdmin.rm.maxCapPHPLbl) == True:
+            uCommon.log(1, f'Placeholders and fields are displayed') 
+        else:
+            uCommon.log(2, f'Placeholders and fields are not displayed') 
+            
+    @uCommon.ufuncLog  
+    def validateInputOnMaxCapPercent(page, dictData):
+        """ 
+        Objective: To validate the allowed inputs on Max Cap by %
+        
+        param: None
+        returns: None
+        Author: abernal_20240507
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        for item in dictData:
+            uCommon.clickElem(page, pAdmin.rm.maxCapPercentLbl)
+            uCommon.setElem(page, pAdmin.rm.maxCapPercentLbl, dictData[item])
+            uCommon.clickElem(page, pAdmin.rm.updateBtn)
+            uCommon.waitElemToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
+            uCommon.waitElemNotToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
+            
+    @uCommon.ufuncLog  
+    def validateInputOnMaxCapPHP(page, dictData):
+        """ 
+        Objective: To validate the allowed inputs on Max Cap by PHP.
+        
+        param: None
+        returns: None
+        Author: abernal_20240507
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        for item in dictData:
+            uCommon.clickElem(page, pAdmin.rm.maxCapPHPLbl)
+            uCommon.setElem(page, pAdmin.rm.maxCapPHPLbl, dictData[item])
+            uCommon.clickElem(page, pAdmin.rm.updateBtn)
+            uCommon.waitElemToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
+            uCommon.waitElemNotToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
+            
+    @uCommon.ufuncLog  
+    def verifyErrorForNegativeValuePercentCap(page, intInput):
+        """ 
+        Objective: To verify that user is not able to input negative values on % cap.
+        
+        param intInput
+        returns: None
+        Author: abernal_20240507
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPercentLbl)
+        uCommon.setElem(page, pAdmin.rm.maxCapPercentLbl, intInput)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPHPLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.positiveNumberPercentCapLbl) == True:
+            if uCommon.verifyIfClickable(page, pAdmin.rm.updateBtn) == True:
+                uCommon.log(1, f'Error message is displayed and update button is not clickable.') 
+        else:
+            uCommon.log(2, f'No error message is displayed.') 
+            
+    @uCommon.ufuncLog  
+    def verifyErrorForValueGreaterThan(page, intInput):
+        """ 
+        Objective: To verify that user is not able to input values more than 100.
+        
+        param intInput
+        returns: None
+        Author: abernal_20240508
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPercentLbl)
+        uCommon.setElem(page, pAdmin.rm.maxCapPercentLbl, intInput)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPHPLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.valueGreaterThanPercentCapLbl) == True:
+            if uCommon.verifyIfClickable(page, pAdmin.rm.updateBtn) == True:
+                uCommon.log(1, f'Error message is displayed and update button is not clickable.') 
+        else:
+            uCommon.log(2, f'No error message is displayed.') 
+            
+    @uCommon.ufuncLog  
+    def verifyErrorForNegativeValuePHPCap(page, intInput):
+        """ 
+        Objective: To verify that user is not able to input negative values on PHP cap.
+        
+        param intInput
+        returns: None
+        Author: abernal_20240507
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPHPLbl)
+        uCommon.setElem(page, pAdmin.rm.maxCapPHPLbl, intInput)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPercentLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.upTo2DecimalPHPCapLbl) == True:
+            if uCommon.verifyIfClickable(page, pAdmin.rm.updateBtn) == True:
+                uCommon.log(1, f'Error message is displayed and update button is not clickable.') 
+        else:
+            uCommon.log(2, f'No error message is displayed.') 
+            
+    @uCommon.ufuncLog  
+    def verifyErrorForValueGreaterPHPThan(page, intInput):
+        """ 
+        Objective: To verify that user is not able to input values more than 10000.
+        
+        param intInput
+        returns: None
+        Author: abernal_20240508
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPHPLbl)
+        uCommon.setElem(page, pAdmin.rm.maxCapPHPLbl, intInput)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPercentLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.valueGreaterThanPHPCapLbl) == True:
+            if uCommon.verifyIfClickable(page, pAdmin.rm.updateBtn) == True:
+                uCommon.log(1, f'Error message is displayed and update button is not clickable.') 
+        else:
+            uCommon.log(2, f'No error message is displayed.') 
