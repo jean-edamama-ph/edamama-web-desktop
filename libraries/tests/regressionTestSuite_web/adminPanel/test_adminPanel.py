@@ -665,3 +665,118 @@ def test_ACQ_AUTO_2015_Activity_log_should_not_be_updated_when_user_uploads_a_fi
     uAdminKpc.cu.verifyAddedRewardsIsNotCreditedActivityLog(page, dAdmin.AUTO2015.dictData['strUser1'])
     uAdminKpc.cu.verifyAddedCreditsIsNotCreditedActivityLog(page, dAdmin.AUTO2015.dictData['strUser1'])
     uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240507 Execution Time: 30s - 32s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that max of 10 logs should be displayed on Activity Logs.')
+def test_ACQ_AUTO_2038_Max_of_10_logs_should_be_displayed_on_Activity_Logs(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that a max of 10 logs is displayed on Activity Logs..')
+    uAdminKpc.cu.verifyTheAmountOfLogs(page)
+    uCommon.log(0, 'Test Completed')
+    
+    
+""" Author: abernal_20240507 Execution Time: 23s - 32s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that max of 10 logs should be displayed on Activity Logs.')
+@allure.step('To verify that correct placeholder should be displayed when the fields are blank')
+#test_ACQ_AUTO_2046_Correct_placeholder_should_be_displayed_when_the_fields_are_blank
+def test_ACQ_AUTO_2042_Max_of_10_logs_should_be_displayed_on_Activity_Logs(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, '[AUTO-2042 and AUTO-2046 Started]: Step 2 - Verify that correct placeholders and the fields of Maximum Cap by Percent and Maximum Cap by PHP are displayed.')
+    uAdminKpc.re.validatePlaceHolderMaxCap(page)
+    uCommon.log(0, '[AUTO-2042 and AUTO-2046 Completed]: Correct placeholders and the fields of Maximum Cap by Percent and Maximum Cap by PHP are displayed.')
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240507 Execution Time: 56s - 1 02s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user should be able to input 1-100 on % Cap.')
+def test_ACQ_AUTO_2050_User_should_be_able_to_input_1_to_100_on_Percent_Cap(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that user is able to input 1-100 on % Cap.')
+    uAdminKpc.re.validateInputOnMaxCapPercent(page, dAdmin.AUTO2050.dictData)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240507 Execution Time: 57s - 58s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user should be able to input 0.01-10000 on PHP Cap.')
+def test_ACQ_AUTO_2054_User_should_be_able_to_input_01_to_10000_on_PHP_Cap(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that user is able to input 1-100 on % Cap.')
+    uAdminKpc.re.validateInputOnMaxCapPHP(page, dAdmin.AUTO2054.dictData)
+    uCommon.log(0, 'Test Completed')
+
+
+""" Author: abernal_20240507 Execution Time: 17s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user should not be able to input negative values on % Cap.')
+def test_ACQ_AUTO_2058_User_should_not_be_able_to_input_negative_values_on_percent_cap(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that user is not able to input negative on % Cap.')
+    uAdminKpc.re.verifyErrorForNegativeValuePercentCap(page, dAdmin.AUTO2058.intInput)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240508 Execution Time: 19s - 20s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user should not be able to input a value that is more than 100 on % Cap.')
+def test_ACQ_AUTO_2062_User_should_not_be_able_to_input_a_value_that_is_more_than_100_on_percent_cap(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that user is not able to input value more than 100 on % Cap.')
+    uAdminKpc.re.verifyErrorForValueGreaterThan(page, dAdmin.AUTO2062.intInput)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240508 Execution Time: 18s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user should not be able to input negative values on PHP Cap.')
+def test_ACQ_AUTO_2066_User_should_not_be_able_to_input_negative_values_on_PHP_Cap(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that user is not able to input negative values on PHP Cap.')
+    uAdminKpc.re.verifyErrorForNegativeValuePHPCap(page, dAdmin.AUTO2066.intInput)
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240508 Execution Time: 19s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user should not be able to input a value that is more than 100 on PHP Cap.')
+def test_ACQ_AUTO_2070_User_should_not_be_able_to_input_a_value_that_is_more_than_10000_on_PHP_cap(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that user is not able to input value more than 10000 on PHP Cap.')
+    uAdminKpc.re.verifyErrorForValueGreaterPHPThan(page, dAdmin.AUTO2070.intInput)
+    uCommon.log(0, 'Test Completed')

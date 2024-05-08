@@ -229,3 +229,23 @@ class AUTO2015:
         'strUser4': 'testkpcauto1004@gmail.com',
         'strUser5': 'testkpcauto1005@gmail.com',
     }
+    
+class AUTO2050:
+    dictData = {
+        'input1': '1',
+        'input2': '60',
+        'input3': '100',
+        'origValue': '15'
+    }
+    
+class AUTO2058:
+    intInput = '-50'
+    
+class AUTO2062:
+    intInput = '150'
+
+class AUTO2066:
+    intInput = '-5000'
+    
+class AUTO2070:
+    intInput = '15000'
