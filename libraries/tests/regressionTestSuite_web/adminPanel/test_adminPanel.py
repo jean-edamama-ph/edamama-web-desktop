@@ -560,3 +560,108 @@ def test_ACQ_AUTO_2003_Activity_log_should_not_be_updated_when_user_uploads_same
     uCommon.log(0, 'Step 5 - Verify if the second upload was credited on the Activity Log.')
     uAdminKpc.cu.verifyAddedCreditsIsNotCreditedActivityLog(page, dAdmin.AUTO2003.dictData['strUser1'])
     uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240418 Execution Time: 1 30s - 1 32s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Activity log should not be updated when user uploads the same balance credited to rewards within 5 minutes of uploading a CSV file')
+def test_ACQ_AUTO_2007_Activity_log_should_not_be_updated_when_user_uploads_same_balance_credited_to_rewards_within_5_minutes_of_uploading_a_CSV_file(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO2007.strPath)
+    
+    uCommon.log(0, 'Step 3 - Verify that the credits was added in Admin Panel.')
+    uCommon.reloadPage(page)
+    uAdminKpc.cu.verifyAddedCreditsActivityLog(page, dAdmin.AUTO2007.rewardCredits['strCredits'], dAdmin.AUTO2007.dictData['strUser1'])
+    
+    uCommon.log(0, 'Step 4 - Reupload the file again.')
+    uCommon.wait(page, 60)
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO2007.strPath)
+    uCommon.reloadPage(page)
+    
+    uCommon.log(0, 'Step 5 - Verify if the second upload was credited on the Activity Log.')
+    uAdminKpc.cu.verifyAddedRewardsIsNotCreditedActivityLog(page, dAdmin.AUTO2007.dictData['strUser1'])
+    uCommon.log(0, 'Test Completed')
+
+
+""" Author: abernal_20240418 Execution Time: 1 29s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Activity log should not be updated when user uploads the same balance deducted to rewards within 5 minutes of uploading a CSV file')
+def test_ACQ_AUTO_2011_Activity_log_should_not_be_updated_when_user_uploads_same_balance_deducted_to_rewards_within_5_minutes_of_uploading_a_CSV_file(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO2011.strPath)
+    
+    uCommon.log(0, 'Step 3 - Verify that the credits was added in Admin Panel.')
+    uCommon.reloadPage(page)
+    uAdminKpc.cu.verifyAddedCreditsActivityLog(page, dAdmin.AUTO2011.rewardCredits['strCredits'], dAdmin.AUTO2011.dictData['strUser1'])
+    
+    uCommon.log(0, 'Step 4 - Reupload the file again.')
+    uCommon.wait(page, 60)
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO2011.strPath)
+    uCommon.reloadPage(page)
+    
+    uCommon.log(0, 'Step 5 - Verify if the second upload was credited on the Activity Log.')
+    uAdminKpc.cu.verifyAddedRewardsIsNotCreditedActivityLog(page, dAdmin.AUTO2011.dictData['strUser1'])
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240503 Execution Time: 1 33s - 1 34s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that activity logs should update with the rows below the error from the CSV file uploaded.')
+@allure.step('To verify that activity logs should update with the rows above the error from the CSV file uploaded.')
+#test_ACQ_AUTO_2034_Activity_logs_should_update_with_the_rows_above_the_error_from_the_CSV_file_uploaded
+def test_ACQ_AUTO_2030_Activity_logs_should_update_with_the_rows_below_the_error_from_the_CSV_file_uploaded(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.uploadUserCreditsOrRewards(page, dAdmin.AUTO2030.strPath1)
+    
+    uCommon.log(0, 'Step 3 - Click the Upload Rewards or Credit button. Upload the second file.')
+    uCommon.wait(page, 60)
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreAlreadyDeductedCredited(page, dAdmin.AUTO2030.strPath2)
+    uCommon.reloadPage(page)
+    
+    uCommon.log(0, '[AUTO-2030 Started]: Step 4 - Verify if the user below the error was still credited on Activity Log.')
+    uAdminKpc.cu.verifyAddedBeansActivityLog(page, dAdmin.AUTO2030.rewardCredits['strRewards'], dAdmin.AUTO2030.dictData['strUser4'])
+    uAdminKpc.cu.verifyAddedCreditsActivityLog(page, dAdmin.AUTO2030.rewardCredits['strCredits'], dAdmin.AUTO2030.dictData['strUser4'])
+    uCommon.log(0, '[AUTO-2030 Completed]: User below the error was still credited on Activity Log.')
+    
+    uCommon.log(0, '[AUTO-2034 Started]: Step 5 - Verify if the user above the error was still credited on Activity Log.')
+    uAdminKpc.cu.verifyAddedBeansActivityLog(page, dAdmin.AUTO2030.rewardCredits['strRewards'], dAdmin.AUTO2030.dictData['strUser1'])
+    uAdminKpc.cu.verifyAddedCreditsActivityLog(page, dAdmin.AUTO2030.rewardCredits['strCredits'], dAdmin.AUTO2030.dictData['strUser1'])
+    uCommon.log(0, '[AUTO-2034 Completed]: User above the error was still credited on Activity Log.')
+    
+    uCommon.log(0, 'Step 6 - Verify if the user that is the error is not credited on Activity Log.')
+    uAdminKpc.cu.verifyAddedCreditsIsNotCreditedActivityLog(page, dAdmin.AUTO2011.dictData['strUser3'])
+    uAdminKpc.cu.verifyAddedRewardsIsNotCreditedActivityLog(page, dAdmin.AUTO2011.dictData['strUser3'])
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240503 Execution Time: 19s - 30s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Activity log should not be updated when user uploads a file where a userID does not exist.')
+def test_ACQ_AUTO_2015_Activity_log_should_not_be_updated_when_user_uploads_a_file_where_a_userID_does_not_exist(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.verifyUserDoesNotExistErrorMsg(page, dAdmin.AUTO2015.strPath)
+    
+    uCommon.log(0, 'Step 3 - Verify that the credits was added in Admin Panel.')
+    uAdminKpc.cu.verifyAddedRewardsIsNotCreditedActivityLog(page, dAdmin.AUTO2015.dictData['strUser1'])
+    uAdminKpc.cu.verifyAddedCreditsIsNotCreditedActivityLog(page, dAdmin.AUTO2015.dictData['strUser1'])
+    uCommon.log(0, 'Test Completed')
