@@ -334,6 +334,7 @@ class cu:
     creditsAlreadyCreditedLbl = '//p[contains(text(),"has already been credited")]'
     creditsAlreadyDeductedLbl = '//p[contains(text(),"has already been deducted")]'
     userDoesNotExistLbl = '//p[contains(text(),"does not exist")]'
+    creditsRewardsMoreThanLbl = '//p[contains(text(),"were not deducted") and contains(text(),"reward(s) available")]'
     
     activityLogsLbl = '//h2[contains(text(),"Activity Logs")]'
     beanRewardsTabLbl = '//span[contains(text(),"Bean Rewards")]'
@@ -344,6 +345,8 @@ class cu:
         return f'(//td[contains(text(),"{strCustomer}")])[1]'
     def balanceAddedRewardLbl(strCustomer):
         return f'{cu.balanceAddedCustomerLbl(strCustomer)}/../td[6]'
+    def balanceAddedTimeLbl(strCustomer):
+        return f'{cu.balanceAddedCustomerLbl(strCustomer)}/../td[3]'
     
 
 class rm:

@@ -120,3 +120,55 @@ class AUTO1794:
         'strUser4': 'testkpcauto1004@gmail.com',
         'strUser5': 'testkpcauto1005@gmail.com',
     }
+    
+class AUTO1806:
+    rewardCredits = {
+        'strRewards': '50',
+        'strCredits': '50'
+    }
+    strPath = './libraries/data/uploadFile/DeductingMoreThanRewardsCredits.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+    }
+    
+class AUTO1995:
+    rewardCredits = {
+        'strRewards': '100',
+        'strCredits': '100'
+    }
+    strPath = './libraries/data/uploadFile/UploadRewardsandCredits.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+        'strUser2': 'testkpcauto1002@gmail.com',
+        'strUser3': 'testkpcauto1003@gmail.com',
+        'strUser4': 'testkpcauto1004@gmail.com',
+        'strUser5': 'testkpcauto1005@gmail.com',
+    }
+    
+class AUTO1999:
+    rewardCredits = {
+        'strRewards': '0',
+        'strCredits': '100'
+    }
+    strPath = './libraries/data/uploadFile/AddedCredits.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+        'strUser2': 'testkpcauto1002@gmail.com',
+        'strUser3': 'testkpcauto1003@gmail.com',
+        'strUser4': 'testkpcauto1004@gmail.com',
+        'strUser5': 'testkpcauto1005@gmail.com',
+    }
+    
+class AUTO2003:
+    rewardCredits = {
+        'strRewards': '0',
+        'strCredits': '100'
+    }
+    strPath = './libraries/data/uploadFile/DeductedCredits.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+        'strUser2': 'testkpcauto1002@gmail.com',
+        'strUser3': 'testkpcauto1003@gmail.com',
+        'strUser4': 'testkpcauto1004@gmail.com',
+        'strUser5': 'testkpcauto1005@gmail.com',
+    }

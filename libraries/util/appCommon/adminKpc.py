@@ -1,3 +1,4 @@
+import datetime
 
 import libraries.page.common.adminKpc as pAdmin
 import libraries.util.common as uCommon
@@ -1449,10 +1450,15 @@ class cu:
         strNewTotalCredits = uCommon.getElemText(page, pAdmin.cu.totalCreditValueLbl)
         strAddedTotalRewards = int(strOldTotalRewards) - int(rewardCredits['strRewards'])
         strAddedTotalCredits = int(strOldTotalCredits) - int(rewardCredits['strCredits'])
+        
+        if strAddedTotalRewards < 0 and strAddedTotalCredits < 0:
+            strAddedTotalRewards = 0
+            strAddedTotalCredits = 0
+        
         if strNewTotalRewards == str(strAddedTotalRewards) and strNewTotalCredits == str(strAddedTotalCredits):
-            uCommon.log(1, f'Rewards and credits were added.')
+            uCommon.log(1, f'Rewards and credits were deducted.')
         else:
-            uCommon.log(2, f'Rewards and credits were not added.')
+            uCommon.log(2, f'Rewards and credits were not deducted.')
             
     def addTotalRewardCreditValue(page, strValue, strType):
         """ 
@@ -1536,19 +1542,36 @@ class cu:
         Author: abernal_20240322
         """        
         uCommon.wait(page, 1)
-        strNewValue = '-' + str(strValue)
-        if strType == "Rewards": 
+        if strValue != '':
+            strNewValue = '-' + str(strValue)
+            if strType == "Rewards": 
+                uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
+            elif strType == "Credits":
+                uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
+            
+            if strType == "Rewards": 
+                uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strNewValue)
+            elif strType == "Credits":
+                uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strNewValue)
+            uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+            uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+            uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        elif strValue == '' and strType == 'Rewards':
+            strTotalRewards = cu.getTotalRewardsValue(page, strTotalRewards = '')
+            strNewRewardValue = '-' + str(strTotalRewards)
             uCommon.waitAndClickElem(page, pAdmin.cu.totalRewardEditBtn)
-        elif strType == "Credits":
+            uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strNewRewardValue)
+            uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+            uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+            uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        elif strValue == '' and strType == 'Credits':  
+            strTotalCredits = cu.getTotalCreditsValue(page, strTotalCredits = '')
+            strNewCreditValue = '-' + str(strTotalCredits)
             uCommon.waitAndClickElem(page, pAdmin.cu.totalCreditEditBtn)
-        
-        if strType == "Rewards": 
-            uCommon.waitAndSetElem(page, pAdmin.cu.rewardEditLbl, strNewValue)
-        elif strType == "Credits":
-            uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strNewValue)
-        uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
-        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
-        uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+            uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strNewCreditValue)
+            uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
+            uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+            uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)        
         
     @uCommon.ufuncLog  
     def verifyUserDoesNotExistErrorMsg(page, strPath):
@@ -1583,6 +1606,74 @@ class cu:
         else:
             uCommon.log(2, f'Rewards and credits were added.')
             
+    @uCommon.ufuncLog  
+    def verifyErrorRewardsCreditsAreMoreThan(page, strPath):
+        """ 
+        Objective: Verify the error modal when credits/rewards are more than the current amount.
+        
+        param: None
+        returns: None
+        Author: abernal_20240502
+        """
+        uCommon.uploadFile(page, pAdmin.cu.uploadCreditRewardBtn, strPath)
+        uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
+        if uCommon.verifyVisible(page, pAdmin.cu.creditsRewardsMoreThanLbl) == True:
+            uCommon.log(1, f'Modal with message that rewards/credits are more than the current amount is displayed.')
+            uCommon.clickElem(page, pAdmin.cu.closeConfirmationDeductBtn)
+        else: 
+            uCommon.log(2, f'Modal with message that rewards/credits are more than the current amount is not displayed.')
+            
+    @uCommon.ufuncLog  
+    def verifyAddedCreditsIsNotCreditedActivityLog(page, strCustomer):
+        """ 
+        Objective: To verify that added credits is displayed on Activity Log.
+        param strCustomer: Text
+        returns: None
+        Author: abernal_20240502
+        """      
+        current_time = datetime.datetime.now()
+        formatted_time = current_time.strftime("%H:%M")
+        uCommon.clickElem(page, pAdmin.cu.beanCreditsTabLbl)
+        latest_time = uCommon.getElemText(page, pAdmin.cu.balanceAddedTimeLbl(strCustomer))
+        if latest_time != formatted_time:
+            uCommon.log(1, f'Added credits is not displayed on Activity Log.')
+        else:
+            uCommon.log(2, f'Added credits is displayed on Activity Log.')
+            
+    @uCommon.ufuncLog  
+    def verifyDeductedBeansActivityLog(page, strRewards, strCustomer):
+        """ 
+        Objective: To verify that deducted beans is displayed on Activity Log.
+        param: None
+        returns: None
+        Author: abernal_20240502
+        """      
+        uCommon.wait(page, 1)
+        strRewardLbl = uCommon.getElemText(page, pAdmin.cu.balanceAddedRewardLbl(strCustomer))
+        strRewards = '-' + strRewards
+        if uCommon.verifyVisible(page, pAdmin.cu.balanceAddedCustomerLbl(strCustomer)) == True:
+            if strRewardLbl == strRewards:
+                uCommon.log(1, f'Deducted beans is displayed on Activity Log.')
+        else:
+            uCommon.log(2, f'Deducted beans is not displayed on Activity Log.')
+        
+    @uCommon.ufuncLog  
+    def verifyDeductedCreditsActivityLog(page, strCredits, strCustomer):
+        """ 
+        Objective: To verify that deducted credits is displayed on Activity Log.
+        param: None
+        returns: None
+        Author: abernal_20240502
+        """      
+        uCommon.wait(page, 1)
+        strCreditsLbl = uCommon.getElemText(page, pAdmin.cu.balanceAddedRewardLbl(strCustomer))
+        strCredits = '-' + strCredits
+        uCommon.clickElem(page, pAdmin.cu.beanCreditsTabLbl)
+        if uCommon.verifyVisible(page, pAdmin.cu.balanceAddedCustomerLbl(strCustomer)) == True:
+            if strCreditsLbl == strCredits:
+                uCommon.log(1, f'Deducted credits is displayed on Activity Log.')
+        else:
+            uCommon.log(2, f'Deducted credits is not displayed on Activity Log.')
 
 
 class re:
