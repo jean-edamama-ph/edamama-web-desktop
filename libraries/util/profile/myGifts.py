@@ -26,7 +26,7 @@ class com:
             blnFirstGL= com.checkIfFirstGL(page)
         
         if blnFirstGL == False:
-            uCommon.clickElem(page, pMyGifts.ml.xIconBtn)
+            #uCommon.clickElem(page, pMyGifts.ml.xIconBtn)
             uCommon.waitElemToBeVisible(page, pMyGifts.ml.welcomeGiftListLbl)
         elif blnFirstGL == True:
             uCommon.waitElemToBeVisible(page, pMyGifts.ml.howGiftRegistryWorksLbl)

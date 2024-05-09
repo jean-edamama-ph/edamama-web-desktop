@@ -485,3 +485,22 @@ def validateTotalRewardsAndCredit(page, strTotalRewards, strTotalCredits):
         uCommon.log(1, f'Credits and Rewards on checkout is the same as the Credits and Rewards on AP.')
     else:
         uCommon.log(2, f'Credits and Rewards on checkout is not the same as the Credits and Rewards on AP.')
+        
+@uCommon.ufuncLog  
+def validateCapValueDisplayed(page, percentCap, PHPCap):
+    """ 
+    Objective: To verify the Cap values displayed on checkout.
+        
+    param percentCap, PHPCap: Text
+    returns: None
+    Author: abernal_20240509
+    """
+    if uCommon.verifyVisible(page, pCheckOut.sm.checkOutLbl) == True:
+        uCommon.log(1, f'User is on regular checkout page.')
+    elif uCommon.verifyVisible(page, pCheckOut.sm.giftCheckoutLbl) == True:
+        uCommon.log(1, f'User is on gift checkout page.')
+    uCommon.clickElem(page, pCheckOut.pm.useBeansRdb)
+    if uCommon.verifyVisible(page, pCheckOut.pm.capMsgLbl(percentCap, PHPCap)) == True:
+        uCommon.log(1, f'Correct cap message is displayed.')
+    else:
+        uCommon.log(2, f'Incorrect cap message is displayed.')

@@ -1849,3 +1849,37 @@ class re:
                 uCommon.log(1, f'Error message is displayed and update button is not clickable.') 
         else:
             uCommon.log(2, f'No error message is displayed.') 
+            
+    @uCommon.ufuncLog  
+    def validateValueAndCalcPreviewIsDisplayed(page):
+        """ 
+        Objective: To validate the Value and Calculation Preview is displayed.
+        
+        param: None
+        returns: None
+        Author: abernal_20240509
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.valueLbl) == True and uCommon.verifyVisible(page, pAdmin.rm.calcPreviewLbl) == True:
+            uCommon.log(1, f'Value and Calculation Preview are displayed') 
+        else:
+            uCommon.log(2, f'Value and Calculation Preview are not displayed') 
+            
+    @uCommon.ufuncLog  
+    def inputValuesOnCap(page, percentCap, PHPCap):
+        """ 
+        Objective: To input values on percent cap and PHP cap.
+        
+        param: None
+        returns: None
+        Author: abernal_20240509
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPercentLbl)
+        uCommon.setElem(page, pAdmin.rm.maxCapPercentLbl, percentCap)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPHPLbl)
+        uCommon.setElem(page, pAdmin.rm.maxCapPHPLbl, PHPCap)
+        uCommon.clickElem(page, pAdmin.rm.updateBtn)
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
+        uCommon.waitElemNotToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
+        
