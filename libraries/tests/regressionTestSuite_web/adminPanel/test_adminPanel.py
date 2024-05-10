@@ -888,3 +888,128 @@ def test_ACQ_AUTO_2086_Values_inputted_on_percent_cap_and_PHP_cap_should_reflect
     uAdminKpc.re.inputValuesOnCap(page, dAdmin.AUTO2086.origValues['percentCap'], dAdmin.AUTO2086.origValues['PHPCap'])
     uCommon.log(0, '[Post-condition Completed]: Returned the original values for both cap fields.')
     uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240510 Execution Time: 1 13s - 1 14s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Use Bean Rewards with no limits is displayed on checkout when both caps are set to the greatest possible value.')
+def test_ACQ_AUTO_2094_Use_Bean_Rewards_with_no_limits_should_be_displayed_on_checkout_when_both_caps_are_set_to_the_greatest_possible_value(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Change the values for % Cap and PHP Cap.')
+    uAdminKpc.re.inputValuesOnCap(page, dAdmin.AUTO2094.dictData['percentCap'], dAdmin.AUTO2094.dictData['PHPCap'])
+    
+    uCommon.log(0, 'Step 3 - Navigate to edamama site and proceed to checkout.')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName1)
+    uCheckOut.checkOutItem(page, dRegCheckout.AUTO2094.dictData["strItemName"], dRegCheckout.AUTO2094.dictData["strType"])
+    uCheckOut.validateCapValueDisplayed(page, dAdmin.AUTO2094.dictData['percentCap'], dAdmin.AUTO2094.dictData['PHPCap'])
+    
+    uCommon.log(0, '[Post-condition Started]: Return the original values for both cap fields.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    uAdminKpc.re.inputValuesOnCap(page, dAdmin.AUTO2094.origValues['percentCap'], dAdmin.AUTO2094.origValues['PHPCap'])
+    uCommon.log(0, '[Post-condition Completed]: Returned the original values for both cap fields.')
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240510 Execution Time: 1 12s - 1 28s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user is able to enter PHP Cap only..')
+def test_ACQ_AUTO_2098_User_should_be_able_to_enter_PHP_Cap_only(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Change the values for % Cap and PHP Cap.')
+    uAdminKpc.re.inputValuesOnCap(page, dAdmin.AUTO2098.dictData['percentCap'], dAdmin.AUTO2098.dictData['PHPCap'])
+    
+    uCommon.log(0, 'Step 3 - Navigate to edamama site and proceed to checkout.')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName2)
+    uCheckOut.checkOutItem(page, dRegCheckout.AUTO2098.dictData["strItemName"], dRegCheckout.AUTO2098.dictData["strType"])
+    uCheckOut.validateCapValueDisplayed(page, dAdmin.AUTO2098.dictData['percentCap'], dAdmin.AUTO2098.dictData['PHPCap'])
+    
+    uCommon.log(0, '[Post-condition Started]: Return the original values for both cap fields.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    uAdminKpc.re.inputValuesOnCap(page, dAdmin.AUTO2098.origValues['percentCap'], dAdmin.AUTO2098.origValues['PHPCap'])
+    uCommon.log(0, '[Post-condition Completed]: Returned the original values for both cap fields.')
+    uCommon.log(0, 'Test Completed')
+    
+
+""" Author: abernal_20240510 Execution Time: 1 13s - 1 15s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user is able to enter % Cap only..')
+def test_ACQ_AUTO_2102_User_should_be_able_to_enter_Percent_Cap_only(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Change the values for % Cap and PHP Cap.')
+    uAdminKpc.re.inputValuesOnCap(page, dAdmin.AUTO2102.dictData['percentCap'], dAdmin.AUTO2102.dictData['PHPCap'])
+    
+    uCommon.log(0, 'Step 3 - Navigate to edamama site and proceed to checkout.')
+    uAppComm.ln.loginToEdamama(page, dCommon.user.strUserName1)
+    uCheckOut.checkOutItem(page, dRegCheckout.AUTO2102.dictData["strItemName"], dRegCheckout.AUTO2102.dictData["strType"])
+    uCheckOut.validateCapValueDisplayed(page, dAdmin.AUTO2102.dictData['percentCap'], dAdmin.AUTO2102.dictData['PHPCap'])
+    
+    uCommon.log(0, '[Post-condition Started]: Return the original values for both cap fields.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    uAdminKpc.re.inputValuesOnCap(page, dAdmin.AUTO2102.origValues['percentCap'], dAdmin.AUTO2102.origValues['PHPCap'])
+    uCommon.log(0, '[Post-condition Completed]: Returned the original values for both cap fields.')
+    uCommon.log(0, 'Test Completed')
+    
+""" Author: abernal_20240510 Execution Time: 17s - 18s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that user should not be able to input decimal value for % Cap.')
+def test_ACQ_AUTO_2106_User_should_not_be_able_to_input_decimal_value_for_Percent_Cap(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Rewards module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.re.clickRewardsModule(page)
+    
+    uCommon.log(0, 'Step 2 - Verify that user is not able to input decimal value % Cap.')
+    uAdminKpc.re.verifyErrorForDecimalOnPercentCap(page, dAdmin.AUTO2106.intInput)
+    uCommon.log(0, 'Test Completed')
+    
+""" Author: abernal_20240510 Execution Time: 49s - 50s """
+@pytest.mark.regressionTestSuite()
+@pytest.mark.acquiTestSuite()
+@allure.step('To verify that Error message should be encountered when user deducts more than the beans available in the user\'s credits or rewards via bulk upload.')
+def test_ACQ_AUTO_2109_Error_message_should_be_encountered_when_user_deducts_more_than_the_beans_available_in_the_users_credits_or_rewards_via_bulk_upload(page): 
+    uCommon.log(0, 'Step 1 - Login to Admin Panel and click the Customer module.')
+    uAppComm.ln.loginToAdminKPC(page)
+    uAdminKpc.cu.clickCustomers(page)
+    
+    uCommon.log(0, '[Pre-condition Started]: Deduct the current rewards and credits of the user.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO2109.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.deductRewardCreditValue(newWindow, strValue = '', strType = "Rewards")
+    uAdminKpc.cu.deductRewardCreditValue(newWindow, strValue = '', strType = "Credits")
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Credits/Rewards are deducted from the user.')
+    
+    uCommon.log(0, '[Pre-condition Started]: Set the credits/rewards of the user less than the amount that will be deducted from the CSV.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO2109.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO2109.rewardCredits['strRewards'], strType = "Rewards")
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO2109.rewardCredits['strCredits'], strType = "Credits")
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Pre-condition Completed]: Credits/rewards of the user is set less than the amount that will be deducted from the CSV.')
+    
+    uCommon.log(0, 'Step 2 - Click the Upload Rewards or Credit button. Upload the file.')
+    uAdminKpc.cu.verifyErrorRewardsCreditsAreMoreThan(page, dAdmin.AUTO2109.strPath)
+    
+    uCommon.log(0, '[Post-condition Started]: Add rewards and credits to the user.')
+    uAdminKpc.cu.searchCustomer(page, dAdmin.AUTO2109.dictData['strUser1'])
+    newWindow = uCommon.switchToWindow(page)
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO2109.rewardCredits['strRewards'], strType = "Rewards")
+    uAdminKpc.cu.addTotalRewardCreditValue(newWindow, dAdmin.AUTO2109.rewardCredits['strCredits'], strType = "Credits")
+    uCommon.closeWindow(newWindow)
+    uCommon.log(0, '[Post-condition Completed]: Credits/Rewards are added to the user.')
+    uCommon.log(0, 'Test Completed')

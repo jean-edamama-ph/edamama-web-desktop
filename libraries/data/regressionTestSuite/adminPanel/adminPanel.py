@@ -305,3 +305,46 @@ class AUTO2086:
                 'strCouponType': '',
                 'strCouponTag': ''
                 } 
+    
+class AUTO2094:
+    dictData = {
+        'percentCap': '100',
+        'PHPCap': '10000',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+
+class AUTO2098:
+    dictData = {
+        'percentCap': '100',
+        'PHPCap': '500',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+    
+class AUTO2102:
+    dictData = {
+        'percentCap': '20',
+        'PHPCap': '10000',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+    
+class AUTO2106:
+    intInput = '20.54'
+    
+class AUTO2109:
+    rewardCredits = {
+        'strRewards': '50',
+        'strCredits': '50'
+    }
+    strPath = './libraries/data/uploadFile/DeductingMoreThanRewardsCredits.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+    }

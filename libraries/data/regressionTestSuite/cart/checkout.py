@@ -60,3 +60,36 @@ class AUTO2082:
                 'strType': 'ss',
                 'blnCoupon': False
                 } 
+    
+class AUTO2094:
+    strMyOrders = 'my orders'
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GRAB PAY',
+                'strBeansPromo': '',
+                'strPromoCode': '',
+                'strType': 'fp',
+                'blnCoupon': False
+                } 
+    
+class AUTO2098:
+    strMyOrders = 'my orders'
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GRAB PAY',
+                'strBeansPromo': '',
+                'strPromoCode': '',
+                'strType': 'fp',
+                'blnCoupon': False
+                } 
+    
+class AUTO2102:
+    strMyOrders = 'my orders'
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GRAB PAY',
+                'strBeansPromo': '',
+                'strPromoCode': '',
+                'strType': 'fp',
+                'blnCoupon': False
+                } 

@@ -500,7 +500,23 @@ def validateCapValueDisplayed(page, percentCap, PHPCap):
     elif uCommon.verifyVisible(page, pCheckOut.sm.giftCheckoutLbl) == True:
         uCommon.log(1, f'User is on gift checkout page.')
     uCommon.clickElem(page, pCheckOut.pm.useBeansRdb)
-    if uCommon.verifyVisible(page, pCheckOut.pm.capMsgLbl(percentCap, PHPCap)) == True:
-        uCommon.log(1, f'Correct cap message is displayed.')
-    else:
-        uCommon.log(2, f'Incorrect cap message is displayed.')
+    if percentCap == '100' and PHPCap == '10000':
+        if uCommon.verifyVisible(page, pCheckOut.pm.noLimitsBeanCapLbl) == True:
+            uCommon.log(1, f'Correct cap message is displayed.')
+        else:
+            uCommon.log(2, f'Incorrect cap message is displayed.')
+    elif percentCap == '100':
+        if uCommon.verifyVisible(page, pCheckOut.pm.phpCapOnlyLbl(PHPCap)) == True:
+            uCommon.log(1, f'Correct cap message is displayed.')
+        else:
+            uCommon.log(2, f'Incorrect cap message is displayed.')
+    elif PHPCap == '10000':
+        if uCommon.verifyVisible(page, pCheckOut.pm.percentCapOnlyLbl(percentCap)) == True:
+            uCommon.log(1, f'Correct cap message is displayed.')
+        else:
+            uCommon.log(2, f'Incorrect cap message is displayed.')
+    else:   
+        if uCommon.verifyVisible(page, pCheckOut.pm.capMsgLbl(percentCap, PHPCap)) == True:
+            uCommon.log(1, f'Correct cap message is displayed.')
+        else:
+            uCommon.log(2, f'Incorrect cap message is displayed.')

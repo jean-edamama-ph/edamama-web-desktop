@@ -1480,6 +1480,7 @@ class cu:
         uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
         uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
         uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)
+        uCommon.wait(page, 1)
         
     @uCommon.ufuncLog  
     def validateActivityLogs(page):
@@ -1571,7 +1572,8 @@ class cu:
             uCommon.waitAndSetElem(page, pAdmin.cu.creditEditLbl, strNewCreditValue)
             uCommon.waitAndClickElem(page, pAdmin.cu.editEnterBtn)
             uCommon.waitElemToBeVisible(page, pAdmin.cu.confirmationModalLbl)
-            uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)        
+            uCommon.waitAndClickElem(page, pAdmin.cu.confirmationYesBtn)    
+            uCommon.wait(page, 2)    
         
     @uCommon.ufuncLog  
     def verifyUserDoesNotExistErrorMsg(page, strPath):
@@ -1882,4 +1884,23 @@ class re:
         uCommon.clickElem(page, pAdmin.rm.updateBtn)
         uCommon.waitElemToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
         uCommon.waitElemNotToBeVisible(page, pAdmin.rm.rewardsRatioUpdateLbl)
+        
+    @uCommon.ufuncLog  
+    def verifyErrorForDecimalOnPercentCap(page, intInput):
+        """ 
+        Objective: To verify that user is not able to input decimal value on % Cap.
+        
+        param intInput: Text
+        returns: None
+        Author: abernal_20240510
+        """
+        uCommon.waitElemToBeVisible(page, pAdmin.rm.beanRewardsLbl)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPercentLbl)
+        uCommon.setElem(page, pAdmin.rm.maxCapPercentLbl, intInput)
+        uCommon.clickElem(page, pAdmin.rm.maxCapPHPLbl)
+        if uCommon.verifyVisible(page, pAdmin.rm.noDecimalErrorLbl) == True:
+            if uCommon.verifyIfClickable(page, pAdmin.rm.updateBtn) == True:
+                uCommon.log(1, f'Error message is displayed and update button is not clickable.') 
+        else:
+            uCommon.log(2, f'No error message is displayed.') 
         

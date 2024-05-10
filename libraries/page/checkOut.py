@@ -96,6 +96,11 @@ class pm:
     
     def capMsgLbl(percentCap, PHPCap):
         return f'//span[contains(text(),"Can be used for up to {percentCap}% worth of total order. Capped at P{PHPCap}")]'
+    noLimitsBeanCapLbl = '//span[contains(text(),"Use Bean Rewards with no limits!")]'
+    def phpCapOnlyLbl(PHPCap):
+        return f'//span[contains(text(),"Can be used for up to P{PHPCap} worth of your order.")]'
+    def percentCapOnlyLbl(percentCap):
+        return f'//span[contains(text(),"Can be used for up to {percentCap}% worth of total order.")]'
     
     promoCodeLbl = '//p[@class="code"]'
     promoCodeDoesNotExistMsg = '//span[text()="Error: Promo code does not exist."]'

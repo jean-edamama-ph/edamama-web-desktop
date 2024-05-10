@@ -363,4 +363,5 @@ class rm:
     valueGreaterThanPHPCapLbl = '//mat-error[contains(text(),"Maximum Cap Amount can\'t be greater than 10000")]'
     valueLbl = '//p[contains(text(),"1.0 Bean Reward is P1.00")]'
     calcPreviewLbl = '//p[contains(text(),"Calculation Preview")]'
+    noDecimalErrorLbl = '//mat-error[contains(text()," Maximum Cap Percentage must be a positive whole number")]'
     
