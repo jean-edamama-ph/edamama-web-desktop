@@ -110,11 +110,11 @@ class go:
     
 class pp:
     """PRIVACY POLICY"""
-    privacyPolicyTitleLbl = '//h2[text()="General Privacy Notice"]'
+    privacyPolicyTitleLbl = '//h2[text()="Privacy Policy"]'
     
 class tu:
     """TERMS OF USE"""
-    termsOfUseTitleLbl = '//p[text()="TERMS & CONDITIONS"]'
+    termsOfUseTitleLbl = '//h2[text()="Terms & Conditions"]'
     
 class error:
     def genErrorLbl(strMsg):

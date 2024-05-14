@@ -84,7 +84,7 @@ class ma:
     attributesFormTitleLbl = '//h1[normalize-space(text())="Selected Attributes"]'
     attributesFormSubmitBtn = '//div[@class="attributes-list popup"]//span[normalize-space(text())="Submit"]'
     def attributeBtn(editAttribute):
-        return f'//span[text()="{editAttribute}"]'
+        return f'(//span[text()="{editAttribute}"])[1]'
     def activeAttributeLbl(editAttribute):
         return f'//div[@class="attribute-blk"]//span[text()="{editAttribute}"]'
     maxAttributesSelectedMsg = '//span[text() = "Only 5 Attributes Can be selected!"]'

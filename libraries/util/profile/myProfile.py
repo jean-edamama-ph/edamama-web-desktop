@@ -51,6 +51,12 @@ class com:
         """ 
         inctCount = uCommon.getArrayCount(page, pMyProfile.com.allMenuIconBtn)
         for item in range(inctCount):
+            if uCommon.verifyVisible(page, pMyProfile.com.defaultLbl(strName)) == True:
+                    uCommon.waitAndClickElem(page, pMyProfile.com.secondMenuIconBtn(strName))
+                    uCommon.wait(page, 1)
+                    uCommon.waitAndClickElem(page, pMyProfile.com.addressEditBtn)
+                    ea.untickSetAsDefault(page)
+                    ea.clickUpdateAddress(page)
             if uCommon.verifyVisible(page, pMyProfile.com.secondMenuIconBtn(strName)) == True:
                 uCommon.waitAndClickElem(page, pMyProfile.com.secondMenuIconBtn(strName))
                 uCommon.wait(page, .5)
@@ -807,6 +813,7 @@ class at:
         else:
             at.addAttributes(page, intAddAttributes)
         intNewAttributeCount = uCommon.getArrayCount(page, pMyProfile.ma.allMyAttributesLbl)
+        uCommon.wait(page, 2)
         assert intAddAttributes == intNewAttributeCount, f'Number of attributes on profile ({intNewAttributeCount}) does not match with the number set on data config ({intAddAttributes})'
 
     

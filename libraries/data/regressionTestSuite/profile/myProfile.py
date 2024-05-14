@@ -163,8 +163,8 @@ class AUTO1388:
     strMyProfile = 'my profile'
     strInfoMsg = 'Only 5 Attributes Can be selected!'
     intAddAttributes = 5
-    dicData = {
-        'editAttribute1': 'Deal Queen',
+    dictData = {
+        'editAttribute1': 'Fashionista',
         'editAttribute2': 'First-time Mama',
         'editAttribute3': 'Mama Chef',
         'editAttribute4': 'Mama Teacher',
