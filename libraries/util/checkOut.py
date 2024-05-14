@@ -36,8 +36,8 @@ def checkOutItem(page, strItemName = '', strType = 'fp'):
         uShop.sp.searchAndClickItem(page, strItemName)
         strBrand = uCommon.getElemText(page, pShop.pf.itemBrandLbl)
         strName = uCommon.getElemText(page, pShop.pf.itemNameLbl)
-        arrName = strName.split('  ')
-        strName = arrName[0]
+        #arrName = strName.split('  ')
+        #strName = arrName[0]
         if uCommon.verifyVisible(page, pShop.pf.itemDisPriceLbl) == True:
             strPrice = uCommon.getElemText(page, pShop.pf.itemDisPriceLbl)
             strOrigPrice = uCommon.getElemText(page, pShop.pf.itemPriceLbl)
