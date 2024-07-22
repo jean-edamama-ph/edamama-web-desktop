@@ -238,6 +238,14 @@ class AUTO2050:
         'origValue': '15'
     }
     
+class AUTO2054:
+    dictData = {
+        'input1': '0.1',
+        'input2': '5050',
+        'input3': '10000',
+        'origValue': '450'
+    }
+    
 class AUTO2058:
     intInput = '-50'
     

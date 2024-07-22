@@ -326,7 +326,7 @@ def test_ACQ_AUTO_1388_Only_up_to_5_attributes_can_be_selected(page):
     uCommon.log(0, '[Pre-condition Completed]: 5 attributes were added to the user.')
     
     uCommon.log(0, 'Step 3 - Scroll down to attributes and click Edit My Attributes button and select another attribute.')
-    uMyProfile.at.updateAttributes(page)
+    uMyProfile.at.updateAttributes(page, dRegMyProfile.AUTO1388.dictData)
     uCommon.log(0, 'Test Completed')
 
 
