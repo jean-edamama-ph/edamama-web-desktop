@@ -8,7 +8,7 @@ strDateTimeToday = datetime.today().strftime("%Y%m%d%H%M%S")
 #strItemName  = 'Baby Gentle Wash & Shampoo Automation Test Data' # AAAA02741
 strItemName = 'Tala Tiles Magnetic Tiles Triangles Set (48-piece)'
 strItemName2 = 'Baby Bath Emollient (150ml) - Auto Do Not Update or Delete'
-strItemName3 = '16-Piece Brick Tile Set - Auto Do Not Update or Delete'
+strItemName3 = '16-Piece Brick Tile Set - Auto  Do Not Update or Delete'
 # strItemName = 'Baby Advanced Protection Cream with Organic Calendula (85g)' # EDA-24367
 # 'Baby Moisturizing Bath & Wash (230ML) - Buy 3 Get Free Baby Bar'
 # 'Baby Advanced Protection Cream with Organic Calendula (85g)', 
