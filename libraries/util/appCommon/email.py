@@ -86,7 +86,6 @@ def validateAndClickInvitedGiftListEmail(page, strUsername):
     uCommon.waitAndClickElem(page, pSocial.gm.rp.viewGiftListBtn)
     window = uCommon.switchToWindow(page)
     uCommon.waitElemToBeVisible(window, pMyGifts.ml.buySelectedGiftsBtn)
-    #uMyGifts.sh.clickSharedWithMe(window)
     uCommon.reloadPage(window)
     uCommon.backToWindow(window)
     
