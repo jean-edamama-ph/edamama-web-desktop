@@ -1,3 +1,6 @@
+import random
+from datetime import datetime
+strDateTimeToday = datetime.today().strftime("%Y%m%d%H%M%S")
 strItemName = 'Tala Tiles Magnetic Tiles Triangles Set (48-piece)'
 
 class AUTO1785:
@@ -257,3 +260,99 @@ class AUTO2066:
     
 class AUTO2070:
     intInput = '15000'
+    
+class AUTO2078:
+    dictData = {
+        'percentCap': '30',
+        'PHPCap': '800',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+    
+class AUTO2082:
+    dictData = {
+        'percentCap': '30',
+        'PHPCap': '800',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+    
+class AUTO2086:
+    newValues = {
+        'percentCap': '30',
+        'PHPCap': '800',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+    strOwnerUserName = 'Qa20231031080254'
+    blnFirstGL = 'click'
+    blnTrue = True
+    blnFalse = False
+    blnCleanUp = blnTrue
+    dictDataGift = {
+                'strOccassion': f'test occasion{strDateTimeToday}',
+                'strAbout': 'test about',
+                'strGiftNote': 'test gift note'
+                }
+    blnFirstAddProduct = False
+    blnSignIn = blnTrue
+    blnOwner = blnTrue
+    dictData = {
+                'strItemName': strItemName,
+                'strMOP': 'GCASH',
+                'strBeansPromo': '',
+                'strPromoCode': '',
+                'strType': 'fp',
+                'blnCoupon': False,
+                'strCouponType': '',
+                'strCouponTag': ''
+                } 
+    
+class AUTO2094:
+    dictData = {
+        'percentCap': '100',
+        'PHPCap': '10000',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+
+class AUTO2098:
+    dictData = {
+        'percentCap': '100',
+        'PHPCap': '500',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+    
+class AUTO2102:
+    dictData = {
+        'percentCap': '20',
+        'PHPCap': '10000',
+    }
+    origValues = {
+        'percentCap': '15',
+        'PHPCap': '450'
+    }
+    
+class AUTO2106:
+    intInput = '20.54'
+    
+class AUTO2109:
+    rewardCredits = {
+        'strRewards': '50',
+        'strCredits': '50'
+    }
+    strPath = './libraries/data/uploadFile/DeductingMoreThanRewardsCredits.xlsx'
+    dictData = {
+        'strUser1': 'testkpcauto1001@gmail.com',
+    }

@@ -16,6 +16,7 @@ class sm:
     """SIDE MENU"""
     checkOutLbl = '//h2[text()="Checkout"]'
     checkOutDescLbl = '//p[text()="Complete the form to proceed with your Checkout."]'
+    giftCheckoutLbl = '//h2[text()="Gift Checkout"]'
     
 class co:
     """CHECKOUT"""
@@ -92,6 +93,14 @@ class pm:
     xenditTestAmountLbl = '//span[text()="Xendit Test Amount:"]'
     xenditTestAmountTxt = f'{xenditTestAmountLbl}/..//input'
     placeOrderBtn = '//button[contains(text(),"Place Order")]'
+    
+    def capMsgLbl(percentCap, PHPCap):
+        return f'//span[contains(text(),"Can be used for up to {percentCap}% worth of total order. Capped at P{PHPCap}")]'
+    noLimitsBeanCapLbl = '//span[contains(text(),"Use Bean Rewards with no limits!")]'
+    def phpCapOnlyLbl(PHPCap):
+        return f'//span[contains(text(),"Can be used for up to P{PHPCap} worth of your order.")]'
+    def percentCapOnlyLbl(percentCap):
+        return f'//span[contains(text(),"Can be used for up to {percentCap}% worth of total order.")]'
     
     promoCodeLbl = '//p[@class="code"]'
     promoCodeDoesNotExistMsg = '//span[text()="Error: Promo code does not exist."]'
