@@ -36,8 +36,6 @@ def checkOutItem(page, strItemName = '', strType = 'fp'):
         uShop.sp.searchAndClickItem(page, strItemName)
         strBrand = uCommon.getElemText(page, pShop.pf.itemBrandLbl)
         strName = uCommon.getElemText(page, pShop.pf.itemNameLbl)
-        #arrName = strName.split('  ')
-        #strName = arrName[0]
         if uCommon.verifyVisible(page, pShop.pf.itemDisPriceLbl) == True:
             strPrice = uCommon.getElemText(page, pShop.pf.itemDisPriceLbl)
             strOrigPrice = uCommon.getElemText(page, pShop.pf.itemPriceLbl)
@@ -267,7 +265,12 @@ def selectModeOfPaymentAndBeansOrPromo(page, dictData, strMOP = '', strBeansProm
             strComputedBeansToUse = str(int(floatComputedBeanToUse))
         else:
             strComputedBeansToUse = str(int(dictCreditsConfigurations['floatRewardsAmountCap']))
-        uCommon.getElemTextAndCheckIfContainsText(page, pCheckOut.pm.totalBeanRewardToUseLbl, strComputedBeansToUse)
+        strTotalBeanRewardsToUseStrip = uCommon.getElemText(page, pCheckOut.pm.totalBeanRewardToUseLbl)
+        strTotalBeanRewardsToUseStrip = strTotalBeanRewardsToUseStrip.replace(',', '')
+        if strTotalBeanRewardsToUseStrip == strComputedBeansToUse:
+            uCommon.log(0, f'Same amount is displayed.')
+        else:
+            uCommon.log(2, f'Amount is not the same.')
     elif strBeansPromo == 'promo':
         uCommon.waitAndClickElem(page, pCheckOut.pm.enterPromoCodeRdb)
         uCommon.waitAndSetElem(page, pCheckOut.pc.enterPromoCodeTxt, strPromoCode)
