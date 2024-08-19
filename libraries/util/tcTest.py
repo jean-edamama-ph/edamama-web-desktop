@@ -25,7 +25,10 @@ def validateE2EMOP(page, dictData, intStep = 3):
     uCheckOut.clickMyOrders(page)
     
     uCommon.log(0, f'Step {intStep + 1} - Verify the details was correct')
-    uMyOrders.validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, dictData["blnCoupon"])
+    if dictData["blnCoupon"] == True:
+        uMyOrders.validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, dictData["strVoucherDisc"], dictData["strCouponType"], dictData["strCouponTag"], blnCoupon = dictData["blnCoupon"])
+    else:
+        uMyOrders.validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, blnCoupon = dictData["blnCoupon"])
     
     if dictData["strType"] == 'ss':
         uAppComm.com.navigateToProfileMenu(page, 'my subscription')
@@ -44,7 +47,6 @@ def checkCheckoutOIDsInAdminPanel(page, dictData):
 
     uCommon.log(0, 'Step 2 - Select and click any product to purchase')
     strOrderID = validateE2EMOP(page, dictData, 2)
-
     if dictData["blnCancel"] == True:
         uCommon.log(0, 'Step 6 - Cancel Order')
         uMyOrders.cancelOrder(page, strOrderID)

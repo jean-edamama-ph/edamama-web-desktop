@@ -624,7 +624,7 @@ def test_AUTO_676_Mass_Cancellation_Admin(page):
     
     
 """ Author: ccapistrano_20230510 | Execution Time: 1m 5s """
-@pytest.mark.deploymentChecklist()
+#N/A test case
 @allure.step('Verify if admin can update tracking number on Orders')
 def test_AUTO_671_Upload_Tracking_Number_Admin_Panel(page):
     uCommon.log(0, 'Step 1 - Go to the edamama website/app')
@@ -823,7 +823,7 @@ def test_AUTO_716_Invitee_Buys_Item_from_Shared_Gift_List(page):
     uAppComm.ln.goToEdamamaURL(page)
     
     uCommon.log(0, 'Step 2 - clicking "Gift" icon')
-    uMyGifts.com.clickGiftBox(page, dDepChkLst.AUTO716.blnFalse)
+    uMyGifts.com.clickGiftBox(page, dDepChkLst.AUTO716.blnTrue)
     
     uCommon.log(0, 'Step 3 - Click "Shared With Me" tab')
     uMyGifts.sh.clickSharedWithMe(page)
@@ -1082,7 +1082,9 @@ def test_AUTO_530_Cancel_order_by_user(page):
     uMyOrders.cancelOrder(page, strOrderID)
     uAppComm.ln.loginToAdminKPC(page)
     uAdminKpc.od.clickOrders(page)
-    uAdminKpc.od.validateRetunCancel(page, strOrderID, 'Canceled By User')
+    uCommon.waitAndClickElemText(page, strOrderID)
+    window = uCommon.switchToWindow(page)
+    uAdminKpc.od.od.validateOrderStatus(window, dDepChkLst.AUTO530.dictData["strOrderStatus"], "test Only")
     uCommon.log(0, 'Test case completed')
 
   

@@ -291,24 +291,22 @@ class od:
         param dicDetails: Dictionary details
         param blnCancel: True | False
         returns: None
-        Author: ccapistrano_20230327
+        Author: ccapistrano_20230327'
+        Updated by: jatregenio_20240801
         """
         uCommon.validateElemText(page, pAdmin.ol.orderIDValue(strOrderID), strOrderID)
         uCommon.validateElemText(page, pAdmin.ol.quantityValue(strOrderID), dicDetails['strQuantity'], False)
         uCommon.validateElemText(page, pAdmin.ol.paymentMethodValue(strOrderID), dicDetails['strModeOfPayment'])
+        arrShipPrice = dicDetails['strShipPrice'].split('₱')
+        strShipPrice = '₱ ' + arrShipPrice[1]
+        arrTotalPrice = dicDetails['strTotalPrice'].split('₱')
+        strTotalPrice = '₱ ' + arrTotalPrice[1]
         if blnCancel == True:
-            uCommon.validateElemText(page, pAdmin.ol.shipPriceValue(strOrderID), '0')
-            uCommon.validateElemText(page, pAdmin.ol.totalPriceValue(strOrderID), '0')
-            uCommon.validateElemText(page, pAdmin.ol.returnCancelValue(strOrderID.replace('#', '')), 'Canceled By User')
-        else:
-            arrShipPrice = dicDetails['strShipPrice'].split('.')
-            strShipPrice = arrShipPrice[0].replace('₱', '')
             uCommon.validateElemText(page, pAdmin.ol.shipPriceValue(strOrderID), strShipPrice)
-            # strTotalPrice = ((dicDetails['strTotalPrice'].replace('₱', '')).replace(',', ''))[:-1]
-            # uCommon.validateElemText(page, pAdmin.ol.totalPriceValue(strOrderID), strTotalPrice, False)
-            strTotalPrice = ((dicDetails['strTotalPrice'].replace('₱', '')).replace(',', ''))[:-3]
+            uCommon.validateElemText(page, pAdmin.ol.totalPriceValue(strOrderID), strTotalPrice)
+        else:
+            uCommon.validateElemText(page, pAdmin.ol.shipPriceValue(strOrderID), strShipPrice)
             uCommon.validateElemText(page, pAdmin.ol.totalPriceValue(strOrderID), strTotalPrice, True)
-            uCommon.validateElemText(page, pAdmin.ol.returnCancelValue(strOrderID.replace('#', '')), '-')
         return strOrderID
 
     @uCommon.ufuncLog  
@@ -374,15 +372,32 @@ class od:
             param dictData: Dictionary Data
             returns: None
             Author: ccapistrano_20230512
-            """    
+            """
             uCommon.waitElemToBeVisible(page, pAdmin.ol.od.receiverValueLbl)
             uCommon.validateElemText(page, pAdmin.ol.od.receiverValueLbl, f'{dictData["strFName"]} {dictData["strLName"]}')
-            uCommon.validateElemText(page, pAdmin.ol.od.regionValueLbl, dictData["strProvince"])
-            uCommon.validateElemText(page, pAdmin.ol.od.cityValueLbl, dictData["strCity"])
-            uCommon.validateElemText(page, pAdmin.ol.od.barangayValueLbl, dictData["selectBarangay"])
+            uCommon.validateElemText(page, pAdmin.ol.od.regionValueLbl, dictData["strFormattedProvince"])
+            uCommon.validateElemText(page, pAdmin.ol.od.cityValueLbl, f'{dictData["selectFormattedBarangay"]} {dictData["strFormattedCity"]}, {dictData["strZipCode"]}')
             uCommon.validateElemText(page, pAdmin.ol.od.streetValueLbl, dictData["strLotStreet"])
             uCommon.validateElemText(page, pAdmin.ol.od.deliveryNotesValueLbl, dictData["strLandmark"])
-            uCommon.validateElemText(page, pAdmin.ol.od.zipCodeValueLbl, dictData["strZipCode"])
+        
+        @uCommon.ufuncLog
+        def validateOrderStatus(page, strOrderStatusToCheck, strCancellationReason = ""):
+            """ 
+            Objective: Validate the order status and cancellation reason (if applicable) are correct.
+            
+            param strOrderStatusToCheck: Status to be verified
+            param strCancellationReason: Cancellation reason when order is cancelled
+            returns: None
+            Author: jatregenio_20240801
+            """
+            if strOrderStatusToCheck == "cancelledbyuser" or  strOrderStatusToCheck == "expired"  or strOrderStatusToCheck == "cancelledbyadmin":
+                uCommon.validateElemText(page, pAdmin.ol.od.orderStatusValueLbl, strOrderStatusToCheck)
+                uCommon.clickElem(page, pAdmin.ol.od.financeViewTab)
+                if strOrderStatusToCheck == "cancelledbyuser":
+                    uCommon.validateElemText(page, pAdmin.ol.od.reasonValueLbl, strCancellationReason)
+          
+                
+                
             
             
         class pt:
@@ -394,7 +409,7 @@ class od:
                 param: None
                 returns: None
                 Author: ccapistrano_20230510
-                """    
+                """
                 uCommon.waitElemToBeVisible(page, pAdmin.ol.od.pt.editIconBtn)
                 uCommon.hoverAndClickElem(page, pAdmin.ol.od.pt.editIconBtn)
                 uCommon.waitElemToBeVisible(page, pAdmin.ol.od.pt.selectStatusLbl)
@@ -458,6 +473,7 @@ class cp:
         returns: None
         Author: ccapistrano_20230327
         """
+        uCommon.scrollToElem(page, pAdmin.lp.curatedProductsLbl, 7)
         uCommon.wait(page, 1)
         uCommon.waitAndClickElem(page, pAdmin.lp.curatedProductsLbl)
         com.checkProgressBar(page)

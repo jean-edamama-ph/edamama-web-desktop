@@ -15,8 +15,8 @@ class od:
         applyIconBtn  = '//ion-button[text()="Apply"]'
         noDataDisplayLbl = '//div[text()="No data to display"]/..'
         
-        productDescLbl = '//div[@class="ion-text-left"]/span[contains(text(),"EDA")]'
-        #productDescLbl = '//div[@class="ion-text-left"]/span[contains(text(),"AAAA")]'
+        #productDescLbl = '//div[@class="ion-text-left"]/span[contains(text(),"EDA")]'
+        productDescLbl = '//div[@class="ion-text-left"]/span[contains(text(),"AAAA")]'
         priceInfoLbl = '//div[@class="total-price-container"]/span'
         totalUnitsLbl = '(//div[contains(@class, "ion-text-left")]/span)[3]'
         inProcessLbl = '(//div[contains(@class, "ion-text-left")]/span)[4]'

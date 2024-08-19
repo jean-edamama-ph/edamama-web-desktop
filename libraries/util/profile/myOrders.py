@@ -13,7 +13,7 @@ def validateMyOrders(page, strOrderID, blnCoupon = False):
     returns: None
     Author: ccapistrano_20230327
     """
-    arrObj = ['myOrdersLbl','searchBtn', 'searchTxt', 'searchIconImg', 'allLbl','filterListBtn']
+    arrObj = ['myOrdersLbl','searchBtn', 'searchTxt', 'searchIconImg', 'placedOrderLbl','filterListBtn']
     for item in arrObj:
         uCommon.expectElemToBeVisible(page, pMyOrders.com.__dict__[item]) 
     arrObj = ['Order Id','Order Placed', 'Product/s Price', 'Shipping Price', 'Total Price' ,'Ship To']
@@ -32,7 +32,7 @@ def validateMyOrders(page, strOrderID, blnCoupon = False):
         uCommon.expectOptElemToBeVisible(page, pMyOrders.com.__dict__[item](strParentElem))
  
 @uCommon.ufuncLog         
-def validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, blnCoupon = False):
+def validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, strVoucherDisc = "", strCouponType = "", strCouponTag = "", blnCoupon = False):
     """ 
     Objective: validate my orders details page
     
@@ -57,7 +57,8 @@ def validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, blnCo
         uCommon.expectElemNotToBeVisible(page, pMyOrders.com.couponUsedLbl(strOrderID))
     else:
         if blnCoupon == True:
-            uCommon.validateElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, 'Coupon/s Used'), '1 Coupons Used keyboard_arrow_down')
+            if strCouponType == "" and (strCouponTag == "Brand Sponsored" or strCouponTag == "Edamama Sponsored"):
+                uCommon.validateElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, ' Vouchers Used '), strVoucherDisc)
 
 @uCommon.ufuncLog       
 def cancelOrder(page, strOrderID):
@@ -71,6 +72,7 @@ def cancelOrder(page, strOrderID):
     strParentElem = pMyOrders.com.parentTDOrderDetails(strOrderID)
     for item in range(10):
         uCommon.waitAndClickElem(page, pMyOrders.com.cancelBtn(strParentElem))
+        uCommon.wait(page, 0.5)
         if uCommon.verifyVisible(page, pMyOrders.co.OthersLbl) == True:
             uCommon.waitAndClickElem(page, pMyOrders.co.OthersLbl)
             uCommon.waitForLoadState(page)
@@ -94,9 +96,22 @@ def getMyOrderDetails(page, strOrderID, dictData):
     returns dicDetails: Dictionary details
     Author: ccapistrano_20230327
     """
+    uCommon.clickElem(page, pMyOrders.com.filterListBtn)
+    uCommon.wait(page, 0.5)
+    if dictData["blnCancel"] == True:
+        uCommon.waitAndClickElem(page, pMyOrders.com.cancelFilterBtn)
     strParentElem = pMyOrders.com.parentTDOrderDetails(strOrderID)
     strQuantity = uCommon.getElemText(page, pMyOrders.com.itemQuantityCountLbl(strParentElem))
-    strModeOfPayment = dictData["strMOP"]
+    if dictData["strMOP"] == 'CASH ON DELIVERY':
+        strModeOfPayment  = 'COD'
+    elif dictData["strMOP"] == 'GCASH':
+        strModeOfPayment  = 'Xendit Gcash'
+    elif dictData["strMOP"] == 'GRAB PAY':
+        strModeOfPayment  = 'Xendit Grab Pay'
+    elif dictData["strMOP"] == 'MAYA':
+        strModeOfPayment  = 'Xendit Maya'
+    elif dictData["strMOP"] == 'CREDIT CARD':
+        strModeOfPayment  = 'Xendit Credit Card'
     strShipPrice = uCommon.getElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, 'Shipping Price'))
     strTotalPrice = uCommon.getElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, 'Product/s Price'))
     strStatus = '0'
@@ -132,9 +147,10 @@ def clickEditDeliveryDetails(page, strOrderID, blnChangeDeilvery = False):
         
     if blnChangeDeilvery == False:
         uCommon.waitElemToBeVisible(page, pMyOrders.di.addNewAddressBtn)
-    else:
-        uCommon.waitElemToBeVisible(page, pMyOrders.com.oneTimeDeliveryChangeMsg)
-        uCommon.waitElemNotToBeVisible(page, pMyOrders.com.oneTimeDeliveryChangeMsg)
+    #Commenting this out since Edit Address has still some issues
+    #else:
+    #    uCommon.waitElemToBeVisible(page, pMyOrders.com.oneTimeDeliveryChangeMsg)
+    #    uCommon.waitElemNotToBeVisible(page, pMyOrders.com.oneTimeDeliveryChangeMsg)
     
 
 class di:

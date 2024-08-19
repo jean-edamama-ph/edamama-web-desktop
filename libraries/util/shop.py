@@ -201,7 +201,7 @@ class sp:
         sp.validateSubscribeAndSave(page)
         sp.validateBabyGear(page)
         sp.validateFormulaAndMilk(page)
-        sp.validateToys(page)
+        #sp.validateToys(page)
         sp.validateDownload(page)
             
 

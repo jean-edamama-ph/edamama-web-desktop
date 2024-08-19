@@ -84,7 +84,8 @@ class AUTO270:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': '',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': '₱250.00'
                 }    
 
 class AUTO275:
@@ -95,7 +96,9 @@ class AUTO275:
                 'strPromoCode': 'BEAN300',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponType': 'CREDIT BEANS'
+                'strCouponType': 'CREDIT BEANS',
+                'strVoucherDisc': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO280:
@@ -107,7 +110,8 @@ class AUTO280:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': '',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': '₱50.00'
                 }    
 
 class AUTO285:
@@ -139,7 +143,8 @@ class AUTO295:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': '',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': '₱250.00'
                 }    
     
 class AUTO300:
@@ -170,7 +175,9 @@ class AUTO310:
                 'strPromoCode': 'BEAN300',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponType': 'CREDIT BEANS'
+                'strCouponType': 'CREDIT BEANS',
+                'strVoucherDisc': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO315:
@@ -182,7 +189,8 @@ class AUTO315:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponType': '',
-                'strCouponTag': ''
+                'strCouponTag': '',
+                'strVoucherDisc': '₱50.00'
                 }    
     
 class AUTO320:
@@ -218,7 +226,8 @@ class AUTO330:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponType': '',
-                'strCouponTag': ''
+                'strCouponTag': 'Edamama Sponsored',
+                'strVoucherDisc': '₱250.00'
                 }    
     
 class AUTO335:
@@ -254,7 +263,8 @@ class AUTO389:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponType': '',
-                'strCouponTag': ''
+                'strCouponTag': '',
+                'strVoucherDisc': '₱100.00'
                 }    
     
 class AUTO530:
@@ -266,7 +276,8 @@ class AUTO530:
                 'strType': 'fp',
                 'blnCoupon': False,
                 'strCouponType': '',
-                'strCouponTag': ''
+                'strCouponTag': '',
+                'strOrderStatus': 'cancelledbyuser'
                 }   
     
 class AUTO557:
@@ -290,8 +301,8 @@ class AUTO562:
                 'strPromoCode': '',
                 'strType': 'fp',
                 'blnCoupon': False,
-                'skuCode': 'EDA-24399',
-                #'skuCode': 'AAAA02741',
+                #'skuCode': 'EDA-24399',
+                'skuCode': 'AAAA02741',
                 'blnCancel': False
                 }   
     
@@ -362,7 +373,9 @@ class AUTO422:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAPERC10',
                 'strType': 'ss',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strVoucherDisc': '₱50.00',
+                'strCouponType': ''
                 }    
 
 class AUTO427:
@@ -383,7 +396,9 @@ class AUTO432:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'CETAFLAT50',
                 'strType': 'ss',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strVoucherDisc': '₱50.00',
+                'strCouponType': ''
                 }       
     
 class AUTO437:
@@ -413,7 +428,9 @@ class AUTO447:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAPERC10',
                 'strType': 'ss',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strVoucherDisc': '₱50.00',
+                'strCouponType': ''
                 }    
     
 class AUTO452:
@@ -444,7 +461,8 @@ class AUTO462:
                 'strPromoCode': 'BEAN300',
                 'strType': 'ss',
                 'blnCoupon': True,
-                'strCouponType': 'CREDIT BEANS'
+                'strCouponType': 'CREDIT BEANS',
+                'strVoucherDisc': ''
                 }    
     
 class AUTO467:
@@ -454,7 +472,9 @@ class AUTO467:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'CETAFLAT50',
                 'strType': 'ss',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strVoucherDisc': '₱50.00',
+                'strCouponType': ''
                 }    
     
 class AUTO472:
@@ -484,7 +504,9 @@ class AUTO482:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAPERC10',
                 'strType': 'ss',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strVoucherDisc': '₱50.00',
+                'strCouponType': ''
                 }    
     
 class AUTO487:
@@ -514,7 +536,9 @@ class AUTO497:
                 'strBeansPromo': 'promo',
                 'strPromoCode': 'EDAMAYA100',
                 'strType': 'ss',
-                'blnCoupon': True
+                'blnCoupon': True,
+                'strVoucherDisc': '₱100.00',
+                'strCouponType': ''
                 }    
     
 class AUTO619:
@@ -603,7 +627,10 @@ class AUTO666:
                 'selectBarangay': 'FORBES PARK',
                 'strZipCode': '1111',
                 'strLotStreet': 'LOT 143',
-                'strLandmark': 'RED GATE'
+                'strLandmark': 'RED GATE',
+                'strFormattedProvince': 'Metro Manila',
+                'strFormattedCity': 'Makati City',
+                'selectFormattedBarangay': 'Forbes Park',
                 } 
     
 class AUTO552:
@@ -640,7 +667,7 @@ class AUTO711:
     blnOwner = True
     
 class AUTO716:
-    strOwnerUserName = 'Qa20231031080254'
+    strOwnerUserName = 'Qa20240708232439'
     blnFirstGL = 'click'
     blnTrue = True
     blnFalse = False
@@ -715,7 +742,7 @@ class AUTO542:
     strStyle = 'style'
     strNurture = 'nurture'
     strPlayAndLearn = 'play and learn'
-    intArticles = 2
+    intArticles = 1
 
 class AUTO345:
     strShopSection = 'fp'
@@ -728,7 +755,9 @@ class AUTO1948:
                 'strPromoCode': 'EDRIGCFAO',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Gift Card'
+                'strCouponTag': 'Gift Card',
+                'strVoucherDisc': '₱500.00',
+                'strCouponType': ''
                 }  
 
 class AUTO1951:
@@ -739,7 +768,10 @@ class AUTO1951:
                 'strPromoCode': 'EDRIBSCBTALA',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Brand Sponsored'
+                'strCouponTag': 'Brand Sponsored',
+                'strCouponType': '',
+                'strVoucherDisc': '₱500.00',
+                'strCouponType': ''
                 }  
     
 class AUTO1954:
@@ -750,7 +782,9 @@ class AUTO1954:
                 'strPromoCode': 'EDRIBSCBTALA',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Brand Sponsored'
+                'strCouponTag': 'Brand Sponsored',
+                'strVoucherDisc': '',
+                'strCouponType': ''
                 }  
     
 class AUTO1960:
@@ -761,7 +795,9 @@ class AUTO1960:
                 'strPromoCode': 'EDRIESPO',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Edamama Sponsored'
+                'strCouponTag': 'Edamama Sponsored',
+                'strVoucherDisc': '₱250.00',
+                'strCouponType': ''
                 } 
     
 class AUTO1969:
@@ -772,7 +808,9 @@ class AUTO1969:
                 'strPromoCode': 'MOPPOGRABPAY',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Edamama Sponsored'
+                'strCouponTag': 'Edamama Sponsored',
+                'strVoucherDisc': '₱100.00',
+                'strCouponType': ''
                 }  
     
 class AUTO1963:
@@ -783,7 +821,9 @@ class AUTO1963:
                 'strPromoCode': 'EDRISHIPFRS',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Shipping'
+                'strCouponTag': 'Shipping',
+                'strVoucherDisc': '',
+                'strCouponType': ''
                 } 
     
 class AUTO1966:
@@ -806,7 +846,9 @@ class AUTO1966:
                 'strPromoCode': 'MARRIE430921',
                 'strType': 'fp',
                 'blnCoupon': True,
-                'strCouponTag': 'Referral Code'
+                'strCouponTag': 'Referral Code',
+                'strVoucherDisc': '',
+                'strCouponType': ''
     } 
     
 class AUTO1972:
@@ -818,7 +860,8 @@ class AUTO1972:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': 'Gift Card',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': '₱500.00'
                 } 
     
 class AUTO1975:
@@ -842,7 +885,8 @@ class AUTO1978:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': 'Edamama Sponsored',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': '₱250.00'
                 } 
     
 class AUTO1981:
@@ -854,7 +898,8 @@ class AUTO1981:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': 'Shipping',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': ''
                 } 
     
 class AUTO1984:
@@ -878,7 +923,8 @@ class AUTO1984:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': 'Referral Code',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': '₱400.00'
     } 
     
 class AUTO1987:
@@ -890,5 +936,6 @@ class AUTO1987:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': 'Edamama Sponsored',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc': '₱200.00'
                 } 

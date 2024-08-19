@@ -7,8 +7,9 @@ class com:
     searchIconImg = '//app-search-header//mat-icon[text()="search"]'
     searchBtn = '//button//span[contains(text(),"Search")]'
     searchTxt = '//input[@data-placeholder="Search Items by Name, Order Id"]'
-    allLbl = '//span[text()="All"]'
+    placedOrderLbl = '//span[text()="Placed Orders"]'
     filterListBtn = '//mat-icon[text()="filter_list"]'
+    cancelFilterBtn = '//button[contains(text(),"Cancelled")]'
     
     def myOrdersDataLbl(strOrderID, strColName):
         return f'//td[contains(text(),"{strOrderID}")]/ancestor::div[1]//td[{pCommon.go.getColIndex(strOrderID, strColName)}]'
@@ -61,7 +62,7 @@ class com:
     oneTimeDeliveryChangeMsg = '//span[text()="Order Delivery Information can only be changed once per order"]'
     
     def couponUsedLbl(strOrderID):
-        return f'//td[contains(text(),"{strOrderID}")]//..//..//th[contains(text(),"Coupon/s Used")]'
+        return f'//td[contains(text(),"{strOrderID}")]//..//..//th[contains(text()," Vouchers Used ")]'
     
     
     

@@ -125,25 +125,22 @@ class pl:
 class ol:
     """ORDERS LISTING"""
     def orderIDValue(strorderID):
-        return f'//span[contains(text(),"{strorderID}")]/../..//td[contains(@class,"orderNumber")]/span'
+        return f'//a[contains(text(), "{strorderID}")]/../../../td[contains(@class,"orderNumber")]/span'
 
     def customerNameValue(strorderID):
-        return f'//span[contains(text(),"{strorderID}")]/../..//td[contains(@class,"cdk-column-name")]/span'
+        return f'//a[contains(text(), "{strorderID}")]/../../../td[contains(@class,"cdk-column-name")]/a'
     
     def quantityValue(strorderID):
-        return f'//span[contains(text(),"{strorderID}")]/../..//td[contains(@class,"totalQuantity")]'
+        return f'//a[contains(text(),"{strorderID}")]/../../..//td[contains(@class,"totalQuantity")]'
     
     def paymentMethodValue(strorderID):
-        return f'//span[contains(text(),"{strorderID}")]/../..//td[contains(@class,"paymentMethod")]'
+        return f'//a[contains(text(),"{strorderID}")]/../../..//td[contains(@class,"paymentMethod")]'
     
     def shipPriceValue(strorderID):
-        return f'//span[contains(text(),"{strorderID}")]/../..//td[contains(@class,"shippingCharge")]'
+        return f'//a[contains(text(),"{strorderID}")]/../../..//td[contains(@class,"shippingCharge")]'
     
     def totalPriceValue(strorderID):
-        return f'//span[contains(text(),"{strorderID}")]/../..//td[contains(@class,"subTotal")]'
-    
-    def returnCancelValue(strorderID):
-        return f'//span[contains(text(),"{strorderID}")]/../..//td[contains(@class,"finalStatus")]/span'
+        return f'//a[contains(text(),"{strorderID}")]/../../..//td[contains(@class,"totalAmount")]'
     
     massUploadBtn = '//button/span[text()=" Mass Upload "]'
     selectFileBtn = '//button/span[text()=" Select File "]'
@@ -153,22 +150,22 @@ class ol:
 
     class od:
         """ORDER"""
-        deliveryDetailslbl = '//h3[text()="Delivery Details"]'
-        receiverLbl = f'{deliveryDetailslbl}/../..//span[contains(text(),"Receiver")]'
+        receiverLbl = '//span[contains(text(),"Alt Recipient")]'
         receiverValueLbl = f'{receiverLbl}/..//span[2]'
-        regionLbl = f'{deliveryDetailslbl}/../..//span[contains(text(),"Region")]'
+        regionLbl = '//span[contains(text()," Region")]'
         regionValueLbl = f'{regionLbl}/..//span[2]'
-        cityLbl = f'{deliveryDetailslbl}/../..//span[contains(text(),"City")]'
+        cityLbl = '//span[contains(text()," City")]'
         cityValueLbl = f'{cityLbl}/..//span[2]'
-        barangayLbl = f'{deliveryDetailslbl}/../..//span[contains(text(),"Barangay")]'
-        barangayValueLbl = f'{barangayLbl}/..//span[2]'
-        streetLbl = f'{deliveryDetailslbl}/../..//span[contains(text(),"Street")]'
+        streetLbl = '//span[contains(text()," Street/House")]'
         streetValueLbl = f'{streetLbl}/..//span[2]'
-        deliveryNotesLbl = f'{deliveryDetailslbl}/../..//span[contains(text(),"Delivery Notes")]'
+        deliveryNotesLbl = '//span[contains(text()," Landmark")]'
         deliveryNotesValueLbl = f'{deliveryNotesLbl}/..//span[2]'
-        zipCodeLbl = f'{deliveryDetailslbl}/../..//span[contains(text(),"Zip Code")]'
-        zipCodeValueLbl = f'{zipCodeLbl}/..//span[2]'
-        
+        orderStatusLbl = '//span[contains(text(), "Order Status")]'
+        orderStatusValueLbl = f'{orderStatusLbl}/..//span[2]'
+        financeViewTab = '//div[contains(text(), "Finance View")]'
+        reasonHeaderRow = '//th[contains(text(), "Reason")]'
+        reasonValueLbl = f'{reasonHeaderRow}/../../..//tbody/tr/td[14]'
+
         class pt:
             """PRODUCT TABLE"""
             productTableElm = '//table[@class="product_table"]'
