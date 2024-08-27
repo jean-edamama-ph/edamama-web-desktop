@@ -57,7 +57,7 @@ def validateMyOrderDetails(page, strOrderID, arrCartDetails, arrCODetails, strVo
         uCommon.expectElemNotToBeVisible(page, pMyOrders.com.couponUsedLbl(strOrderID))
     else:
         if blnCoupon == True:
-            if strCouponType == "" and (strCouponTag == "Brand Sponsored" or strCouponTag == "Edamama Sponsored"):
+            if strCouponType == "" and (strCouponTag == "Brand Sponsored" or strCouponTag == "Edamama Sponsored") and strVoucherDisc != '':
                 uCommon.validateElemText(page, pMyOrders.com.myOrdersDataLbl(strOrderID, ' Vouchers Used '), strVoucherDisc)
 
 @uCommon.ufuncLog       

@@ -43,14 +43,13 @@ def checkOutItem(page, strItemName = '', strType = 'fp'):
         else:
             strPrice = uCommon.getElemText(page, pShop.pf.itemPriceLbl)
             blnDiscount = False
-
     uCommon.expectElemNotToBeVisible(page, pShop.pf.outOfStockBtn)
     if uCommon.verifyVisible(page, pShop.pf.firstSizeBtn) == True:
         uCommon.waitAndClickElem(page, pShop.pf.firstSizeBtn)
+    strQuantity = '1'
     if strType == 'fp':
         uCommon.waitElemToBeVisible(page, pShop.pf.quantityOutputLbl)
         #strQuantity = uCommon.getElemText(page, pShop.pf.quantityOutputLbl)
-        strQuantity = '1'
         uShop.pp.clickAddToBag(page)
     if strType == 'ss':
         uShop.pp.clickAddToBag(page, False)
@@ -333,7 +332,7 @@ def clickPlaceOrderAndGetOrderID(page, strMOP = '', strBeansPromo = ''):
                 #uCommon.clickElem(frame, pCheckOut.com.submitBtn)
             uCommon.waitForLoadState(page)
     elif strMOP == 'GCASH' or strMOP == 'GRAB PAY' or strMOP == 'MAYA':
-
+        uCommon.wait(page, 2)
         if strBeansPromo == 'beans':
             if blnBeansFullPayment == True:
                 clickProceedToPay(page)

@@ -375,7 +375,8 @@ class AUTO422:
                 'strType': 'ss',
                 'blnCoupon': True,
                 'strVoucherDisc': '₱50.00',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strCouponTag': ''
                 }    
 
 class AUTO427:
@@ -386,7 +387,9 @@ class AUTO427:
                 'strPromoCode': 'BEAN300',
                 'strType': 'ss',
                 'blnCoupon': True,
-                'strCouponType': 'CREDIT BEANS'
+                'strCouponType': 'CREDIT BEANS',
+                'strVoucherDisc': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO432:
@@ -398,7 +401,8 @@ class AUTO432:
                 'strType': 'ss',
                 'blnCoupon': True,
                 'strVoucherDisc': '₱50.00',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strCouponTag': ''
                 }       
     
 class AUTO437:
@@ -462,7 +466,8 @@ class AUTO462:
                 'strType': 'ss',
                 'blnCoupon': True,
                 'strCouponType': 'CREDIT BEANS',
-                'strVoucherDisc': ''
+                'strVoucherDisc': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO467:
@@ -538,7 +543,8 @@ class AUTO497:
                 'strType': 'ss',
                 'blnCoupon': True,
                 'strVoucherDisc': '₱100.00',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strCouponTag': ''
                 }    
     
 class AUTO619:
@@ -873,7 +879,8 @@ class AUTO1975:
                 'strType': 'fp',
                 'blnCoupon': True,
                 'strCouponTag': 'Brand Sponsored',
-                'strCouponType': ''
+                'strCouponType': '',
+                'strVoucherDisc':''
                 } 
     
 class AUTO1978:
